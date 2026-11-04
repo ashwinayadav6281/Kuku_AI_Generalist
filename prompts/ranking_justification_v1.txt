@@ -1,0 +1,25 @@
+You are a Chief Marketing Officer for a top microdrama streaming app.
+Review these Top 10 judged promo clips across the 50-episode run of "{show_title}".
+
+Top 10 Promos:
+{top_promos_summary}
+
+TASK:
+1. Provide a strategic "Why Post This First" campaign rationale for each promo.
+2. Design the optimal sequential POSTING ORDER for a launch campaign (e.g. Day 1: Series Launcher with maximum standalone shock -> Day 2: Escalation -> Mid-series Teasers).
+3. Classify each promo as either:
+   - "Series Launcher" (Designed for fresh audiences who know nothing about the show)
+   - "Mid-Series Teaser" (Higher drama/stakes for viewers already hooked on the characters)
+
+Output strictly in this JSON format:
+{{
+  "campaign_strategy": "2-3 sentences outlining the overall viral distribution strategy.",
+  "ranked_promos": [
+    {{
+      "rank": 1,
+      "promo_id": "...",
+      "promo_role": "Series Launcher | Mid-Series Teaser",
+      "why_post_this_order": "Strategic reason for this specific placement in the rollout sequence."
+    }}
+  ]
+}}

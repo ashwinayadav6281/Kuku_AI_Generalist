@@ -1,0 +1,1152 @@
+[
+  {
+    "episode_id": 1,
+    "filename": "episode-001-Episode 1671703.txt",
+    "logline": "Lady Juliana arrives at the cathedral in her late mother's bridal gown, only to suffer the ultimate betrayal when her fianc\u00e9 Gerald abandons her at the altar for her cruel sister Clarissa with her family's full blessing.",
+    "continuity_notes": "First episode of the series. Establishes Juliana's humiliation and abandonment by her betrothed, Gerald, and her noble family in favor of her sister, Clarissa.",
+    "scene_count": 1,
+    "unit_count": 95,
+    "duration": 138.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CATHEDRAL \u2013 DAY",
+        "start": 0.0,
+        "end": 138.0
+      }
+    ]
+  },
+  {
+    "episode_id": 2,
+    "filename": "episode-002-Episode 1671704.txt",
+    "logline": "Publicly cast aside at the altar by Gerald for her sister Clarissa and abandoned by her own family, Juliana stands tall and turns her public humiliation into an unyielding indictment of Gerald's honor.",
+    "continuity_notes": "Picks up directly from Episode 1's cliffhanger. Gerald has turned away from Juliana at the altar, leaving her devastated before the entire aristocratic congregation.",
+    "scene_count": 1,
+    "unit_count": 74,
+    "duration": 110.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CATHEDRAL \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 110.0
+      }
+    ]
+  },
+  {
+    "episode_id": 3,
+    "filename": "episode-003-Episode 1671705.txt",
+    "logline": "Banished from her mother's chapel and seized by guards at her family's command, Juliana is rescued by an imposing, scarred stranger who intervenes with lethal grace\u2014and drops to one knee with a proposal that shocks high society.",
+    "continuity_notes": "Follows directly from Episode 2's confrontation at the altar, where Juliana publicly exposed Gerald's dishonor before the entire aristocratic congregation.",
+    "scene_count": 3,
+    "unit_count": 118,
+    "duration": 145.75,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CATHEDRAL NAVE \u2013 DAY",
+        "start": 0.0,
+        "end": 22.8
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. CATHEDRAL \u2013 CONTINUOUS",
+        "start": 22.8,
+        "end": 64.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. CATHEDRAL AISLE \u2013 CONTINUOUS",
+        "start": 64.5,
+        "end": 145.75
+      }
+    ]
+  },
+  {
+    "episode_id": 4,
+    "filename": "episode-004-Episode 1671706.txt",
+    "logline": "Defying Gerald and Clarissa's cruel mockery, Juliana accepts the mysterious scarred warrior's solemn proposal and is officially wed, choosing exile and dignity over her family's cruelty as they walk out into the light together.",
+    "continuity_notes": "Picks up directly from Episode 3's cliffhanger where the Mysterious Bearded Man dropped to one knee before the altar, presenting a ring to Lady Juliana.",
+    "scene_count": 1,
+    "unit_count": 110,
+    "duration": 151.4,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CHAPEL \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 151.4
+      }
+    ]
+  },
+  {
+    "episode_id": 5,
+    "filename": "episode-005-Episode 1671707.txt",
+    "logline": "Formally disowned and stripped of her inheritance, Juliana is publicly humiliated when her stepmother throws her late mother's treasured ledger into the mud, but her rugged new husband defends her dignity and guides her away from her callous family.",
+    "continuity_notes": "Follows directly from Episode 4's ending where Juliana and the Mysterious Bearded Man walked out of the chapel doors into the daylight after completing their wedding vows.",
+    "scene_count": 1,
+    "unit_count": 62,
+    "duration": 110.5,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. CATHEDRAL STEPS \u2013 DAY",
+        "start": 0.0,
+        "end": 110.5
+      }
+    ]
+  },
+  {
+    "episode_id": 6,
+    "filename": "episode-006-Episode 1671708.txt",
+    "logline": "Seeking shelter from the cold rain, Juliana arrives at her new husband's modest woodland cottage and discovers an unexpected sense of peace beside the hearth.",
+    "continuity_notes": "Picks up immediately from Episode 5, as Juliana and her mysterious new husband leave the Ashcroft estate behind and venture out into the rainy countryside.",
+    "scene_count": 2,
+    "unit_count": 97,
+    "duration": 115.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. WOODLAND PATH \u2013 NIGHT",
+        "start": 0.0,
+        "end": 33.7
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. WOODEN CABIN \u2013 CONTINUOUS",
+        "start": 33.7,
+        "end": 115.0
+      }
+    ]
+  },
+  {
+    "episode_id": 7,
+    "filename": "episode-007-Episode 1671709.txt",
+    "logline": "When Gerald and his spiteful companion arrive at the woodland cottage to mock Juliana's fallen status, her stoic new husband returns from the forest to silently send them fleeing.",
+    "continuity_notes": "Follows Episode 6, where Juliana found refuge and warmth beside the hearth with her mysterious husband; morning brings unwelcome visitors from her former life to their humble doorstep.",
+    "scene_count": 3,
+    "unit_count": 58,
+    "duration": 116.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. WOODLAND COTTAGE - DAY",
+        "start": 0.0,
+        "end": 69.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "EXT. FOREST PATH - CONTINUOUS",
+        "start": 69.5,
+        "end": 75.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "EXT. WOODLAND COTTAGE - CONTINUOUS",
+        "start": 75.5,
+        "end": 116.0
+      }
+    ]
+  },
+  {
+    "episode_id": 8,
+    "filename": "episode-008-Episode 1671710.txt",
+    "logline": "As Juliana inspects her late mother's weathered herbal grimoire, Alexander bonds with her over rustic medicinal knowledge and war-worn memories, gently altering her perception of what true wealth means.",
+    "continuity_notes": "Picks up after Episode 7, where Alexander chased off Gerald and the mocking aristocratic visitors; quiet and intimacy now return inside the woodland cottage as evening approaches.",
+    "scene_count": 1,
+    "unit_count": 63,
+    "duration": 78.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. WOODLAND COTTAGE \u2013 DAY",
+        "start": 0.0,
+        "end": 78.0
+      }
+    ]
+  },
+  {
+    "episode_id": 9,
+    "filename": "episode-009-Episode 1671711.txt",
+    "logline": "When a frantic mother brings her critically ill child to the woodland cottage, Juliana successfully cures him with her mother's herbal remedies, unknowingly igniting dangerous rumors that reach the ears of the Blond Nobleman.",
+    "continuity_notes": "Picks up immediately after Episode 8, continuing the peaceful evening inside the cottage before an urgent knock shatters the calm.",
+    "scene_count": 2,
+    "unit_count": 89,
+    "duration": 115.5,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. WOODLAND COTTAGE \u2013 NIGHT",
+        "start": 0.0,
+        "end": 83.8
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. LORD'S STUDY \u2013 NIGHT",
+        "start": 83.8,
+        "end": 115.5
+      }
+    ]
+  },
+  {
+    "episode_id": 10,
+    "filename": "episode-010-Episode 1671712.txt",
+    "logline": "When Alexander returns to the cottage gravely wounded and soaked in blood, Juliana tends to his injuries, leading to an intimate confrontation where their unspoken feelings and scarred pasts finally collide.",
+    "continuity_notes": "Follows the ominous revelation from Episode 9 of rumors circulating about a scarred war veteran, cutting directly to the secluded cottage where Alexander arrives bearing fresh wounds.",
+    "scene_count": 1,
+    "unit_count": 60,
+    "duration": 94.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. WOODLAND COTTAGE \u2013 NIGHT",
+        "start": 0.0,
+        "end": 94.0
+      }
+    ]
+  },
+  {
+    "episode_id": 11,
+    "filename": "episode-011-Episode 1671713.txt",
+    "logline": "Gerald and Clarissa arrive at the cottage with an armed constable accusing Alexander of grand theft, culminating in a devastating planted discovery that threatens to tear the newlyweds apart.",
+    "continuity_notes": "Picks up immediately after the intimate moment between Juliana and Alexander in Episode 10, interrupted by the ominous arrival of an aristocratic carriage carrying Gerald.",
+    "scene_count": 2,
+    "unit_count": 85,
+    "duration": 112.75,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. COTTAGE GROUNDS \u2013 DAY",
+        "start": 0.0,
+        "end": 54.0
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. COTTAGE \u2013 CONTINUOUS",
+        "start": 54.0,
+        "end": 112.75
+      }
+    ]
+  },
+  {
+    "episode_id": 12,
+    "filename": "episode-012-Episode 1671714.txt",
+    "logline": "When the Constable attempts to arrest Alexander for grand theft, Clarissa offers Juliana a sadistic ultimatum: retrieve a signet ring from frozen, razor-sharp blackthorn briars with her bare hands, or watch her husband hang.",
+    "continuity_notes": "Picks up directly from Episode 11's cliffhanger where the Constable pulls Gerald's planted gold pocket watch from Alexander's trench coat.",
+    "scene_count": 1,
+    "unit_count": 55,
+    "duration": 87.21,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. COTTAGE \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 87.21
+      }
+    ]
+  },
+  {
+    "episode_id": 13,
+    "filename": "episode-013-Episode 1671715.txt",
+    "logline": "Defying Alexander's desperate pleas, Juliana crawls barehanded into the razor-sharp blackthorn garden, enduring brutal lacerations under Clarissa and Gerald's cruel taunts until she unearths the lost emerald signet ring.",
+    "continuity_notes": "Picks up immediately from Episode 12's climax where Juliana demanded to know where the frozen blackthorn garden was located to save Alexander from the gallows.",
+    "scene_count": 2,
+    "unit_count": 75,
+    "duration": 118.88,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. MANOR GROUNDS - BLACKTHORN GARDEN \u2013 DUSK",
+        "start": 0.0,
+        "end": 45.8
+      },
+      {
+        "scene_id": 2,
+        "heading": "EXT. FROZEN BLACKTHORN BRIARS \u2013 CONTINUOUS",
+        "start": 45.8,
+        "end": 118.88
+      }
+    ]
+  },
+  {
+    "episode_id": 14,
+    "filename": "episode-014-Episode 1671716.txt",
+    "logline": "After Juliana secures Alexander's freedom with the unearthed emerald signet ring, he carries her home to bandage her torn hands, silently swearing that no one will ever harm her again.",
+    "continuity_notes": "Picks up immediately from Episode 13's cliffhanger where Juliana grasped the emerald ring beneath the razor-sharp blackthorns.",
+    "scene_count": 3,
+    "unit_count": 51,
+    "duration": 87.63,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. BLACKTHORN GARDEN \u2013 DUSK",
+        "start": 0.0,
+        "end": 40.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "EXT. ALEXANDER'S COTTAGE \u2013 CONTINUOUS",
+        "start": 40.5,
+        "end": 43.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. ALEXANDER'S COTTAGE \u2013 NIGHT",
+        "start": 43.5,
+        "end": 87.63
+      }
+    ]
+  },
+  {
+    "episode_id": 15,
+    "filename": "episode-015-Episode 1671717.txt",
+    "logline": "When ruthless thugs desecrate Juliana's medicinal garden and trample her late mother's herbs, a protective Alexander charges into the night to defend her.",
+    "continuity_notes": "Follows Episode 14 where Alexander solemnly vowed Juliana would never be hurt again; Juliana's hands remain heavily bandaged from retrieving the emerald ring.",
+    "scene_count": 1,
+    "unit_count": 55,
+    "duration": 86.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. HERBAL GARDEN - NIGHT",
+        "start": 0.0,
+        "end": 86.0
+      }
+    ]
+  },
+  {
+    "episode_id": 16,
+    "filename": "episode-016-Episode 1671718.txt",
+    "logline": "When hired thugs attack Juliana's medicinal garden, Alexander unleashes his combat training to effortlessly overpower them, extracting a shocking confession that unmasks Gerald Harrington as the mastermind.",
+    "continuity_notes": "Picks up immediately from Episode 15's cliffhanger where Alexander confronted the three thugs in the moonlit garden while Juliana huddled injured on the ground.",
+    "scene_count": 1,
+    "unit_count": 64,
+    "duration": 83.19,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. JULIANA'S COTTAGE GARDEN \u2013 NIGHT",
+        "start": 0.0,
+        "end": 83.19
+      }
+    ]
+  },
+  {
+    "episode_id": 17,
+    "filename": "episode-017-Episode 1671719.txt",
+    "logline": "In the aftermath of the brutal attack, Alexander repairs Juliana's devastated garden and swears to protect her with his life, drawing them into a tender, intimate embrace by the hearth.",
+    "continuity_notes": "Picks up the morning after Episode 16's moonlit confrontation where Alexander defended Juliana and defeated Harrington's hired thugs in her medicinal garden.",
+    "scene_count": 2,
+    "unit_count": 75,
+    "duration": 118.88,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. MEDICINAL GARDEN \u2013 DAY",
+        "start": 0.0,
+        "end": 39.0
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. COTTAGE HEARTH \u2013 NIGHT",
+        "start": 39.0,
+        "end": 118.88
+      }
+    ]
+  },
+  {
+    "episode_id": 18,
+    "filename": "episode-018-Episode 1671720.txt",
+    "logline": "When their cottage is deliberately set ablaze in the dead of night, Alexander risks his life to rescue Juliana and her mother's cherished ledger from the inferno, vowing relentless vengeance against those responsible.",
+    "continuity_notes": "Picks up directly from Episode 17's intimate hearthside moment; their peaceful sanctuary is shattered when arsonists trap Juliana and Alexander inside their burning home.",
+    "scene_count": 5,
+    "unit_count": 81,
+    "duration": 192.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. COTTAGE - BEDROOM - NIGHT",
+        "start": 0.0,
+        "end": 28.9
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. COTTAGE - HALLWAY - CONTINUOUS",
+        "start": 28.9,
+        "end": 52.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. COTTAGE - PARLOR / WORKROOM - CONTINUOUS",
+        "start": 52.5,
+        "end": 98.5
+      },
+      {
+        "scene_id": 4,
+        "heading": "INT. COTTAGE - PARLOR / EXT. COTTAGE - CONTINUOUS",
+        "start": 98.5,
+        "end": 124.0
+      },
+      {
+        "scene_id": 5,
+        "heading": "EXT. COTTAGE - FRONT YARD - CONTINUOUS",
+        "start": 124.0,
+        "end": 192.0
+      }
+    ]
+  },
+  {
+    "episode_id": 19,
+    "filename": "episode-019-Episode 1671721.txt",
+    "logline": "Standing before the smoldering ash of their home, Juliana and Alexander receive shelter and food from grateful villagers before Alexander meets in secret with a loyal spy, learning that his usurping enemies have imprisoned his mother and claimed his ducal seat.",
+    "continuity_notes": "Picks up directly from Episode 18's devastating fire; Juliana and Alexander stand amidst the morning ruins of Blackwood cottage with her mother's surviving herbal book before retreating to an abandoned barn.",
+    "scene_count": 3,
+    "unit_count": 63,
+    "duration": 119.63,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. BLACKWOOD COTTAGE RUINS \u2013 DAY",
+        "start": 0.0,
+        "end": 41.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "EXT. MISTY DEEP WOODS \u2013 DAY",
+        "start": 41.5,
+        "end": 89.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. ABANDONED BARN \u2013 NIGHT",
+        "start": 89.5,
+        "end": 119.63
+      }
+    ]
+  },
+  {
+    "episode_id": 20,
+    "filename": "episode-020-Episode 1671722.txt",
+    "logline": "Inside the opulent Ashbury estate, the treacherous Rupert and Catherine plot to seize the ducal title as the Dowager Duchess slowly withers, while in an icy barn, Juliana defiantly prepares remedies to save the fever-stricken villagers.",
+    "continuity_notes": "Follows Episode 19's night in the barn; as Alexander begins his clandestine fight to reclaim his birthright, Juliana tends to the suffering village while Rupert and Catherine celebrate their anticipated ascension to the ducal throne.",
+    "scene_count": 4,
+    "unit_count": 68,
+    "duration": 114.75,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. ASHBURY MANOR \u2013 DAY",
+        "start": 0.0,
+        "end": 2.8
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. ASHBURY MANOR - DRAWING ROOM \u2013 CONTINUOUS",
+        "start": 2.8,
+        "end": 56.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. ABANDONED BARN \u2013 DAY",
+        "start": 56.5,
+        "end": 88.2
+      },
+      {
+        "scene_id": 4,
+        "heading": "INT. ASHBURY MANOR - DRAWING ROOM \u2013 CONTINUOUS",
+        "start": 88.2,
+        "end": 114.75
+      }
+    ]
+  },
+  {
+    "episode_id": 21,
+    "filename": "episode-021-Episode 1678574.txt",
+    "logline": "After defying her own despair to cure a fever-stricken village boy with her mother's herbal remedies, Lady Juliana learns that the Dowager Duchess is secretly withering away from a mysterious illness inside Ashbury Manor.",
+    "continuity_notes": "Directly follows Episode 20's cliffhanger where Catherine and Rupert plotted to seize Ashbury upon the Dowager Duchess's demise; in the village, Juliana puts aside her grief over her burned cottage to save young Toby, stumbling upon critical intelligence regarding the manor.",
+    "scene_count": 3,
+    "unit_count": 76,
+    "duration": 114.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. BARN \u2013 DAY",
+        "start": 0.0,
+        "end": 40.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "EXT. VILLAGE LANE \u2013 CONTINUOUS",
+        "start": 40.5,
+        "end": 42.8
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. PRUDENCE'S COTTAGE \u2013 CONTINUOUS",
+        "start": 42.8,
+        "end": 114.0
+      }
+    ]
+  },
+  {
+    "episode_id": 22,
+    "filename": "episode-022-Episode 1678575.txt",
+    "logline": "Disguised as a common scullery maid, Lady Juliana infiltrates Ashbury Manor alongside Prudence and slips into the forbidden West Wing, where she discovers the dying Dowager Duchess suffering from an unnatural, poisoned affliction.",
+    "continuity_notes": "Directly follows Episode 21 where Prudence revealed that the Dowager Duchess is dying from a mysterious illness; Juliana sets aside her aristocratic identity to sneak into Ashbury Manor under the guise of domestic help to save her.",
+    "scene_count": 4,
+    "unit_count": 81,
+    "duration": 131.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. ASHBURY MANOR \u2013 SERVICE COURTYARD \u2013 DAY",
+        "start": 0.0,
+        "end": 42.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. ASHBURY MANOR \u2013 SERVANTS' CORRIDOR \u2013 CONTINUOUS",
+        "start": 42.5,
+        "end": 88.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. ASHBURY MANOR \u2013 GRAND ENTRANCE HALL \u2013 CONTINUOUS",
+        "start": 88.5,
+        "end": 102.0
+      },
+      {
+        "scene_id": 4,
+        "heading": "INT. ASHBURY MANOR \u2013 DOWAGER DUCHESS'S BEDCHAMBER \u2013 CONTINUOUS",
+        "start": 102.0,
+        "end": 131.0
+      }
+    ]
+  },
+  {
+    "episode_id": 23,
+    "filename": "episode-023-Episode 1678576.txt",
+    "logline": "After examining the dying Dowager Duchess's blackened fingernails and consulting her late mother's remedy journal, Lady Juliana discovers the Duchess is being poisoned with arsenic\u2014only for someone to arrive at the bedroom door just as she begins concocting the antidote.",
+    "continuity_notes": "Picks up immediately from the Episode 22 cliffhanger inside the forbidden West Wing of Ashbury Manor, where Lady Juliana crouches beside the bedridden Dowager Duchess, racing against time to determine the source of her fatal illness.",
+    "scene_count": 1,
+    "unit_count": 67,
+    "duration": 131.5,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. ASHBURY MANOR - WEST WING BEDCHAMBER \u2013 NIGHT",
+        "start": 0.0,
+        "end": 131.5
+      }
+    ]
+  },
+  {
+    "episode_id": 24,
+    "filename": "episode-024-Episode 1678577.txt",
+    "logline": "When an arrogant noblewoman catches Juliana in the poisoned Dowager Duchess's chambers, she strikes Juliana with a riding crop and sentences her to scrub the hearth, unaware that Juliana has secretly hidden the antidote and remedy journal to finish the Duchess's cure.",
+    "continuity_notes": "Picks up directly from Episode 23's cliffhanger inside the West Wing bedchamber, as the brass latch turns and the door swings open to reveal an unexpected intruder confronting Lady Juliana and Prudence.",
+    "scene_count": 2,
+    "unit_count": 69,
+    "duration": 92.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. DOWAGER DUCHESS'S BEDCHAMBER \u2013 DAY",
+        "start": 0.0,
+        "end": 48.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. MANOR HEARTH ROOM \u2013 CONTINUOUS",
+        "start": 48.5,
+        "end": 92.0
+      }
+    ]
+  },
+  {
+    "episode_id": 25,
+    "filename": "episode-025-Episode 1678578.txt",
+    "logline": "Deep in the misty forest, Alexander confronts an injured Juliana and uncovers the wound inflicted by Lady Catherine, reacting with fury and protective concern upon learning that someone is systematically poisoning the Dowager Duchess with arsenic.",
+    "continuity_notes": "Picks up immediately following Juliana's ordeal at Ashburg Manor, where she escaped punishment after hiding the antidote and now encounters Alexander awaiting her on the woodland trail.",
+    "scene_count": 1,
+    "unit_count": 95,
+    "duration": 168.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. MISTY FOREST TRAIL \u2013 DUSK",
+        "start": 0.0,
+        "end": 168.0
+      }
+    ]
+  },
+  {
+    "episode_id": 26,
+    "filename": "episode-026-Episode 1678579.txt",
+    "logline": "While secretly administering a charcoal antidote to the poisoned Dowager Duchess in the dead of night, Juliana is stunned when the Duchess suddenly recognizes a distinctive family ring on her hand and fiercely demands the truth about her identity.",
+    "continuity_notes": "Following her encounter with Alexander in the forest where she vowed to protect the Duchess, Juliana sneaks into the bedchamber at Ashburg Manor to deliver the remaining antidote before Rupert and Catherine's poison takes full hold.",
+    "scene_count": 1,
+    "unit_count": 51,
+    "duration": 120.88,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. DOWAGER DUCHESS'S BEDCHAMBER \u2013 NIGHT",
+        "start": 0.0,
+        "end": 120.88
+      }
+    ]
+  },
+  {
+    "episode_id": 27,
+    "filename": "episode-027-Episode 1678580.txt",
+    "logline": "The Dowager Duchess realizes Juliana's wedding ring bears the Ashbourne crest belonging to her lost son, but before Juliana can reveal Alexander's name, Rupert and Catherine storm the bedchamber and frame her for poisoning the Duchess.",
+    "continuity_notes": "Picks up immediately from Episode 26's cliffhanger where the Dowager Duchess gripped Juliana's hand upon recognizing the family signet ring, frantically questioning her origin.",
+    "scene_count": 1,
+    "unit_count": 95,
+    "duration": 150.5,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. ASHBURG MANOR - DOWAGER DUCHESS'S BEDCHAMBER - NIGHT",
+        "start": 0.0,
+        "end": 150.5
+      }
+    ]
+  },
+  {
+    "episode_id": 28,
+    "filename": "episode-028-Episode 1678581.txt",
+    "logline": "Rupert and Catherine frame Juliana for poisoning the Duchess despite the bedridden matriarch's protests, uncovering Juliana's true noble identity and her mother's herbarium before ordering her to the castle dungeons.",
+    "continuity_notes": "Picks up directly from Episode 27 as Rupert orders the guard to seize Juliana, ignoring the waking Duchess.",
+    "scene_count": 1,
+    "unit_count": 96,
+    "duration": 138.5,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. DUCHESS'S BEDCHAMBER \u2013 DAY",
+        "start": 0.0,
+        "end": 138.5
+      }
+    ]
+  },
+  {
+    "episode_id": 29,
+    "filename": "episode-029-Episode 1678582.txt",
+    "logline": "Thrown into the castle's subterranean wet cells as Catherine threatens to burn her mother's herbarium and frame her for witchcraft, Juliana breaks down in isolation before swearing that they will never take Alexander from her.",
+    "continuity_notes": "Follows directly from Episode 28 where Rupert ordered the guards to drag Juliana down to the wet cells while Catherine seized her mother's herbarium.",
+    "scene_count": 3,
+    "unit_count": 74,
+    "duration": 116.69,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CASTLE DUNGEON STAIRWELL \u2013 NIGHT",
+        "start": 0.0,
+        "end": 20.1
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. DUNGEON CORRIDOR \u2013 CONTINUOUS",
+        "start": 20.1,
+        "end": 83.0
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. CASTLE DUNGEON CELL \u2013 CONTINUOUS",
+        "start": 83.0,
+        "end": 116.69
+      }
+    ]
+  },
+  {
+    "episode_id": 30,
+    "filename": "episode-030-Episode 1678583.txt",
+    "logline": "When rumors of the poisoned Duchess begin spreading among the servants, Rupert and Catherine conspire with an elder nobleman to fabricate a witchcraft charge against Juliana, sealing her fate for the gallows.",
+    "continuity_notes": "Follows directly from Episode 29 where Juliana was locked away in the castle's subterranean wet cells, vowing never to let them take Alexander from her.",
+    "scene_count": 3,
+    "unit_count": 71,
+    "duration": 151.21,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CASTLE CORRIDOR \u2013 DAY",
+        "start": 0.0,
+        "end": 47.6
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. CASTLE STUDY / LIBRARY \u2013 CONTINUOUS",
+        "start": 47.6,
+        "end": 144.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. CASTLE SUBTERRANEAN WET CELLS \u2013 NIGHT",
+        "start": 144.5,
+        "end": 151.21
+      }
+    ]
+  },
+  {
+    "episode_id": 31,
+    "filename": "episode-031-Episode 1681364.txt",
+    "logline": "Catherine enters the wet cells armed with a red-hot iron and Juliana's late mother's botanical book, subjecting the chained heiress to ruthless psychological torment until Juliana's unyielding pride pushes Catherine to a violent brink.",
+    "continuity_notes": "Follows directly from Episode 30 where Rupert and Catherine plotted to frame Juliana as a witch while Juliana huddled chained in the subterranean dungeon.",
+    "scene_count": 1,
+    "unit_count": 87,
+    "duration": 160.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CASTLE SUBTERRANEAN WET CELLS \u2013 NIGHT",
+        "start": 0.0,
+        "end": 160.0
+      }
+    ]
+  },
+  {
+    "episode_id": 32,
+    "filename": "episode-032-Episode 1681365.txt",
+    "logline": "Cornered and chained in the damp dungeon, Juliana shatters Catherine's cruelty with unshakeable dignity and the truth about love and worth, driving Catherine into a murderous fury.",
+    "continuity_notes": "Picks up immediately from Episode 31's cliffhanger where Catherine used a glowing branding iron to scorch Juliana's mother's herbal book.",
+    "scene_count": 1,
+    "unit_count": 117,
+    "duration": 154.38,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. DUNGEON CELLS \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 154.38
+      }
+    ]
+  },
+  {
+    "episode_id": 33,
+    "filename": "episode-033-Episode 1681366.txt",
+    "logline": "Under cruel coercion and threats to send her seven-year-old brother to the county gaol, a young maid is manipulated into giving false testimony framing Juliana for witchcraft.",
+    "continuity_notes": "Following Catherine's dungeon interrogation of Juliana, the conspiracy against Juliana deepens as an aristocratic lord forces a testimony of witchcraft out of the young maid whose brother Juliana saved.",
+    "scene_count": 1,
+    "unit_count": 99,
+    "duration": 174.04,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. STUDY \u2013 NIGHT",
+        "start": 0.0,
+        "end": 174.04
+      }
+    ]
+  },
+  {
+    "episode_id": 34,
+    "filename": "episode-034-Episode 1681367.txt",
+    "logline": "Put on trial for witchcraft and poisoning, Lady Juliana stands proud and defiant in the prisoner's dock, refusing to renounce her mother's herbal medicine even after her coerced maid gives false testimony against her.",
+    "continuity_notes": "Following the aristocratic Lord's ruthless extortion of the young maid in his study, Episode 34 transitions directly into the crowded courtroom trial where the conspirators unleash their manufactured charges and false witnesses against Lady Juliana.",
+    "scene_count": 1,
+    "unit_count": 116,
+    "duration": 190.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. COURTROOM \u2013 DAY",
+        "start": 0.0,
+        "end": 190.0
+      }
+    ]
+  },
+  {
+    "episode_id": 35,
+    "filename": "episode-035-Episode 1681368.txt",
+    "logline": "Fleeing her captivity through a secret passage, Alexander's elderly mother treks through a bitter blizzard to a secluded cabin, where she tearfully reunites with her presumed-dead son and learns the horrifying conspiracy behind his supposed demise.",
+    "continuity_notes": "While Juliana faces trial and sentencing in the courtroom, this episode reveals Alexander's mother escaping confinement and tracking down Alexander in his mountain hideout, uncovering the dark treason that orchestrates both their fates.",
+    "scene_count": 3,
+    "unit_count": 72,
+    "duration": 157.5,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. STONE CORRIDOR - NIGHT",
+        "start": 0.0,
+        "end": 15.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "EXT. SNOWY FOREST / CABIN - NIGHT",
+        "start": 15.5,
+        "end": 27.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. SECLUDED CABIN - CONTINUOUS",
+        "start": 27.5,
+        "end": 157.5
+      }
+    ]
+  },
+  {
+    "episode_id": 36,
+    "filename": "episode-036-Episode 1681369.txt",
+    "logline": "Learning from his mother that Rupert and Catherine framed Juliana for witchcraft and sentenced her to death right after their upcoming wedding, Alexander vows to return from the dead and reclaim everything stolen from him.",
+    "continuity_notes": "Picking up immediately from the revelation in Episode 35 that the men ruling Ashwood orchestrated Alexander's ambush, Alexander learns of Juliana's imprisonment and looming execution.",
+    "scene_count": 1,
+    "unit_count": 121,
+    "duration": 200.75,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. SECLUDED CABIN \u2013 NIGHT",
+        "start": 0.0,
+        "end": 200.75
+      }
+    ]
+  },
+  {
+    "episode_id": 37,
+    "filename": "episode-037-Episode 1681370.txt",
+    "logline": "As Rupert and Catherine issue wedding invitations paired with Juliana's public execution decree to terrorize the county, Juliana endures starvation in the dungeon, refusing to break her spirit.",
+    "continuity_notes": "Following Alexander's vow to return in two days to disrupt the wedding, Rupert and Catherine prepare to cement their coup by inviting high society to celebrate their nuptials and witness Juliana's execution.",
+    "scene_count": 4,
+    "unit_count": 79,
+    "duration": 156.47,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. ASHBRIDGE MANOR - GRAND CORRIDOR \u2013 DAY",
+        "start": 0.0,
+        "end": 34.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. NOBLE MANOR - PARLOR \u2013 DAY",
+        "start": 34.5,
+        "end": 88.0
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. ASHBRIDGE DUNGEON \u2013 CONTINUOUS",
+        "start": 88.0,
+        "end": 116.5
+      },
+      {
+        "scene_id": 4,
+        "heading": "INT. NOBLE MANOR - PARLOR \u2013 NIGHT",
+        "start": 116.5,
+        "end": 156.47
+      }
+    ]
+  },
+  {
+    "episode_id": 38,
+    "filename": "episode-038-Episode 1681371.txt",
+    "logline": "A compassionate guard secretly feeds Juliana bread in the dungeon, strengthening her resolve to protect Alexander's secrets just as distant wedding bells signal the start of Rupert's nuptials and her impending execution.",
+    "continuity_notes": "Following Rupert and Catherine's cruel announcement pairing their wedding with Juliana's public execution, Juliana remains starved in the subterranean dungeon awaiting her fate.",
+    "scene_count": 1,
+    "unit_count": 57,
+    "duration": 87.91,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. DUNGEON CELL \u2013 DAY",
+        "start": 0.0,
+        "end": 87.91
+      }
+    ]
+  },
+  {
+    "episode_id": 39,
+    "filename": "episode-039-Episode 1686799.txt",
+    "logline": "While Alexander's loyal men infiltrate and neutralize the royal guards stationed outside the cathedral, Alexander sheds his rugged disguise, dons his ducal regalia, and marches forth to reclaim his house and rescue Juliana.",
+    "continuity_notes": "Picks up as the wedding bells toll for Rupert and Catherine's ceremony. While Juliana prepares for execution in the dungeon below, Alexander's coordinated strike to liberate the cathedral and reclaim his birthright begins.",
+    "scene_count": 5,
+    "unit_count": 59,
+    "duration": 98.41,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. COBBLESTONE STREET - DAY",
+        "start": 0.0,
+        "end": 13.8
+      },
+      {
+        "scene_id": 2,
+        "heading": "EXT. CATHEDRAL ENTRANCE & ALLEY - CONTINUOUS",
+        "start": 13.8,
+        "end": 24.2
+      },
+      {
+        "scene_id": 3,
+        "heading": "EXT. CATHEDRAL ENTRANCE - CONTINUOUS",
+        "start": 24.2,
+        "end": 50.0
+      },
+      {
+        "scene_id": 4,
+        "heading": "INT. WOODEN CABIN - DAY",
+        "start": 50.0,
+        "end": 68.5
+      },
+      {
+        "scene_id": 5,
+        "heading": "EXT. WOODEN OUTPOST / SNOWY PATH - DAY",
+        "start": 68.5,
+        "end": 98.41
+      }
+    ]
+  },
+  {
+    "episode_id": 40,
+    "filename": "episode-040-Episode 1686800.txt",
+    "logline": "High society gathers at the grand cathedral for Rupert and Catherine's lavish wedding, while the conspirators ensure every exit is sealed to seal Juliana's execution\u2014unaware that Alexander's retribution is already at their gates.",
+    "continuity_notes": "Picks up right after Alexander commands his men to secure the chapel and vows to reclaim his house and rescue Juliana; inside the cathedral, the wedding guests arrive and the conspirators finalize their sinister plot.",
+    "scene_count": 4,
+    "unit_count": 51,
+    "duration": 110.08,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "EXT. CATHEDRAL STEPS \u2013 DAY",
+        "start": 0.0,
+        "end": 34.2
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. CATHEDRAL \u2013 CONTINUOUS",
+        "start": 34.2,
+        "end": 49.8
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. CATHEDRAL \u2013 ALTAR & BALCONY \u2013 CONTINUOUS",
+        "start": 49.8,
+        "end": 78.5
+      },
+      {
+        "scene_id": 4,
+        "heading": "INT. CATHEDRAL \u2013 CONTINUOUS",
+        "start": 78.5,
+        "end": 110.08
+      }
+    ]
+  },
+  {
+    "episode_id": 41,
+    "filename": "episode-041-Episode 1686801.txt",
+    "logline": "At the height of Catherine and Rupert's lavish wedding, Juliana is paraded before high society in chains to be publicly disgraced\u2014until a deafening explosion shatters the cathedral entrance, heralding Alexander's vengeful assault.",
+    "continuity_notes": "Follows Episode 40 where Rupert and Catherine met at the altar; Catherine halts the vows to stage a public humiliation of Juliana, unaware that Alexander's forces are already detonating the cathedral gates.",
+    "scene_count": 1,
+    "unit_count": 53,
+    "duration": 96.09,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CATHEDRAL \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 96.09
+      }
+    ]
+  },
+  {
+    "episode_id": 42,
+    "filename": "episode-042-Episode 1686802.txt",
+    "logline": "Emerging from the smoke of the shattered cathedral gates in full ducal regalia, Alexander confronts Rupert, wins the loyalty of the royal guards, and is proclaimed the rightful Duke of Ashburn by his weeping mother.",
+    "continuity_notes": "Directly follows Episode 41 where Alexander's forces breached the cathedral entrance; Alexander now steps through the ruins, halting the wedding and unmasking Rupert's illegitimate reign.",
+    "scene_count": 1,
+    "unit_count": 37,
+    "duration": 77.8,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CATHEDRAL \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 77.8
+      }
+    ]
+  },
+  {
+    "episode_id": 43,
+    "filename": "episode-043-Episode 1686803.txt",
+    "logline": "When Rupert frantically orders Alexander's arrest, the royal guards refuse and salute the true Duke, before damning Crown intelligence documents expose Rupert and Lord Sterling's treasonous plot.",
+    "continuity_notes": "Follows directly from Episode 42; inside the ruined cathedral, Alexander confronts Rupert before the congregation, armed with evidence from the Crown to reclaim his rightful title.",
+    "scene_count": 1,
+    "unit_count": 87,
+    "duration": 114.96,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. RUINED CATHEDRAL \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 114.96
+      }
+    ]
+  },
+  {
+    "episode_id": 44,
+    "filename": "episode-044-Episode 1686804.txt",
+    "logline": "As Lord Sterling and Rupert are apprehended by the Crown, Catherine pleads with Alexander for their past love, only to be coldly rejected as he walks toward his chained bride, Juliana.",
+    "continuity_notes": "Picks up immediately from Episode 43's cliffhanger at the church side exit; Lord Sterling's escape is blocked by the Police Constable, leading into the downfall of the conspirators.",
+    "scene_count": 2,
+    "unit_count": 54,
+    "duration": 70.5,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. RUINED CATHEDRAL - SIDE ENTRANCE \u2013 DAY",
+        "start": 0.0,
+        "end": 13.8
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. RUINED CATHEDRAL - ALTAR & NAVE \u2013 CONTINUOUS",
+        "start": 13.8,
+        "end": 70.5
+      }
+    ]
+  },
+  {
+    "episode_id": 45,
+    "filename": "episode-045-Episode 1686805.txt",
+    "logline": "Alexander frees Juliana from her chains and proclaims her the Duchess of Ashburton before the stunned congregation, only for an ecclesiastical authority to burst in and declare their marriage legally invalid.",
+    "continuity_notes": "Picks up directly from Episode 44's climax where Alexander walked away from Catherine towards Juliana standing in chains at the church doorway.",
+    "scene_count": 3,
+    "unit_count": 74,
+    "duration": 121.75,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CATHEDRAL NAVE \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 48.9
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. CATHEDRAL \u2013 CONTINUOUS",
+        "start": 48.9,
+        "end": 86.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "INT. CATHEDRAL ENTRANCE \u2013 CONTINUOUS",
+        "start": 86.5,
+        "end": 121.75
+      }
+    ]
+  },
+  {
+    "episode_id": 46,
+    "filename": "episode-046-Episode 1688395.txt",
+    "logline": "The High Priest places the sanctuary under Crown seizure and invalidates Alexander and Juliana's wedding for lack of royal license, prompting Alexander to demand a ten-day ecclesiastical trial while Catherine schemes to destroy them.",
+    "continuity_notes": "Picks up directly from Episode 45's cliffhanger where the High Priest stormed into the church with royal guards and challenged the legality of Alexander and Juliana's marriage.",
+    "scene_count": 1,
+    "unit_count": 75,
+    "duration": 143.88,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. ASHBURTON ESTATE CHAPEL \u2013 CONTINUOUS",
+        "start": 0.0,
+        "end": 143.88
+      }
+    ]
+  },
+  {
+    "episode_id": 47,
+    "filename": "episode-047-Episode 1688396.txt",
+    "logline": "While Alexander reassures Juliana of their unbreakable bond amid the council's opposition, a destitute Catherine begs for sanctuary at Ashbourne\u2014only for Juliana to offer her survival under the strict humiliation of a scullery maid.",
+    "continuity_notes": "Follows Episode 46's ecclesiastical challenge by the High Priest. While Catherine plots in secret to remain on the estate, the morning brings her disgrace to light as Juliana decides her fate.",
+    "scene_count": 4,
+    "unit_count": 70,
+    "duration": 134.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. ESTATE CHAMBERS \u2013 NIGHT",
+        "start": 0.0,
+        "end": 21.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. DUKE'S BEDCHAMBER \u2013 MORNING",
+        "start": 21.5,
+        "end": 55.5
+      },
+      {
+        "scene_id": 3,
+        "heading": "EXT. ASHBOURNE COURTYARD \u2013 DAY",
+        "start": 55.5,
+        "end": 83.5
+      },
+      {
+        "scene_id": 4,
+        "heading": "INT. ASHBOURNE GREAT HALL / VESTIBULE \u2013 CONTINUOUS",
+        "start": 83.5,
+        "end": 134.0
+      }
+    ]
+  },
+  {
+    "episode_id": 48,
+    "filename": "episode-048-Episode 1688397.txt",
+    "logline": "While feigning submission after her public humiliation, Catherine schemes in secret, plotting to use the council's ten-day reprieve to strike back at Alexander and Juliana with the aid of Father Thomas.",
+    "continuity_notes": "Directly follows Episode 47's public disgrace where Catherine bowed to Juliana and accepted the position of a maid; in private, Catherine sheds her feigned defeat and initiates her counter-plot.",
+    "scene_count": 2,
+    "unit_count": 43,
+    "duration": 80.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. CATHERINE'S CHAMBERS \u2013 NIGHT",
+        "start": 0.0,
+        "end": 26.7
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. CATHERINE'S CHAMBERS \u2013 CONTINUOUS",
+        "start": 26.7,
+        "end": 80.0
+      }
+    ]
+  },
+  {
+    "episode_id": 49,
+    "filename": "episode-049-Episode 1688398.txt",
+    "logline": "Meeting Father Thomas in an abandoned wing of the manor before dawn, Catherine orchestrates a calculated conspiracy to stall the council hearing and extract inside intelligence, sealing their treasonous alliance with intimate assurance.",
+    "continuity_notes": "Directly follows Catherine sending Agnes to fetch Father Thomas under cover of darkness; now in Episode 49, Father Thomas slips into the secluded wing for their covert rendezvous.",
+    "scene_count": 1,
+    "unit_count": 63,
+    "duration": 144.75,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. FORGOTTEN MANOR WING - NIGHT",
+        "start": 0.0,
+        "end": 144.75
+      }
+    ]
+  },
+  {
+    "episode_id": 50,
+    "filename": "episode-050-Episode 1697563.txt",
+    "logline": "Following their illicit passion in the abandoned manor wing, Catherine negotiates Father Thomas's corrupt silence with territorial control\u2014unaware that Agnes has walked in and witnessed their scandalous intimacy.",
+    "continuity_notes": "Directly follows Episode 49, where Father Thomas and Catherine sealed their covert alliance in the secluded wing; now, their secret affair deepens into political extortion before being shattered by an unexpected witness.",
+    "scene_count": 2,
+    "unit_count": 40,
+    "duration": 80.0,
+    "scenes": [
+      {
+        "scene_id": 1,
+        "heading": "INT. ABANDONED BEDCHAMBER \u2013 PRE-DAWN",
+        "start": 0.0,
+        "end": 70.5
+      },
+      {
+        "scene_id": 2,
+        "heading": "INT. MANOR CORRIDOR \u2013 CONTINUOUS",
+        "start": 70.5,
+        "end": 80.0
+      }
+    ]
+  }
+]

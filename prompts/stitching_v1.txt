@@ -1,0 +1,22 @@
+You are a video editor assembling a viral microdrama promo clip.
+The main dramatic climax clip is:
+Episode: {episode_id}
+Timestamps: {main_start} to {main_end} ({main_duration:.1f}s)
+Content:
+{main_text}
+
+This clip needs additional context so a new viewer scrolling on TikTok/Reels understands the stakes.
+Here are pre-approved short setup segments from the show:
+{setup_options}
+
+TASK:
+Decide whether prepending ONE of these setup segments makes the promo completely standalone and dramatically punchier.
+Constraints:
+- You may only choose one `setup_id` from the list above, or "NONE" if no setup is needed or none fit.
+- The resulting total duration must remain under 60.0 seconds.
+
+Respond strictly in this JSON format:
+{{
+  "chosen_setup_id": "SETUP_X" or "NONE",
+  "reasoning": "Brief explanation of why this setup clarifies the stakes or why none is suitable."
+}}

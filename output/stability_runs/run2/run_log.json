@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-11-04 23:28:58",
+  "total_runtime_seconds": 0.29,
+  "episodes_processed": 50,
+  "promos_ranked": 10,
+  "llm_stats": {
+    "total_calls": 60,
+    "cache_hits": 60,
+    "calls_by_tier": {
+      "cheap": 0,
+      "strong": 60
+    },
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "estimated_cost_usd": 0.0,
+    "estimated_cost_per_episode_usd": 0.0
+  },
+  "projection_100_shows_per_week": {
+    "shows_per_week": 100,
+    "episodes_per_week": 5000,
+    "estimated_weekly_cost_usd": 0.0,
+    "dominant_cost_stage": "Stage 5 (Strong LLM Judging across Top Candidates)",
+    "recommended_scale_optimization": "Use cheap model tier (Flash) for 95% of preliminary ranking, reserving strong model (Pro) strictly for the final Top 20 judging pass."
+  }
+}

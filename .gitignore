@@ -1,0 +1,12 @@
+# === CONFIDENTIAL: Kuku input data ===
+data/
+*.zip
+
+# LLM cache
+.llm_cache/
+
+# Environment
+.env
+__pycache__/
+*.pyc
+.pytest_cache/

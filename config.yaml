@@ -1,0 +1,41 @@
+# Configuration for Kuku Microdrama Promo Finder
+
+llm:
+  # Provider choices: "gemini" | "openai" | "anthropic" | "mock"
+  provider: "gemini"
+  
+  # Cheap tier: for bulk per-episode scene tagging & summarization
+  cheap_model: "gemini-2.5-flash"
+  
+  # Strong tier: for bible synthesis, judge scoring, and final ranking
+  strong_model: "gemini-2.5-flash"
+  
+  # Temperature and limits
+  temperature: 0.2
+  max_retries: 2
+  timeout_seconds: 45
+  
+  # Caching
+  cache_dir: ".llm_cache"
+  use_cache: true
+
+candidate_generation:
+  min_duration: 20.0        # seconds
+  max_duration: 60.0        # seconds
+  top_candidates_per_ep: 8  # candidates kept per episode to control cost
+  min_hook_potential: 3     # filter out candidates below this hook threshold
+  min_cliffhanger_potential: 3 # filter out candidates below this cliffhanger threshold
+
+stitching:
+  enabled: false            # enabled via CLI --stitch
+  max_segments: 3
+  max_total_duration: 60.0
+
+ranking:
+  weights:
+    hook_strength: 0.35
+    cliffhanger_quality: 0.30
+    standalone_clarity: 0.20
+    emotional_pull: 0.15
+  top_n: 10
+  max_promos_per_episode: 2 # diversity limit

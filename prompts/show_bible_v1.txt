@@ -1,0 +1,36 @@
+You are an expert Hollywood microdrama showrunner and narrative analyst.
+Analyze the following episode loglines and continuity notes across the entire 50-episode run of an English-language microdrama series.
+
+Synthesize a comprehensive SHOW BIBLE in JSON format.
+
+Input Episode Summaries:
+{episode_summaries}
+
+Your response must strictly conform to this JSON schema:
+{{
+  "title": "Exact or inferred title of the microdrama",
+  "genre": "Comma-separated primary and secondary genres",
+  "tone": "Key tonal descriptors (e.g., melodramatic, tense, romantic)",
+  "premise": "A 3-5 sentence complete narrative premise of the series for someone who has never seen the show.",
+  "main_characters": [
+    {{
+      "name": "Character Name",
+      "role": "Protagonist / Antagonist / Love Interest / Mentor / Henchman",
+      "description": "Character traits, motivations, and dynamic in the story",
+      "relationships": "Key relationships with other characters (e.g., 'Juliana's cruel father who disowns her')"
+    }}
+  ],
+  "central_twists": [
+    {{
+      "episode": 1,
+      "twist": "Concise description of the secret or plot twist",
+      "spoiler_severity": "low | medium | critical",
+      "narrative_impact": "Why this twist changes the direction of the story"
+    }}
+  ]
+}}
+
+CRITICAL REQUIREMENTS:
+- Output ONLY valid raw JSON.
+- Identify the central secrets and twists (e.g., identities hidden, poisonings, true lineage, secret power/wealth) and explicitly tie each to the exact episode number where it is revealed.
+- Ensure the main characters section includes all principal figures (Lady Juliana, Alexander/the soldier, Gerald, Clarissa, Lord/Lady Ashcroft).

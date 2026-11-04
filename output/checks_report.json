@@ -1,0 +1,119 @@
+{
+  "total_promos_checked": 10,
+  "promos_passed": 10,
+  "promos_failed": 0,
+  "pass_rate_percent": 100.0,
+  "failures": [],
+  "check_details": [
+    {
+      "promo_id": "ep01_u22_u52",
+      "rank": 1,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep01_u49_u78",
+      "rank": 2,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep02_u3_u33",
+      "rank": 3,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep03_u46_u76",
+      "rank": 4,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep04_u26_u51",
+      "rank": 5,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep05_u31_u57",
+      "rank": 6,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep06_u0_u30",
+      "rank": 7,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep09_u21_u58",
+      "rank": 8,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep09_u55_u78",
+      "rank": 9,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    },
+    {
+      "promo_id": "ep25_u36_u48",
+      "rank": 10,
+      "duration_valid": true,
+      "boundaries_valid": true,
+      "timestamps_exist_in_parse": true,
+      "no_internal_overlaps": true,
+      "chronological_order": true,
+      "schema_valid": true,
+      "all_passed": true
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "title": "I Married a Broken Soldier. He was a Duke",
+  "genre": "Historical Romance, Revenge Drama, Secret Identity",
+  "tone": "Melodramatic, Tense, High Stakes, Aristocratic Vindication",
+  "premise": "Lady Juliana is abandoned at the altar by her fianc\u00e9 Gerald and her cruel family in favor of her sister Clarissa. To salvage her dignity, she impulsively agrees to marry a scarred, crippled ex-soldier. Unbeknownst to her and her malicious former family, her humble soldier husband is secretly Alexander, the long-presumed-dead Duke of Ashburn, who is investigating corruption and treachery among the high nobility.",
+  "main_characters": [
+    {
+      "name": "Lady Juliana",
+      "role": "Protagonist",
+      "description": "Dutiful, proud noblewoman betrayed by family"
+    },
+    {
+      "name": "Alexander (Mysterious Soldier / Duke)",
+      "role": "Male Lead",
+      "description": "War-hardened soldier secretly Duke of Ashburn"
+    },
+    {
+      "name": "Gerald",
+      "role": "Antagonist",
+      "description": "Juliana's callous former fianc\u00e9"
+    },
+    {
+      "name": "Clarissa",
+      "role": "Antagonist",
+      "description": "Juliana's scheming younger sister"
+    },
+    {
+      "name": "Lord Ashcroft",
+      "role": "Antagonist",
+      "description": "Juliana's cruel father who disowns her"
+    },
+    {
+      "name": "Lady Ashcroft (Barbara)",
+      "role": "Antagonist",
+      "description": "Spiteful stepmother"
+    }
+  ],
+  "central_twists": [
+    {
+      "episode": 1,
+      "twist": "Gerald dumps Juliana at the altar to marry her sister Clarissa."
+    },
+    {
+      "episode": 4,
+      "twist": "Juliana takes marriage vows with a mysterious scarred soldier."
+    },
+    {
+      "episode": 5,
+      "twist": "Juliana's family formally disowns her and throws her mother's ledger in the mud."
+    },
+    {
+      "episode": 25,
+      "twist": "Alexander discovers someone is systematically poisoning the Dowager Duchess with arsenic."
+    },
+    {
+      "episode": 42,
+      "twist": "Alexander officially unmasks himself in full ducal regalia as the rightful Duke of Ashburn, shocking the entire court."
+    }
+  ]
+}

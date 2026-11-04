@@ -1,0 +1,64 @@
+{
+  "gold_picks_count": 5,
+  "recall_in_top_10_percent": 80.0,
+  "recall_in_candidate_pool_percent": 100.0,
+  "precision_in_gold_episodes_percent": 66.67,
+  "mean_iou_of_matches": 0.878,
+  "match_details": [
+    {
+      "gold_id": "GOLD_1",
+      "episode": 1,
+      "gold_interval": "00:33.80 - 01:21.00",
+      "tool_promo_id": "ep01_u22_u52",
+      "tool_rank": 1,
+      "tool_interval": "00:33.80 - 01:21.00",
+      "iou": 1.0,
+      "overlap_seconds": 47.2,
+      "status": "MATCH"
+    },
+    {
+      "gold_id": "GOLD_2",
+      "episode": 2,
+      "gold_interval": "00:02.80 - 00:51.40",
+      "tool_promo_id": "ep02_u3_u33",
+      "tool_rank": 3,
+      "tool_interval": "00:02.80 - 00:51.40",
+      "iou": 1.0,
+      "overlap_seconds": 48.6,
+      "status": "MATCH"
+    },
+    {
+      "gold_id": "GOLD_3",
+      "episode": 4,
+      "gold_interval": "00:30.00 - 01:15.00",
+      "tool_promo_id": "ep04_u26_u51",
+      "tool_rank": 5,
+      "tool_interval": "00:32.10 - 01:12.00",
+      "iou": 0.887,
+      "overlap_seconds": 39.9,
+      "status": "MATCH"
+    },
+    {
+      "gold_id": "GOLD_4",
+      "episode": 5,
+      "gold_interval": "00:42.50 - 01:31.00",
+      "tool_promo_id": "ep05_u31_u57",
+      "tool_rank": 6,
+      "tool_interval": "00:54.50 - 01:40.80",
+      "iou": 0.626,
+      "overlap_seconds": 36.5,
+      "status": "MATCH"
+    },
+    {
+      "gold_id": "GOLD_5",
+      "episode": 25,
+      "gold_interval": "00:05.10 - 00:55.00",
+      "tool_promo_id": "NONE",
+      "tool_rank": null,
+      "tool_interval": "NONE",
+      "iou": 0.0,
+      "overlap_seconds": 0.0,
+      "status": "MISSED_IN_TOP10"
+    }
+  ]
+}

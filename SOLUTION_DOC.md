@@ -1,8 +1,4 @@
-# Solution Doc: Automated Microdrama Promo Discovery (Problem 1)
-
-**Candidate Name:** Senior Engineer Applicant  
-**Chosen Problem:** Problem 1 – Find the Promos  
-**Submission Scope:** Production-ready re-runnable tool, model-swappable LLM pipeline, automated boundary verification, gold-standard benchmark evaluation, and interactive editor review interface.
+# Solution Doc: Automated Microdrama Promo Discovery 
 
 ---
 

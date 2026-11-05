@@ -2,42 +2,42 @@
   "run1_top10": [
     "ep01_u22_u52",
     "ep01_u49_u78",
-    "ep02_u3_u33",
+    "ep02_u0_u20",
     "ep03_u46_u76",
-    "ep04_u26_u51",
+    "ep04_u73_u92",
+    "ep04_u28_u51",
     "ep05_u31_u57",
-    "ep06_u0_u30",
-    "ep09_u21_u58",
-    "ep09_u55_u78",
-    "ep25_u36_u48"
+    "ep09_u25_u58",
+    "ep10_u6_u41",
+    "ep16_u16_u43"
   ],
   "run2_top10": [
     "ep01_u22_u52",
     "ep01_u49_u78",
-    "ep02_u3_u33",
+    "ep02_u0_u20",
     "ep03_u46_u76",
-    "ep04_u26_u51",
+    "ep04_u73_u92",
+    "ep04_u28_u51",
     "ep05_u31_u57",
-    "ep06_u0_u30",
-    "ep09_u21_u58",
-    "ep09_u55_u78",
-    "ep25_u36_u48"
+    "ep09_u25_u58",
+    "ep10_u6_u41",
+    "ep16_u16_u43"
   ],
   "shared_promos_count": 10,
   "top10_agreement_percent": 100.0,
   "jaccard_similarity_percent": 100.0,
   "average_rank_displacement": 0.0,
   "stable_promos": [
+    "ep09_u25_u58",
+    "ep04_u28_u51",
     "ep01_u22_u52",
-    "ep02_u3_u33",
-    "ep04_u26_u51",
-    "ep25_u36_u48",
-    "ep05_u31_u57",
-    "ep09_u21_u58",
-    "ep09_u55_u78",
-    "ep06_u0_u30",
     "ep01_u49_u78",
-    "ep03_u46_u76"
+    "ep05_u31_u57",
+    "ep04_u73_u92",
+    "ep16_u16_u43",
+    "ep03_u46_u76",
+    "ep10_u6_u41",
+    "ep02_u0_u20"
   ],
   "divergent_promos": []
 }

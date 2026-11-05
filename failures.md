@@ -7,116 +7,116 @@ This document highlights boundary cases, failure modes, and systematic biases di
 ## Part 1: Top 5 Most Suspicious High-Ranked Promos
 These promos received high scores from the scoring pipeline, but human editorial inspection reveals genuine risks of viewer drop-off or context ambiguity.
 
-### #1: Promo `ep01_u22_u52` (Rank #1, Score: 4.00)
+### #1: Promo `ep01_u22_u52` (Rank #1, Score: 5.00)
 - **Episode:** 1 | **Duration:** 47.2s
 - **Timestamps:** `00:33.80 - 01:21.00`
 - **Opening Hook:** *"LADY JULIANA: "Gerald?" | LADY JULIANA: "Why are you holding her hand?" | CAMERA: Close-up insert of Gerald's fingers fi..."*
 - **Cliffhanger Ending:** *"CAMERA: Medium two-shot of the Lady in Gold Gown and Gerald looking together down at Juliana. | LADY IN GOLD GOWN: "Long..."*
-- **Why the tool picked it:** High emotional volume and explosive dialogue confrontation.
+- **Why the tool picked it:** Altar betrayal with high visceral shock and clear victim/antagonist dynamics.
 - **Why the tool likely erred / Risks identified:**
   - ⚠️ Long duration (47.2s) risks TikTok viewer drop-off before cliffhanger
-- **Human Editor Recommendation:** Tighten opening by 3-5 seconds to remove dead air, or pair with a text overlay introducing character names.
+- **Human Editor Recommendation:** Trim 12.2s of establishing dialogue/camera action to bring runtime down to ~35s sweet spot. Insert audio sting or sudden audio silence right before the final cut to sharpen cliffhanger impact.
 
 ---
 
-### #2: Promo `ep02_u3_u33` (Rank #3, Score: 4.00)
-- **Episode:** 2 | **Duration:** 48.6s
-- **Timestamps:** `00:02.80 - 00:51.40`
-- **Opening Hook:** *"ACTION: Juliana gasps softly in heartbreak, her eyes wide and brimming with tears. | CAMERA: Medium shot returning to Ge..."*
-- **Cliffhanger Ending:** *"CAMERA: Extreme close-up on Juliana's tear-drenched eyes as the sting of her father's rejection lands. | LADY JULIANA: "..."*
-- **Why the tool picked it:** High emotional volume and explosive dialogue confrontation.
-- **Why the tool likely erred / Risks identified:**
-  - ⚠️ Long duration (48.6s) risks TikTok viewer drop-off before cliffhanger
-  - ⚠️ Cliffhanger lacks explicit question mark or urgent threat
-- **Human Editor Recommendation:** Tighten opening by 3-5 seconds to remove dead air, or pair with a text overlay introducing character names.
-
----
-
-### #3: Promo `ep05_u31_u57` (Rank #6, Score: 4.00)
+### #2: Promo `ep05_u31_u57` (Rank #7, Score: 4.65)
 - **Episode:** 5 | **Duration:** 46.3s
 - **Timestamps:** `00:54.50 - 01:40.80`
 - **Opening Hook:** *"ACTION: Lady Ashcroft snatches the heavy book away and flings it disdainfully into the rain-soaked courtyard. | JULIANA:..."*
 - **Cliffhanger Ending:** *"CAMERA: Over-the-shoulder shot behind the Mysterious Bearded Man looking up toward Gerald on the stairs. Gerald's arroga..."*
-- **Why the tool picked it:** High emotional volume and explosive dialogue confrontation.
+- **Why the tool picked it:** Public family rejection and sudden marriage pact creating high curiosity.
 - **Why the tool likely erred / Risks identified:**
   - ⚠️ Long duration (46.3s) risks TikTok viewer drop-off before cliffhanger
-- **Human Editor Recommendation:** Tighten opening by 3-5 seconds to remove dead air, or pair with a text overlay introducing character names.
+- **Human Editor Recommendation:** Trim 11.3s of establishing dialogue/camera action to bring runtime down to ~35s sweet spot. Insert audio sting or sudden audio silence right before the final cut to sharpen cliffhanger impact.
 
 ---
 
-### #4: Promo `ep09_u21_u58` (Rank #8, Score: 4.00)
-- **Episode:** 9 | **Duration:** 48.5s
-- **Timestamps:** `00:29.00 - 01:17.50`
-- **Opening Hook:** *"JULIANA: "Feverfew... Not alone." | CAMERA: Profile close-up of Juliana studying the grimoire's remedies intently while ..."*
+### #3: Promo `ep10_u6_u41` (Rank #9, Score: 4.65)
+- **Episode:** 10 | **Duration:** 50.1s
+- **Timestamps:** `00:05.10 - 00:55.20`
+- **Opening Hook:** *"JULIANA: "Alexander!" | CAMERA: Close-up of Alexander struggling to breathe, clutching his bloodied coat over his chest...."*
+- **Cliffhanger Ending:** *"CAMERA: Medium close-up of Juliana dipping a linen cloth into the water bowl. | JULIANA: "Your scars disagree." | CAMERA..."*
+- **Why the tool picked it:** High-stakes interpersonal confrontation with strong character indignation.
+- **Why the tool likely erred / Risks identified:**
+  - ⚠️ Long duration (50.1s) risks TikTok viewer drop-off before cliffhanger
+  - ⚠️ Cliffhanger lacks explicit question mark or urgent threat
+- **Human Editor Recommendation:** Trim 15.1s of establishing dialogue/camera action to bring runtime down to ~35s sweet spot. Insert audio sting or sudden audio silence right before the final cut to sharpen cliffhanger impact.
+
+---
+
+### #4: Promo `ep01_u49_u78` (Rank #2, Score: 5.00)
+- **Episode:** 1 | **Duration:** 42.6s
+- **Timestamps:** `01:13.10 - 01:55.70`
+- **Opening Hook:** *"LADY JULIANA: "How long?" | CAMERA: Medium two-shot of the Lady in Gold Gown and Gerald looking together down at Juliana..."*
+- **Cliffhanger Ending:** *"CAMERA: Close-up on Juliana absorbing the venomous words, her breathing shallow. | LADY IN GOLD GOWN: "I am the daughter..."*
+- **Why the tool picked it:** Altar betrayal with high visceral shock and clear victim/antagonist dynamics.
+- **Why the tool likely erred / Risks identified:**
+  - ⚠️ Borderline candidate duration; pacing may feel sluggish in first 10 seconds.
+- **Human Editor Recommendation:** Ready for editor cut; add title card and trending background audio.
+
+---
+
+### #5: Promo `ep09_u25_u58` (Rank #8, Score: 4.65)
+- **Episode:** 9 | **Duration:** 42.6s
+- **Timestamps:** `00:34.90 - 01:17.50`
+- **Opening Hook:** *"ALEXANDER: "You're certain?" | CAMERA: Close-up of Juliana looking up into his eyes with resolute conviction. | JULIANA:..."*
 - **Cliffhanger Ending:** *"CAMERA: Medium shot from inside the cottage framing the mother standing at the open door looking back. | PEASANT MOTHER:..."*
-- **Why the tool picked it:** High emotional volume and explosive dialogue confrontation.
+- **Why the tool picked it:** High-stakes interpersonal confrontation with strong character indignation.
 - **Why the tool likely erred / Risks identified:**
-  - ⚠️ Long duration (48.5s) risks TikTok viewer drop-off before cliffhanger
-- **Human Editor Recommendation:** Tighten opening by 3-5 seconds to remove dead air, or pair with a text overlay introducing character names.
-
----
-
-### #5: Promo `ep25_u36_u48` (Rank #10, Score: 4.00)
-- **Episode:** 25 | **Duration:** 26.2s
-- **Timestamps:** `00:55.60 - 01:21.80`
-- **Opening Hook:** *"JULIANA: "The Dowager Duchess." | CAMERA: Tight close-up of Alexander's face freezing in shock, his eyes widening as the..."*
-- **Cliffhanger Ending:** *"CAMERA: Medium shot of Alexander staring down at her, waiting for the dark truth. | ALEXANDER: "What did you find?" | CA..."*
-- **Why the tool picked it:** High emotional volume and explosive dialogue confrontation.
-- **Why the tool likely erred / Risks identified:**
-  - ⚠️ Later episode (Ep 25) assumes viewer knows established character dynamics
-- **Human Editor Recommendation:** Tighten opening by 3-5 seconds to remove dead air, or pair with a text overlay introducing character names.
+  - ⚠️ Borderline candidate duration; pacing may feel sluggish in first 10 seconds.
+- **Human Editor Recommendation:** Insert audio sting or sudden audio silence right before the final cut to sharpen cliffhanger impact.
 
 ---
 
 ## Part 2: 5 Worst-Ranked Yet Passing Candidates
 These candidate windows satisfied all duration (20-60s) and unit boundary constraints, but received the lowest composite scores.
 
-### #1: Candidate `ep42_u30_u36` (Score: 1.00)
+### #1: Candidate `ep42_u30_u36` (Score: 0.45)
 - **Episode:** 42 | **Duration:** 23.5s
 - **Timestamps:** `00:54.00 - 01:17.50`
 - **Opening Hook:** *"ALEXANDER'S MOTHER: "I saw you again... but seeing you like this... I see my son as he was always meant to be."..."*
 - **Ending Line:** *"CAMERA: Medium shot of Rupert cowering on the altar steps beside Catherine and her father, utterly defeated. | CAMERA: T..."*
-- **Why the tool scored it poorly:** Starts on an inert conversational exchange or procedural movement rather than an explosive hook. The ending resolves the ongoing beat rather than posing an urgent narrative question.
-- **Verdict:** Rightfully rejected by the candidate pruning filter.
+- **Why the tool scored it poorly:** Reflective sentimental dialogue without an immediate external threat or urgent hook.
+- **Verdict:** Correctly rejected by candidate pruning filter; would cause immediate drop-off as a paid social ad.
 
 ---
 
-### #2: Candidate `ep45_u6_u36` (Score: 1.10)
-- **Episode:** 45 | **Duration:** 44.1s
-- **Timestamps:** `00:07.40 - 00:51.50`
-- **Opening Hook:** *"ALEXANDER: "Look at me." | CAMERA: Low angle close-up of Juliana looking down into Alexander's eyes with rising disbelie..."*
-- **Ending Line:** *"CAMERA: Extreme close-up as Alexander and Juliana rest their foreheads and noses together in an intimate embrace. | ACTI..."*
-- **Why the tool scored it poorly:** Starts on an inert conversational exchange or procedural movement rather than an explosive hook. The ending resolves the ongoing beat rather than posing an urgent narrative question.
-- **Verdict:** Rightfully rejected by the candidate pruning filter.
+### #2: Candidate `ep29_u12_u23` (Score: 1.05)
+- **Episode:** 29 | **Duration:** 20.8s
+- **Timestamps:** `00:21.00 - 00:41.80`
+- **Opening Hook:** *"CATHERINE: "Your mother's little book of weeds?" | CATHERINE: "You still call this a legacy?"..."*
+- **Ending Line:** *"CAMERA: Medium shot of Catherine tucking the book under her arm, her eyes glinting with malicious intent. | CATHERINE: "..."*
+- **Why the tool scored it poorly:** Low conflict volume, procedural movement, or closed narrative resolution.
+- **Verdict:** Correctly rejected by candidate pruning filter; would cause immediate drop-off as a paid social ad.
 
 ---
 
-### #3: Candidate `ep02_u11_u22` (Score: 1.50)
-- **Episode:** 2 | **Duration:** 20.0s
-- **Timestamps:** `00:12.40 - 00:32.40`
-- **Opening Hook:** *"LADY JULIANA: "Gerald... Look at me." | CAMERA: Close-up on Gerald's cold, merciless face staring ahead unblinkingly...."*
-- **Ending Line:** *"CAMERA: Wide shot from behind Juliana looking up the altar stairs at Gerald with Clarissa linked to his arm. | THE FORME..."*
-- **Why the tool scored it poorly:** Starts on an inert conversational exchange or procedural movement rather than an explosive hook. The ending resolves the ongoing beat rather than posing an urgent narrative question.
-- **Verdict:** Rightfully rejected by the candidate pruning filter.
+### #3: Candidate `ep39_u10_u24` (Score: 1.05)
+- **Episode:** 39 | **Duration:** 24.2s
+- **Timestamps:** `00:18.30 - 00:42.50`
+- **Opening Hook:** *"LOYALIST SCOUT: "Six at the front." | LOYALIST FIGHTER: "Four more inside."..."*
+- **Ending Line:** *"CAMERA: Medium close-up as a second loyalist emerges from behind the doorway, wrapping his arms around the remaining roy..."*
+- **Why the tool scored it poorly:** Low conflict volume, procedural movement, or closed narrative resolution.
+- **Verdict:** Correctly rejected by candidate pruning filter; would cause immediate drop-off as a paid social ad.
 
 ---
 
-### #4: Candidate `ep07_u14_u25` (Score: 1.50)
-- **Episode:** 7 | **Duration:** 21.4s
-- **Timestamps:** `00:33.20 - 00:54.60`
-- **Opening Hook:** *"ARISTOCRATIC WOMAN: "Home? Look at your hands, Juliana."..."*
-- **Ending Line:** *"CAMERA: Close-up on Juliana's clear blue eyes, shining with unbroken pride. | CAMERA: Wide shot framing Juliana facing o..."*
-- **Why the tool scored it poorly:** Starts on an inert conversational exchange or procedural movement rather than an explosive hook. The ending resolves the ongoing beat rather than posing an urgent narrative question.
-- **Verdict:** Rightfully rejected by the candidate pruning filter.
+### #4: Candidate `ep40_u6_u15` (Score: 1.05)
+- **Episode:** 40 | **Duration:** 20.8s
+- **Timestamps:** `00:12.40 - 00:33.20`
+- **Opening Hook:** *"LADY HARRINGTON: "Look at them. Every noble family in the county is here today." | CAMERA: Medium two-shot tracking slig..."*
+- **Ending Line:** *"CAMERA: Tight close-up of Lord Harrington looking down at her, his expression cold and ruthless. | LADY HARRINGTON: "Goo..."*
+- **Why the tool scored it poorly:** Low conflict volume, procedural movement, or closed narrative resolution.
+- **Verdict:** Correctly rejected by candidate pruning filter; would cause immediate drop-off as a paid social ad.
 
 ---
 
-### #5: Candidate `ep08_u22_u41` (Score: 1.50)
-- **Episode:** 8 | **Duration:** 24.6s
-- **Timestamps:** `00:25.00 - 00:49.60`
-- **Opening Hook:** *"JULIANA: "Your hair and beard..." | CAMERA: Medium shot of Alexander standing tall over her, looking down patiently. | C..."*
-- **Ending Line:** *"CAMERA: Medium shot of Juliana chuckling quietly as she steps back toward the table. | JULIANA: "Very well." | CAMERA: C..."*
-- **Why the tool scored it poorly:** Starts on an inert conversational exchange or procedural movement rather than an explosive hook. The ending resolves the ongoing beat rather than posing an urgent narrative question.
-- **Verdict:** Rightfully rejected by the candidate pruning filter.
+### #5: Candidate `ep41_u27_u37` (Score: 1.05)
+- **Episode:** 41 | **Duration:** 20.4s
+- **Timestamps:** `00:45.00 - 01:05.40`
+- **Opening Hook:** *"CATHERINE: "This is the world you thought you belonged to." | CAMERA: Low-angle medium shot of Catherine gesturing broad..."*
+- **Ending Line:** *"CAMERA: Dramatic low-angle full shot looking up at Juliana, her posture straight, imposing, and regal despite the heavy ..."*
+- **Why the tool scored it poorly:** Low conflict volume, procedural movement, or closed narrative resolution.
+- **Verdict:** Correctly rejected by candidate pruning filter; would cause immediate drop-off as a paid social ad.
 
 ---

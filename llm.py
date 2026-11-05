@@ -283,17 +283,102 @@ def _call_mock(model: str, prompt: str, schema: Optional[Dict[str, Any]]) -> tup
     prompt_lower = prompt.lower()
 
     if "hook_strength" in prompt_lower or (schema and "hook_strength" in schema.get("required", [])):
+        # Dynamic evaluation based on candidate prompt text
+        hook_match = re.search(r'Opening Hook [^:]*:\s*"?([^\n]+)', prompt, re.IGNORECASE)
+        cliff_match = re.search(r'Closing Cliffhanger [^:]*:\s*"?([^\n]+)', prompt, re.IGNORECASE)
+        ep_match = re.search(r'Episode:\s*(\d+)', prompt, re.IGNORECASE)
+        dur_match = re.search(r'Total Duration:\s*([\d.]+)', prompt, re.IGNORECASE)
+
+        hook_text = hook_match.group(1).strip().strip('"') if hook_match else ""
+        cliff_text = cliff_match.group(1).strip().strip('"') if cliff_match else ""
+        ep_id = int(ep_match.group(1)) if ep_match else 1
+        dur = float(dur_match.group(1)) if dur_match else 35.0
+
+        h_low = hook_text.lower()
+        c_low = cliff_text.lower()
+        p_low = prompt.lower()
+
+        # Hook strength (1 to 5)
+        if any(w in h_low for w in ["slap", "shove", "gasp", "grab", "strike", "fling", "sob"]):
+            h_str = 5
+            h_why = "Visceral physical shock in opening 3s"
+        elif any(w in h_low for w in ["holding her hand", "marrying me", "divorce", "marry", "bastard", "liar", "betray", "poison", "kill", "die", "disown"]):
+            h_str = 5
+            h_why = "Explosive marital betrayal / accusation hook"
+        elif any(w in h_low for w in ["why are you", "who is", "what do you mean", "how dare", "look at me", "remove her", "enough!"]):
+            h_str = 4
+            h_why = "High-status confrontation hook"
+        elif any(f"({d})" in h_low for d in ["outraged", "sneering", "furious", "heartbroken", "tearful", "coldly"]):
+            h_str = 4
+            h_why = "High emotional intensity opening"
+        else:
+            h_str = 3
+            h_why = "Standard dialogue opening"
+
+        # Cliffhanger quality (1 to 5)
+        ends_res = False
+        if any(w in c_low for w in ["very well", "goodbye", "yes father", "understood", "as you wish", "i agree"]):
+            c_qual = 2
+            ends_res = True
+            c_why = "Resolves ongoing dramatic tension"
+        elif "?" in cliff_text:
+            c_qual = 5
+            c_why = "High-stakes unanswered question cut"
+        elif any(w in c_low for w in ["or else", "choose", "never", "too late", "wait", "carefully", "try me", "mark my words", "what did you find"]):
+            c_qual = 5
+            c_why = "Leaves an unresolved ultimatum or threat hanging"
+        elif any(w in c_low for w in ["who are you", "what have you done", "help", "look at me"]):
+            c_qual = 4
+            c_why = "Escalates tension right before cutoff"
+        else:
+            c_qual = 3
+            c_why = "Moderate dramatic cutoff"
+
+        # Standalone clarity (1 to 5)
+        if ep_id <= 2:
+            clarity = 5
+        elif ep_id <= 5:
+            clarity = 4
+        elif ep_id <= 12:
+            clarity = 4 if any(n in p_low for n in ["juliana", "gerald", "clarissa"]) else 3
+        elif ep_id <= 25:
+            clarity = 3
+        else:
+            clarity = 2
+
+        # Emotional pull (1 to 5)
+        emo_count = sum(1 for w in ["heartbreak", "tears", "shame", "betray", "love", "ruin", "scandal", "broken", "proud", "daughter", "father"] if w in p_low)
+        emo = min(5, max(3, 3 + (emo_count // 2)))
+
+        # Hard fail flags
+        starts_mid = bool(hook_text.strip().startswith(("and ", "but ", "so ", "because ", "...")))
+        spoils_twist = bool(ep_id >= 40 and any(w in p_low for w in ["duke of ashburn", "rightful duke", "unmask", "true identity"]))
+        needs_context = bool(ep_id > 30 and clarity <= 2)
+
+        # Dynamic Why It Works
+        spk = hook_text.split(":")[0].strip() if ":" in hook_text else "Lead character"
+        if h_str >= 5 and c_qual >= 5:
+            why_works = f"High-velocity emotional ambush: opens on an explosive {spk} hook and snaps shut on an urgent, unanswered cut."
+        elif h_str >= 5:
+            why_works = f"Immediate hook halts feed scroll instantly, propelled by raw indignation from {spk}."
+        elif c_qual >= 5:
+            why_works = f"Intense confrontation culminating in an unresolved cliffhanger that forces viewers to click next."
+        else:
+            why_works = f"Solid dramatic conflict driven by {spk} with natural emotional tension."
+
+        reasoning = f"{h_why} ({h_str}/5); {c_why} ({c_qual}/5); clarity {clarity}/5 and emotional resonance {emo}/5."
+
         mock_data = {
-            "reasoning": "Opens with an immediate punchy accusation in the first 3 seconds; cuts abruptly on an unresolved ultimatum before the answer is given.",
-            "hook_strength": 4,
-            "cliffhanger_quality": 4,
-            "standalone_clarity": 4,
-            "emotional_pull": 4,
-            "starts_mid_thought": False,
-            "ends_resolved": False,
-            "spoils_major_twist": False,
-            "needs_missing_context": False,
-            "why_it_works": "Immediate high-stakes marital betrayal that instantly stops a scrolling viewer."
+            "reasoning": reasoning,
+            "hook_strength": h_str,
+            "cliffhanger_quality": c_qual,
+            "standalone_clarity": clarity,
+            "emotional_pull": emo,
+            "starts_mid_thought": starts_mid,
+            "ends_resolved": ends_res,
+            "spoils_major_twist": spoils_twist,
+            "needs_missing_context": needs_context,
+            "why_it_works": why_works
         }
     elif "chosen_setup_id" in prompt_lower or (schema and "chosen_setup_id" in schema.get("required", [])):
         mock_data = {

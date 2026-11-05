@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-04 23:26:29",
-  "total_runtime_seconds": 0.17,
+  "timestamp": "2026-11-05 11:46:13",
+  "total_runtime_seconds": 0.15,
   "episodes_processed": 50,
   "promos_ranked": 10,
   "llm_stats": {

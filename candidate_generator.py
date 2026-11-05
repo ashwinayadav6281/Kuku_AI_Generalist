@@ -174,39 +174,78 @@ def tag_episode_scenes(
 
 def rule_based_tag_window(window: CandidateWindow, bible: Dict[str, Any]) -> None:
     """
-    Fast rule-based heuristics to score hook and cliffhanger potentials
-    if LLM tagging is unavailable or to refine LLM tags.
+    Advanced rule-based heuristics to score hook and cliffhanger potentials,
+    detect emotional directions, measure intensity, and evaluate context needs.
     """
     hook_score = 2
     hook_type = "dialogue opening"
-    
-    # Check opening lines for explosive keywords
     hook_lower = window.hook_text.lower()
-    if any(w in hook_lower for w in ["slap", "hit", "shove", "gasp", "grab"]):
+    
+    # 1. Emotional direction detection in opening
+    emotional_directions = ["outraged", "sneering", "furious", "heartbroken", "tearful", "coldly", "screaming", "scoffing", "trembling"]
+    has_emotional_direction = any(f"({d})" in hook_lower for d in emotional_directions)
+
+    # 2. Check opening lines for explosive keywords & actions
+    if any(w in hook_lower for w in ["slap", "hit", "shove", "gasp", "grab", "fling", "strike", "smack", "choke", "drag", "kneel", "sob"]):
         hook_score = 5
-        hook_type = "physical action"
-    elif any(w in hook_lower for w in ["never", "divorce", "marry", "bastard", "liar", "betray", "swear", "die", "kill"]):
+        hook_type = "physical altercation / action"
+    elif any(w in hook_lower for w in ["holding her hand", "marrying me", "divorce", "marry", "bastard", "liar", "betray", "swear", "die", "kill", "poison", "murder", "treason", "adultery"]):
         hook_score = 5
-        hook_type = "shocking accusation"
-    elif any(w in hook_lower for w in ["why", "who", "what do you mean", "how dare"]):
+        hook_type = "shocking accusation / betrayal"
+    elif any(w in hook_lower for w in ["why are you", "who is", "what did you do", "how dare you", "look at me", "stand back", "remove her", "enough!"]):
         hook_score = 4
         hook_type = "dramatic confrontation"
+    elif has_emotional_direction:
+        hook_score = max(hook_score, 4)
+        hook_type = "emotionally charged opening"
 
-    # Check cliffhanger lines
+    # 3. Check cliffhanger lines & unresolved questions
     cliff_score = 2
     is_open = False
     cliff_lower = window.cliffhanger_text.lower()
+
     if "?" in window.cliffhanger_text:
         cliff_score = 4
         is_open = True
-    if any(w in cliff_lower for w in ["or else", "choose", "never", "too late", "wait", "look at me", "carefully"]):
+    if any(w in cliff_lower for w in ["or else", "choose", "never", "too late", "wait", "carefully", "try me", "mark my words", "pay for this", "what did you find"]):
         cliff_score = 5
         is_open = True
-    if window.end_unit_type == "sound_fx":
+    elif any(w in cliff_lower for w in ["very well", "goodbye", "yes father", "understood", "as you wish", "i agree"]):
+        # Explicit resolution signals: conversation or dispute closed
+        cliff_score = 2
+        is_open = False
+    elif window.end_unit_type == "sound_fx":
         cliff_score = max(cliff_score, 4)
         is_open = True
 
-    # Spoiler detection via bible twists
+    # 4. Intensity calculation: conflict volume & speaker turnover
+    lines = [l for l in window.full_text.split("\n") if l.strip()]
+    exclamation_count = window.full_text.count("!") + window.full_text.count("?")
+    unique_speakers = set()
+    for l in lines:
+        if ":" in l:
+            unique_speakers.add(l.split(":", 1)[0].strip())
+    
+    if len(unique_speakers) >= 3 and exclamation_count >= 3:
+        intensity = "high"
+    elif len(unique_speakers) >= 2 or exclamation_count >= 2:
+        intensity = "medium"
+    else:
+        intensity = "low"
+
+    # 5. Context needed estimation
+    if window.episode_id <= 3:
+        context_needed = "low"  # Altar betrayal and initial premise are self-evident
+    elif window.episode_id <= 10:
+        # Check if characters are named explicitly in the clip
+        has_named_char = any(name in window.full_text for name in ["Juliana", "Gerald", "Clarissa", "Soldier", "Father", "Mother"])
+        context_needed = "low" if has_named_char else "med"
+    elif window.episode_id <= 25:
+        context_needed = "med"
+    else:
+        context_needed = "high"
+
+    # 6. Spoiler detection via bible twists
     spoiler = False
     if window.episode_id >= 40:
         if any(w in window.full_text.lower() for w in ["duke of ashburn", "rightful duke", "unmask", "true identity"]):
@@ -216,7 +255,8 @@ def rule_based_tag_window(window: CandidateWindow, bible: Dict[str, Any]) -> Non
     window.hook_type = hook_type
     window.cliffhanger_potential = cliff_score
     window.is_open_ended = is_open
-    window.context_needed = "med" if window.episode_id > 15 else "low"
+    window.intensity = intensity
+    window.context_needed = context_needed
     window.spoiler_risk = spoiler
 
 
@@ -230,6 +270,7 @@ def score_and_filter_candidates(
 ) -> List[CandidateWindow]:
     """
     Filter and rank candidate windows, returning the top N candidates per episode.
+    Applies TikTok duration sweet-spot weighting and penalizes long, dragging clips.
     """
     by_episode: Dict[int, List[CandidateWindow]] = {}
     for c in candidates:
@@ -244,13 +285,26 @@ def score_and_filter_candidates(
             score = (
                 0.40 * c.hook_potential +
                 0.35 * c.cliffhanger_potential +
-                (0.15 if c.is_open_ended else 0.0) +
-                (0.10 if c.duration >= 25.0 and c.duration <= 50.0 else 0.0) # sweet-spot length bonus
+                (0.20 if c.is_open_ended else -0.10)
             )
+            # Duration sweet-spot bonus (TikTok retention optimization)
+            if 25.0 <= c.duration <= 38.0:
+                score += 0.25  # Prime short-form sweet spot
+            elif 38.0 < c.duration <= 48.0:
+                score += 0.10  # Acceptable dramatic stretch
+            elif c.duration > 52.0:
+                score -= 0.15  # Penalty for sluggish completion drop-off
+
+            # Intensity bonus
+            if c.intensity == "high":
+                score += 0.15
+            elif c.intensity == "low":
+                score -= 0.10
+
             if c.spoiler_risk:
-                score -= 0.5
+                score -= 0.60
             if c.context_needed == "high":
-                score -= 0.5
+                score -= 0.35
             c.candidate_score = round(score, 3)
 
         # Sort descending by candidate score

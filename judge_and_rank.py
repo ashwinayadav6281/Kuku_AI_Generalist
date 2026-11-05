@@ -74,57 +74,116 @@ class JudgedPromo:
 # ── Heuristic Fallback Judge ─────────────────────────────────────────────────
 
 def heuristic_judge_promo(promo: StitchedPromo, bible: Dict[str, Any]) -> Dict[str, Any]:
-    """Fallback judge when offline or running high-throughput pre-filter."""
-    hook_str = 3
-    cliff_str = 3
-    clarity = 4 if promo.primary_episode_id <= 10 else 3
-    emo = 3
-    hard_fails = {
-        "starts_mid_thought": False,
-        "ends_resolved": False,
-        "spoils_major_twist": False,
-        "needs_missing_context": False,
-    }
-
-    # Evaluate hook in first 3 seconds
+    """
+    Advanced heuristic judge that evaluates candidates dynamically based on text analysis,
+    dialogue sentiment, emotional intensity, cliffhanger open-endedness, and narrative context.
+    """
     hook_lower = promo.hook_text.lower()
-    if any(k in hook_lower for k in ["slap", "shove", "gasp", "grab"]):
-        hook_str = 5
-        emo = 5
-    elif any(k in hook_lower for k in ["marry", "divorce", "liar", "betray", "bastard", "swear"]):
-        hook_str = 5
-        emo = 4
-    elif any(k in hook_lower for k in ["who", "why", "how dare"]):
-        hook_str = 4
-
-    # Evaluate cliffhanger
     cliff_lower = promo.cliffhanger_text.lower()
-    if "?" in promo.cliffhanger_text:
-        cliff_str = 5
-    elif any(k in cliff_lower for k in ["choose", "or else", "never", "too late", "wait"]):
-        cliff_str = 5
-    elif any(k in cliff_lower for k in ["goodbye", "yes", "i see", "understood"]):
-        # Tends to be resolved
+    full_lower = promo.full_text.lower()
+    ep = promo.primary_episode_id
+    dur = promo.total_duration
+
+    # 1. Evaluate Hook Strength (1-5) strictly in the first 3 seconds
+    if any(k in hook_lower for k in ["slap", "shove", "gasp", "grab", "strike", "fling", "sob"]):
+        hook_str = 5
+        hook_reason = "Visceral physical shock / action within the first 3 seconds"
+    elif any(k in hook_lower for k in ["holding her hand", "marrying me", "divorce", "marry", "liar", "betray", "bastard", "poison", "kill", "die", "disown"]):
+        hook_str = 5
+        hook_reason = "Shocking betrayal accusation that instantly hooks a scroller"
+    elif any(k in hook_lower for k in ["why are you", "who is", "what do you mean", "how dare", "look at me", "remove her", "enough!"]):
+        hook_str = 4
+        hook_reason = "High-status dramatic confrontation opening"
+    elif any(f"({d})" in hook_lower for d in ["outraged", "sneering", "furious", "heartbroken", "tearful", "coldly"]):
+        hook_str = 4
+        hook_reason = "Emotionally charged character delivery in opening seconds"
+    else:
+        hook_str = 3
+        hook_reason = "Conversational dialogue opening without immediate shock"
+
+    # 2. Evaluate Cliffhanger Quality (1-5)
+    ends_resolved = False
+    if any(k in cliff_lower for k in ["very well", "goodbye", "yes father", "understood", "as you wish", "i agree"]):
         cliff_str = 2
-        hard_fails["ends_resolved"] = True
+        ends_resolved = True
+        cliff_reason = "Scene ends on a settled, resolved acknowledgement"
+    elif "?" in promo.cliffhanger_text:
+        cliff_str = 5
+        cliff_reason = "Cuts abruptly on an unanswered question of high consequence"
+    elif any(k in cliff_lower for k in ["or else", "choose", "never", "too late", "wait", "carefully", "try me", "mark my words", "what did you find"]):
+        cliff_str = 5
+        cliff_reason = "Cuts on an unresolved ultimatum or lethal warning"
+    elif any(k in cliff_lower for k in ["who are you", "what have you done", "help", "look at me"]):
+        cliff_str = 4
+        cliff_reason = "Leaves tension actively escalating before consequences are revealed"
+    else:
+        cliff_str = 3
+        cliff_reason = "Cuts at a moderate narrative pause"
 
-    # Spoilers check against bible
-    if promo.primary_episode_id >= 40:
-        if any(k in promo.full_text.lower() for k in ["duke of ashburn", "rightful duke", "unmask"]):
-            hard_fails["spoils_major_twist"] = True
+    # 3. Evaluate Standalone Clarity (1-5)
+    # Does a cold viewer instantly understand the conflict without earlier episodes?
+    if ep <= 2:
+        clarity = 5
+    elif ep <= 5:
+        clarity = 4
+    elif ep <= 12:
+        clarity = 4 if any(n in promo.full_text for n in ["Juliana", "Gerald", "Clarissa"]) else 3
+    elif ep <= 25:
+        clarity = 3
+    else:
+        clarity = 2
 
-    why = f"High-stakes dramatic tension driven by {promo.hook_speaker or 'lead character'} with an urgent, unanswered cut."
+    # 4. Evaluate Emotional Pull (1-5)
+    emo_keywords = ["heartbreak", "tears", "shame", "betray", "love", "ruin", "scandal", "broken", "proud", "daughter", "father", "husband", "wife", "mother"]
+    emo_matches = sum(1 for w in emo_keywords if w in full_lower)
+    if emo_matches >= 4:
+        emo = 5
+    elif emo_matches >= 2:
+        emo = 4
+    else:
+        emo = 3
+
+    # 5. Hard-Fail Flags
+    starts_mid_thought = False
+    first_clean = promo.hook_text.strip()
+    if first_clean.startswith(("and ", "but ", "so ", "because ", "...")):
+        starts_mid_thought = True
+
+    spoils_major_twist = False
+    if ep >= 40 and any(k in full_lower for k in ["duke of ashburn", "rightful duke", "unmask", "true identity"]):
+        spoils_major_twist = True
+
+    needs_missing_context = False
+    if ep > 30 and clarity <= 2:
+        needs_missing_context = True
+
+    # 6. Dynamic Why It Works & Reasoning
+    spk = promo.hook_speaker or "Lead character"
+    if hook_str >= 5 and cliff_str >= 5:
+        why = f"High-velocity emotional ambush: opens on an explosive {spk} hook and snaps shut on an urgent, unanswered cut."
+    elif hook_str >= 5:
+        why = f"Immediate hook halts feed scroll instantly, propelled by raw indignation from {spk}."
+    elif cliff_str >= 5:
+        why = f"Intense confrontation culminating in an unresolved cliffhanger that forces viewers to click next."
+    else:
+        why = f"Solid dramatic conflict driven by {spk} with natural emotional tension."
+
+    reasoning = (
+        f"{hook_reason} (Hook: {hook_str}/5). "
+        f"{cliff_reason} (Cliffhanger: {cliff_str}/5). "
+        f"Episode {ep} gives clarity {clarity}/5 and emotional resonance {emo}/5."
+    )
 
     return {
-        "reasoning": f"Evaluated hook ('{promo.hook_text[:60]}...') and cut ('{promo.cliffhanger_text[:60]}...').",
+        "reasoning": reasoning,
         "hook_strength": hook_str,
         "cliffhanger_quality": cliff_str,
         "standalone_clarity": clarity,
         "emotional_pull": emo,
-        "starts_mid_thought": hard_fails["starts_mid_thought"],
-        "ends_resolved": hard_fails["ends_resolved"],
-        "spoils_major_twist": hard_fails["spoils_major_twist"],
-        "needs_missing_context": hard_fails["needs_missing_context"],
+        "starts_mid_thought": starts_mid_thought,
+        "ends_resolved": ends_resolved,
+        "spoils_major_twist": spoils_major_twist,
+        "needs_missing_context": needs_missing_context,
         "why_it_works": why,
     }
 
@@ -282,14 +341,24 @@ def rank_and_dedupe_promos(
     # Assign ranks and roles
     for rank_idx, p in enumerate(diverse_selection, start=1):
         p.rank = rank_idx
-        # Assign role: Early episodes with high standalone clarity are Series Launchers;
-        # later high-tension episodes are Mid-Series Teasers
-        if p.primary_episode_id <= 10 and p.standalone_clarity >= 4:
+        ep = p.primary_episode_id
+        
+        # Categorize campaign role and craft episode-specific strategy
+        if ep <= 6 and p.standalone_clarity >= 4:
             p.promo_role = "Series Launcher"
-            p.posting_rationale = "Immediate low-context marital betrayal with high shock value. Perfect for cold audiences on Day 1-2."
+            if ep <= 3:
+                p.posting_rationale = "Altar betrayal & family rejection. High outrage and zero backstory needed; ideal cold acquisition hook for Day 1-2 campaign kickoff."
+            else:
+                p.promo_role = "Series Launcher"
+                p.posting_rationale = "Marriage pivot to the broken soldier & public humiliation. High curiosity gap; post on Day 3-4 to convert initial interest into series engagement."
         else:
             p.promo_role = "Mid-Series Teaser"
-            p.posting_rationale = "High-stakes escalation and revenge confrontation. Ideal for re-engaging curious viewers and driving binges."
+            if ep <= 12:
+                p.posting_rationale = "Escalating confrontation with Gerald / Clarissa. Vindication and protective hero dynamics; high shareability for mid-week retention."
+            elif ep <= 25:
+                p.posting_rationale = "Threat escalation / poisoning mystery. Darker thriller stakes; post on Weekend 1 to drive multi-episode binge sessions."
+            else:
+                p.posting_rationale = "Climactic stakes / secret identity tease. High narrative payoff for retaining core viewers through later episodes."
 
     return diverse_selection
 

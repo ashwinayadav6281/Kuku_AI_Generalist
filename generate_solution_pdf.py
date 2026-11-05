@@ -35,6 +35,9 @@ class KukuSolutionPDF(FPDF):
 
     def __init__(self):
         super().__init__(orientation="P", unit="mm", format="A4")
+        self.add_font("Calibri", "", r"C:\Windows\Fonts\calibri.ttf")
+        self.add_font("Calibri", "B", r"C:\Windows\Fonts\calibrib.ttf")
+        self.add_font("Calibri", "I", r"C:\Windows\Fonts\calibrii.ttf")
         self.set_auto_page_break(auto=False, margin=15)
 
     def draw_bg(self):
@@ -50,10 +53,10 @@ class KukuSolutionPDF(FPDF):
         self.rect(0, 0, 210, 2, "F")
         # Running header
         self.set_xy(15, 6)
-        self.set_font("Helvetica", "B", 7.5)
+        self.set_font("Calibri", "B", 7.5)
         self.set_text_color(*self.CRIMSON)
         self.cell(40, 5, "KUKU TECHNOLOGIES", align="L")
-        self.set_font("Helvetica", "", 7.5)
+        self.set_font("Calibri", "", 7.5)
         self.set_text_color(*self.MED_GRAY)
         self.cell(140, 5, "MICRODRAMA PROMO DISCOVERY  |  TECHNICAL SOLUTION & ARCHITECTURE GUIDE", align="R")
         # Subtle divider
@@ -66,22 +69,22 @@ class KukuSolutionPDF(FPDF):
         self.set_draw_color(35, 40, 55)
         self.line(15, 283, 195, 283)
         self.set_xy(15, 285)
-        self.set_font("Helvetica", "", 7.5)
+        self.set_font("Calibri", "", 7.5)
         self.set_text_color(*self.MED_GRAY)
-        self.cell(90, 5, "Problem 1: Find the Promos  |  Ashwin Yadav", align="L")
+        self.cell(90, 5, "Problem 1: Find the Promos", align="L")
         self.cell(90, 5, f"Page {self.page_no()} of 18", align="R")
 
     def chapter_header(self, number_str, title_str):
         self.set_xy(15, 17)
         if number_str:
-            self.set_font("Helvetica", "B", 14)
+            self.set_font("Calibri", "B", 14)
             self.set_text_color(*self.CRIMSON)
             self.cell(10, 8, number_str, align="L")
-            self.set_font("Helvetica", "B", 14)
+            self.set_font("Calibri", "B", 14)
             self.set_text_color(*self.WHITE)
             self.cell(170, 8, title_str, align="L")
         else:
-            self.set_font("Helvetica", "B", 14)
+            self.set_font("Calibri", "B", 14)
             self.set_text_color(*self.WHITE)
             self.cell(180, 8, title_str, align="L")
         # Red underline bar
@@ -90,13 +93,13 @@ class KukuSolutionPDF(FPDF):
         self.set_y(30)
 
     def sub_header(self, text):
-        self.set_font("Helvetica", "B", 10.5)
+        self.set_font("Calibri", "B", 10.5)
         self.set_text_color(*self.ACCENT_GREEN)
         self.cell(0, 6, text, align="L")
         self.ln(6.5)
 
     def p(self, text, spacing=4.8):
-        self.set_font("Helvetica", "", 8.5)
+        self.set_font("Calibri", "", 8.5)
         self.set_text_color(*self.LIGHT_TEXT)
         for paragraph in text.split("\n\n"):
             self.multi_cell(180, spacing, paragraph.strip(), align="L")
@@ -105,12 +108,12 @@ class KukuSolutionPDF(FPDF):
     def bullet(self, title, desc, indent=5):
         x = 15 + indent
         self.set_x(x)
-        self.set_font("Helvetica", "B", 8.5)
+        self.set_font("Calibri", "B", 8.5)
         self.set_text_color(*self.CRIMSON)
         self.cell(4, 4.6, "-", align="L")
         self.set_text_color(*self.WHITE)
         self.cell(self.get_string_width(title + ": ") + 1, 4.6, title + ": ", align="L")
-        self.set_font("Helvetica", "", 8.5)
+        self.set_font("Calibri", "", 8.5)
         self.set_text_color(*self.LIGHT_TEXT)
         rem_w = 195 - self.get_x()
         self.multi_cell(rem_w, 4.6, desc, align="L")
@@ -129,11 +132,11 @@ class KukuSolutionPDF(FPDF):
         self.set_fill_color(*color)
         self.rect(x, y, w, 1.5, "F")
         self.set_xy(x, y + 3)
-        self.set_font("Helvetica", "B", 14)
+        self.set_font("Calibri", "B", 14)
         self.set_text_color(*color)
         self.cell(w, 7, str(value), align="C")
         self.set_xy(x, y + 10)
-        self.set_font("Helvetica", "", 7.2)
+        self.set_font("Calibri", "", 7.2)
         self.set_text_color(*self.MED_GRAY)
         self.multi_cell(w, 3.5, label, align="C")
 
@@ -155,22 +158,22 @@ pdf.rect(20, 65, 4, 90, "F")
 
 # Title Header
 pdf.set_xy(30, 70)
-pdf.set_font("Helvetica", "B", 10)
+pdf.set_font("Calibri", "B", 10)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(150, 6, "KUKU TECHNOLOGIES  |  AI GENERALIST ASSIGNMENT", align="L")
 
 pdf.set_xy(30, 80)
-pdf.set_font("Helvetica", "B", 26)
+pdf.set_font("Calibri", "B", 26)
 pdf.set_text_color(*pdf.WHITE)
 pdf.multi_cell(150, 11, "Automated Microdrama\nPromo Discovery", align="L")
 
 pdf.set_xy(30, 108)
-pdf.set_font("Helvetica", "", 13)
+pdf.set_font("Calibri", "", 13)
 pdf.set_text_color(*pdf.LIGHT_GRAY)
 pdf.cell(150, 7, "Problem 1: Find the Promos  --  End-to-End Solution Guide", align="L")
 
 pdf.set_xy(30, 120)
-pdf.set_font("Helvetica", "I", 10)
+pdf.set_font("Calibri", "I", 10)
 pdf.set_text_color(*pdf.MED_GRAY)
 pdf.cell(150, 6, "Dataset: 50 Episodes of 'I Married a Broken Soldier. He was a Duke'", align="L")
 
@@ -185,29 +188,19 @@ for i, (val, lbl, c) in enumerate(kpis):
     pdf.kpi_card(30 + i * 38, 140, 35, 20, val, lbl, c)
 
 # Bottom author card
-pdf.card(20, 210, 170, 48, pdf.DARK_CARD)
+pdf.card(20, 222, 170, 26, pdf.DARK_CARD)
 pdf.set_fill_color(*pdf.CRIMSON)
-pdf.rect(20, 210, 2, 48, "F")
+pdf.rect(20, 222, 2, 26, "F")
 
-pdf.set_xy(30, 216)
-pdf.set_font("Helvetica", "B", 11)
+pdf.set_xy(30, 229)
+pdf.set_font("Calibri", "B", 12)
 pdf.set_text_color(*pdf.WHITE)
-pdf.cell(150, 6, "Candidate: Ashwin Yadav", align="L")
-
-pdf.set_xy(30, 224)
-pdf.set_font("Helvetica", "", 9)
-pdf.set_text_color(*pdf.LIGHT_GRAY)
-pdf.cell(150, 5, "Role: AI Generalist & Engineer  |  Submission Date: November 2026", align="L")
-
-pdf.set_xy(30, 231)
-pdf.set_font("Helvetica", "", 8.5)
-pdf.set_text_color(*pdf.MED_GRAY)
-pdf.cell(150, 5, "Repository: https://github.com/ashwinayadav6281/Kuku_AI_Generalist", align="L")
+pdf.cell(150, 6, "Submitted by - Ashwina Yadav, IIT Kanpur", align="L")
 
 pdf.set_xy(30, 238)
-pdf.set_font("Helvetica", "", 8)
-pdf.set_text_color(*pdf.CRIMSON)
-pdf.cell(150, 5, "Offline Fallback Capable  |  Deterministic Caching  |  Streamlit OTT Interface", align="L")
+pdf.set_font("Calibri", "", 8.5)
+pdf.set_text_color(*pdf.MED_GRAY)
+pdf.cell(150, 5, "Repository: https://github.com/ashwinayadav6281/Kuku_AI_Generalist", align="L")
 
 # Bottom red bar
 pdf.set_fill_color(*pdf.CRIMSON)
@@ -253,13 +246,13 @@ for idx, (num, title, pnum) in enumerate(toc_items):
     x = 20 if col == 0 else 105
     y = 40 + row * 9.2
     pdf.set_xy(x, y)
-    pdf.set_font("Helvetica", "B", 8)
+    pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(6, 5, num, align="L")
-    pdf.set_font("Helvetica", "", 8)
+    pdf.set_font("Calibri", "", 8)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.cell(70, 5, title[:42], align="L")
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.MED_GRAY)
     pdf.cell(10, 5, pnum, align="R")
 
@@ -307,34 +300,34 @@ pdf.p(
 pdf.sub_header("Operational Scope & Boundaries")
 pdf.card(15, 62, 180, 36, pdf.DARK_CARD)
 pdf.set_xy(20, 65)
-pdf.set_font("Helvetica", "B", 8.5)
+pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Input Dataset:", align="L")
-pdf.set_font("Helvetica", "", 8.5)
+pdf.set_font("Calibri", "", 8.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 pdf.cell(115, 5, "50 raw screenplay text files ('Episode 1.txt' to 'Episode 50.txt')", align="L")
 
 pdf.set_xy(20, 72)
-pdf.set_font("Helvetica", "B", 8.5)
+pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Target Outputs:", align="L")
-pdf.set_font("Helvetica", "", 8.5)
+pdf.set_font("Calibri", "", 8.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 pdf.cell(115, 5, "10 ranked promotional clips (20.0s to 60.0s total duration)", align="L")
 
 pdf.set_xy(20, 79)
-pdf.set_font("Helvetica", "B", 8.5)
+pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Audience Funnel:", align="L")
-pdf.set_font("Helvetica", "", 8.5)
+pdf.set_font("Calibri", "", 8.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 pdf.cell(115, 5, "Categorized as 'Series Launcher' (cold acquisition) or 'Mid-Series Teaser' (retention)", align="L")
 
 pdf.set_xy(20, 86)
-pdf.set_font("Helvetica", "B", 8.5)
+pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Deliverables:", align="L")
-pdf.set_font("Helvetica", "", 8.5)
+pdf.set_font("Calibri", "", 8.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 pdf.cell(115, 5, "promos.json, promos.csv, report.md, Streamlit editor app, and quality audits", align="L")
 
@@ -394,25 +387,25 @@ for i, (title, script, tag, desc, bg, accent) in enumerate(stages_flow):
     pdf.set_fill_color(*accent)
     pdf.rect(22, y_box + 4, 6, 6, "F")
     pdf.set_xy(22, y_box + 4)
-    pdf.set_font("Helvetica", "B", 8)
+    pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*pdf.DARK_BG)
     pdf.cell(6, 6, str(i + 1), align="C")
 
     # Title & script name
     pdf.set_xy(31, y_box + 3)
-    pdf.set_font("Helvetica", "B", 9)
+    pdf.set_font("Calibri", "B", 9)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(85, 5, title, align="L")
 
     # Execution tag badge
     pdf.set_xy(115, y_box + 3)
-    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*accent)
     pdf.cell(75, 5, tag, align="R")
 
     # Description
     pdf.set_xy(22, y_box + 11)
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(168, 3.8, desc, align="L")
 
@@ -424,7 +417,7 @@ for i, (title, script, tag, desc, bg, accent) in enumerate(stages_flow):
 
 # Execution Legend
 pdf.set_y(248)
-pdf.set_font("Helvetica", "B", 8)
+pdf.set_font("Calibri", "B", 8)
 pdf.set_text_color(*pdf.WHITE)
 pdf.cell(30, 5, "Execution Tiers:", align="L")
 legends = [
@@ -437,7 +430,7 @@ for lbl, c in legends:
     pdf.set_fill_color(*c)
     pdf.rect(pdf.get_x(), pdf.get_y() + 1, 3.5, 3.5, "F")
     pdf.set_x(pdf.get_x() + 5)
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.cell(pdf.get_string_width(lbl) + 6, 5, lbl, align="L")
 
@@ -459,10 +452,10 @@ pdf.p(
 )
 pdf.card(15, 56, 180, 28, pdf.DARK_CARD)
 pdf.set_xy(20, 59)
-pdf.set_font("Helvetica", "B", 8)
+pdf.set_font("Calibri", "B", 8)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(50, 4, "Validation Guardrails:", align="L")
-pdf.set_font("Helvetica", "", 7.5)
+pdf.set_font("Calibri", "", 7.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 pdf.set_xy(20, 64)
 pdf.multi_cell(170, 3.8,
@@ -481,11 +474,11 @@ pdf.p(
 )
 pdf.card(15, 118, 180, 24, pdf.DARK_CARD)
 pdf.set_xy(20, 121)
-pdf.set_font("Helvetica", "B", 8)
+pdf.set_font("Calibri", "B", 8)
 pdf.set_text_color(*pdf.ACCENT_AMBER)
 pdf.cell(50, 4, "Key Synthesized Bible Metadata:", align="L")
 pdf.set_xy(20, 126)
-pdf.set_font("Helvetica", "", 7.5)
+pdf.set_font("Calibri", "", 7.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 pdf.multi_cell(170, 3.8,
     "- Title & Genre: 'I Married a Broken Soldier. He was a Duke' | Historical Romance / Secret Identity / Vindication\n"
@@ -521,11 +514,11 @@ pdf.p(
 )
 pdf.card(15, 52, 180, 24, pdf.DARK_CARD)
 pdf.set_xy(20, 55)
-pdf.set_font("Helvetica", "B", 8)
+pdf.set_font("Calibri", "B", 8)
 pdf.set_text_color(*pdf.ACCENT_GREEN)
 pdf.cell(50, 4, "Safety-Constrained LLM Architecture:", align="L")
 pdf.set_xy(20, 60)
-pdf.set_font("Helvetica", "", 7.5)
+pdf.set_font("Calibri", "", 7.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 pdf.multi_cell(170, 3.8,
     "The LLM is NEVER permitted to invent timestamps or slice video directly. Code passes a discrete list of valid segment "
@@ -562,10 +555,10 @@ features = [
 y_f = 171
 for f_title, f_desc in features:
     pdf.set_xy(20, y_f)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(38, 4, f_title + ":", align="L")
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.cell(130, 4, f_desc[:85], align="L")
     y_f += 10.5
@@ -589,7 +582,7 @@ pdf.p(
 # Formula Bar Card
 pdf.card(15, 48, 180, 26, pdf.DARK_CARD)
 pdf.set_xy(20, 52)
-pdf.set_font("Helvetica", "B", 10)
+pdf.set_font("Calibri", "B", 10)
 pdf.set_text_color(*pdf.WHITE)
 pdf.cell(170, 5, "SCORE  =  0.35 * Hook  +  0.30 * Cliffhanger  +  0.20 * Clarity  +  0.15 * Emotion", align="C")
 
@@ -607,7 +600,7 @@ for name, pct, col in weights:
     pdf.set_fill_color(*col)
     pdf.rect(x_w, y_w, w_bar, 8, "F")
     pdf.set_xy(x_w, y_w + 1.5)
-    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(w_bar, 5, name, align="C")
     x_w += w_bar
@@ -628,11 +621,11 @@ for r_title, r_desc, r_col in rubric_cards:
     pdf.set_fill_color(*r_col)
     pdf.rect(15, y_rc, 2.5, 20, "F")
     pdf.set_xy(20, y_rc + 2)
-    pdf.set_font("Helvetica", "B", 8)
+    pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*r_col)
     pdf.cell(80, 4, r_title, align="L")
     pdf.set_xy(20, y_rc + 7)
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.multi_cell(170, 3.8, r_desc, align="L")
     y_rc += 23
@@ -678,7 +671,7 @@ cols = [
 y_tbl = 44
 pdf.card(15, y_tbl, 180, 8, pdf.CRIMSON)
 pdf.set_xy(15, y_tbl + 1.5)
-pdf.set_font("Helvetica", "B", 7.5)
+pdf.set_font("Calibri", "B", 7.5)
 pdf.set_text_color(*pdf.WHITE)
 for c_title, c_w in cols:
     pdf.cell(c_w, 5, c_title, align="C")
@@ -691,44 +684,44 @@ for i, p in enumerate(promos):
 
     pdf.set_xy(15, y_row + 2)
     # Rank
-    pdf.set_font("Helvetica", "B", 8.5)
+    pdf.set_font("Calibri", "B", 8.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(12, 5, f"#{p['rank']}", align="C")
 
     # Ep
-    pdf.set_font("Helvetica", "B", 8)
+    pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(10, 5, f"Ep {p['primary_episode_id']}", align="C")
 
     # Duration
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.cell(14, 5, f"{p['total_duration']:.1f}s", align="C")
 
     # Timecodes
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(38, 5, f"{seg['start_ts']} - {seg['end_ts']}", align="C")
 
     # Role
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     role_color = pdf.ACCENT_GREEN if p['promo_role'] == 'Series Launcher' else pdf.ACCENT_AMBER
     pdf.set_text_color(*role_color)
     pdf.cell(30, 5, p['promo_role'], align="C")
 
     # Score
-    pdf.set_font("Helvetica", "B", 8.5)
+    pdf.set_font("Calibri", "B", 8.5)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(16, 5, f"{p['weighted_score']:.2f}", align="C")
 
     # Rationale summary
-    pdf.set_font("Helvetica", "I", 6.8)
+    pdf.set_font("Calibri", "I", 6.8)
     pdf.set_text_color(*pdf.MED_GRAY)
     pdf.cell(60, 5, p['posting_rationale'][:48], align="L")
 
     # Second row inside card: Hook snippet
     pdf.set_xy(27, y_row + 7.5)
-    pdf.set_font("Helvetica", "", 6.8)
+    pdf.set_font("Calibri", "", 6.8)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     hook_snip = p.get("hook_text", "").replace("\n", " ")[:110]
     pdf.cell(165, 5, f"Hook: \"{hook_snip}\"", align="L")
@@ -762,35 +755,35 @@ for i, p in enumerate(promos[:5]):
     pdf.card(15, y_hc, 180, 26, pdf.DARK_CARD)
     # Rank & Ep header
     pdf.set_xy(18, y_hc + 2)
-    pdf.set_font("Helvetica", "B", 8)
+    pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(20, 4, f"Rank #{p['rank']}", align="L")
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(25, 4, f"Episode {p['primary_episode_id']}", align="L")
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.MED_GRAY)
     seg = p["segments"][0]
     pdf.cell(45, 4, f"{seg['start_ts']} - {seg['end_ts']} ({p['total_duration']:.1f}s)", align="L")
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_GREEN)
     pdf.cell(85, 4, f"Score: {p['weighted_score']:.2f}  |  {p['promo_role']}", align="R")
 
     # Hook text box
     pdf.set_xy(18, y_hc + 7)
-    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*pdf.ACCENT_AMBER)
     pdf.cell(28, 4, "FIRST 3s HOOK:", align="L")
-    pdf.set_font("Helvetica", "", 7)
+    pdf.set_font("Calibri", "", 7)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     hook_str = p.get("hook_text", "")[:120].replace("\n", " ")
     pdf.multi_cell(145, 3.8, f"\"{hook_str}\"", align="L")
 
     # Cliffhanger text box
     pdf.set_xy(18, y_hc + 16)
-    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(28, 4, "CLIFFHANGER CUT:", align="L")
-    pdf.set_font("Helvetica", "", 7)
+    pdf.set_font("Calibri", "", 7)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     cliff_str = p.get("cliffhanger_text", "")[:120].replace("\n", " ")
     pdf.multi_cell(145, 3.8, f"\"{cliff_str}\"", align="L")
@@ -804,21 +797,21 @@ y_hc2 = 200
 for i, p in enumerate(promos[5:]):
     pdf.card(15, y_hc2, 180, 13, pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT)
     pdf.set_xy(18, y_hc2 + 1.5)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(16, 4, f"#{p['rank']} (Ep {p['primary_episode_id']})", align="L")
 
-    pdf.set_font("Helvetica", "B", 6.8)
+    pdf.set_font("Calibri", "B", 6.8)
     pdf.set_text_color(*pdf.ACCENT_AMBER)
     pdf.cell(10, 4, "Hook:", align="L")
-    pdf.set_font("Helvetica", "", 6.8)
+    pdf.set_font("Calibri", "", 6.8)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.cell(70, 4, p.get("hook_text", "")[:50].replace("\n", " "), align="L")
 
-    pdf.set_font("Helvetica", "B", 6.8)
+    pdf.set_font("Calibri", "B", 6.8)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(10, 4, "Cut:", align="L")
-    pdf.set_font("Helvetica", "", 6.8)
+    pdf.set_font("Calibri", "", 6.8)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.cell(70, 4, p.get("cliffhanger_text", "")[:50].replace("\n", " "), align="L")
 
@@ -874,25 +867,25 @@ for p_title, p_clips, p_desc, p_col, p_funnel in campaign_phases:
 
     # Phase header
     pdf.set_xy(22, y_cp + 2.5)
-    pdf.set_font("Helvetica", "B", 8.5)
+    pdf.set_font("Calibri", "B", 8.5)
     pdf.set_text_color(*p_col)
     pdf.cell(100, 5, p_title, align="L")
 
     # Funnel badge
     pdf.set_xy(115, y_cp + 2.5)
-    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(75, 5, p_funnel, align="R")
 
     # Clips
     pdf.set_xy(22, y_cp + 8)
-    pdf.set_font("Helvetica", "B", 8)
+    pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(168, 4.5, p_clips, align="L")
 
     # Description
     pdf.set_xy(22, y_cp + 13.5)
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(168, 3.8, p_desc, align="L")
 
@@ -935,7 +928,7 @@ chk_cols = [
 y_chk = 82
 pdf.card(15, y_chk, 180, 8, pdf.CRIMSON)
 pdf.set_xy(15, y_chk + 1.5)
-pdf.set_font("Helvetica", "B", 7)
+pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
 for col_lbl, col_w in chk_cols:
     pdf.cell(col_w, 5, col_lbl, align="C")
@@ -946,7 +939,7 @@ for i, c in enumerate(checks["check_details"]):
     pdf.card(15, y_c_row, 180, 11, bg)
     pdf.set_xy(15, y_c_row + 2.5)
 
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(34, 5, c["promo_id"], align="C")
 
@@ -954,7 +947,7 @@ for i, c in enumerate(checks["check_details"]):
     pdf.cell(14, 5, f"#{c['rank']}", align="C")
 
     # Duration
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.ACCENT_GREEN if c["duration_valid"] else pdf.ACCENT_RED)
     pdf.cell(28, 5, "PASS [20-60s]", align="C")
 
@@ -971,7 +964,7 @@ for i, c in enumerate(checks["check_details"]):
     pdf.cell(24, 5, "STRICT", align="C")
 
     # Overall Status
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_GREEN if c["all_passed"] else pdf.ACCENT_RED)
     pdf.cell(18, 5, "PASSED", align="C")
 
@@ -1022,7 +1015,7 @@ gold_tbl_cols = [
 y_gt = 82
 pdf.card(15, y_gt, 180, 8, pdf.CRIMSON)
 pdf.set_xy(15, y_gt + 1.5)
-pdf.set_font("Helvetica", "B", 7)
+pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
 for col_lbl, col_w in gold_tbl_cols:
     pdf.cell(col_w, 5, col_lbl, align="C")
@@ -1033,24 +1026,24 @@ for i, m in enumerate(gold["match_details"]):
     pdf.card(15, y_g_row, 180, 16, bg)
     pdf.set_xy(15, y_g_row + 2)
 
-    pdf.set_font("Helvetica", "B", 8)
+    pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(18, 5, m["gold_id"], align="C")
 
     pdf.cell(12, 5, f"Ep {m['episode']}", align="C")
 
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.cell(42, 5, m["gold_interval"], align="C")
 
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(36, 5, m.get("tool_promo_id", "NONE"), align="C")
 
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(14, 5, f"#{m['tool_rank']}" if m.get("tool_rank") else "-", align="C")
 
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     iou_col = pdf.ACCENT_GREEN if m["iou"] >= 0.7 else (pdf.ACCENT_AMBER if m["iou"] > 0 else pdf.ACCENT_RED)
     pdf.set_text_color(*iou_col)
     pdf.cell(18, 5, f"{m['iou']:.3f}", align="C")
@@ -1061,7 +1054,7 @@ for i, m in enumerate(gold["match_details"]):
 
     # Second row inside card: editorial note
     pdf.set_xy(25, y_g_row + 8)
-    pdf.set_font("Helvetica", "I", 6.8)
+    pdf.set_font("Calibri", "I", 6.8)
     pdf.set_text_color(*pdf.MED_GRAY)
     if m["status"] == "MATCH":
         pdf.cell(165, 5, f"Exact alignment with human editor choice. Overlap duration: {m.get('overlap_seconds', 0):.1f}s.", align="L")
@@ -1128,39 +1121,39 @@ for inc in incidents_1_3:
 
     # Title & Badge
     pdf.set_xy(22, y_inc + 3)
-    pdf.set_font("Helvetica", "B", 8.5)
+    pdf.set_font("Calibri", "B", 8.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(26, 5, inc["id"] + ":", align="L")
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(90, 5, inc["title"], align="L")
-    pdf.set_font("Helvetica", "I", 7.5)
+    pdf.set_font("Calibri", "I", 7.5)
     pdf.set_text_color(*pdf.MED_GRAY)
     pdf.cell(60, 5, inc["stage"], align="R")
 
     # Flaw
     pdf.set_xy(22, y_inc + 10)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_RED)
     pdf.cell(32, 4, "[OBSERVED FLAW]:", align="L")
-    pdf.set_font("Helvetica", "", 7.2)
+    pdf.set_font("Calibri", "", 7.2)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(140, 3.8, inc["flaw"], align="L")
 
     # Cause
     pdf.set_xy(22, y_inc + 28)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_AMBER)
     pdf.cell(32, 4, "[ROOT CAUSE]:", align="L")
-    pdf.set_font("Helvetica", "", 7.2)
+    pdf.set_font("Calibri", "", 7.2)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(140, 3.8, inc["cause"], align="L")
 
     # Fix
     pdf.set_xy(22, y_inc + 46)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_GREEN)
     pdf.cell(32, 4, "[CODE SAFEGUARD]:", align="L")
-    pdf.set_font("Helvetica", "", 7.2)
+    pdf.set_font("Calibri", "", 7.2)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(140, 3.8, inc["fix"], align="L")
 
@@ -1201,36 +1194,36 @@ for inc in incidents_4_5:
     pdf.rect(15, y_inc2, 3, 56, "F")
 
     pdf.set_xy(22, y_inc2 + 3)
-    pdf.set_font("Helvetica", "B", 8.5)
+    pdf.set_font("Calibri", "B", 8.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(26, 5, inc["id"] + ":", align="L")
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(90, 5, inc["title"], align="L")
-    pdf.set_font("Helvetica", "I", 7.5)
+    pdf.set_font("Calibri", "I", 7.5)
     pdf.set_text_color(*pdf.MED_GRAY)
     pdf.cell(60, 5, inc["stage"], align="R")
 
     pdf.set_xy(22, y_inc2 + 10)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_RED)
     pdf.cell(32, 4, "[OBSERVED FLAW]:", align="L")
-    pdf.set_font("Helvetica", "", 7.2)
+    pdf.set_font("Calibri", "", 7.2)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(140, 3.8, inc["flaw"], align="L")
 
     pdf.set_xy(22, y_inc2 + 25)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_AMBER)
     pdf.cell(32, 4, "[ROOT CAUSE]:", align="L")
-    pdf.set_font("Helvetica", "", 7.2)
+    pdf.set_font("Calibri", "", 7.2)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(140, 3.8, inc["cause"], align="L")
 
     pdf.set_xy(22, y_inc2 + 40)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_GREEN)
     pdf.cell(32, 4, "[CODE SAFEGUARD]:", align="L")
-    pdf.set_font("Helvetica", "", 7.2)
+    pdf.set_font("Calibri", "", 7.2)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(140, 3.8, inc["fix"], align="L")
 
@@ -1277,10 +1270,10 @@ cur_stats = [
 y_cs = 51
 for lbl, val in cur_stats:
     pdf.set_xy(20, y_cs)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(48, 4.5, lbl, align="L")
-    pdf.set_font("Helvetica", "", 7.5)
+    pdf.set_font("Calibri", "", 7.5)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(125, 4.5, val, align="L")
     y_cs += 6
@@ -1299,7 +1292,7 @@ scale_cols = [
 y_sc = 96
 pdf.card(15, y_sc, 180, 8, pdf.CRIMSON)
 pdf.set_xy(15, y_sc + 1.5)
-pdf.set_font("Helvetica", "B", 7)
+pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
 for col_lbl, col_w in scale_cols:
     pdf.cell(col_w, 5, col_lbl, align="C")
@@ -1317,13 +1310,13 @@ for i, row in enumerate(scale_data):
     bg = (35, 40, 58) if is_tot else (pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT)
     pdf.card(15, y_sc_row, 180, 10, bg)
     pdf.set_xy(15, y_sc_row + 2)
-    pdf.set_font("Helvetica", "B" if is_tot else "", 7.5)
+    pdf.set_font("Calibri", "B" if is_tot else "", 7.5)
     pdf.set_text_color(*pdf.WHITE if not is_tot else pdf.ACCENT_GREEN)
     pdf.cell(45, 5, row[0], align="L")
     pdf.cell(28, 5, row[1], align="C")
     pdf.cell(32, 5, row[2], align="C")
     pdf.cell(35, 5, row[3], align="C")
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.CRIMSON if is_tot else pdf.WHITE)
     pdf.cell(40, 5, row[4], align="C")
     y_sc_row += 10.5
@@ -1359,7 +1352,7 @@ matrix_cols = [
 y_mx = 48
 pdf.card(15, y_mx, 180, 8, pdf.CRIMSON)
 pdf.set_xy(15, y_mx + 1.5)
-pdf.set_font("Helvetica", "B", 7)
+pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
 for col_lbl, col_w in matrix_cols:
     pdf.cell(col_w, 5, col_lbl, align="C")
@@ -1382,17 +1375,17 @@ y_mx_r = y_mx + 8
 for i, (layer, resp, why) in enumerate(matrix_rows):
     pdf.card(15, y_mx_r, 180, 24, pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT)
     pdf.set_xy(18, y_mx_r + 2)
-    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.multi_cell(27, 3.8, layer, align="L")
 
     pdf.set_xy(48, y_mx_r + 2)
-    pdf.set_font("Helvetica", "", 6.8)
+    pdf.set_font("Calibri", "", 6.8)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.multi_cell(63, 3.5, resp, align="L")
 
     pdf.set_xy(113, y_mx_r + 2)
-    pdf.set_font("Helvetica", "I", 6.8)
+    pdf.set_font("Calibri", "I", 6.8)
     pdf.set_text_color(*pdf.LIGHT_GRAY)
     pdf.multi_cell(78, 3.5, why, align="L")
 
@@ -1426,17 +1419,17 @@ for lim_title, lim_curr, lim_next in limits_data:
     pdf.rect(15, y_lm, 2.5, 23, "F")
 
     pdf.set_xy(20, y_lm + 2)
-    pdf.set_font("Helvetica", "B", 7.5)
+    pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.WHITE)
     pdf.cell(50, 4, lim_title, align="L")
 
     pdf.set_xy(20, y_lm + 6.5)
-    pdf.set_font("Helvetica", "", 6.8)
+    pdf.set_font("Calibri", "", 6.8)
     pdf.set_text_color(*pdf.MED_GRAY)
     pdf.cell(170, 3.5, "Current: " + lim_curr[:95], align="L")
 
     pdf.set_xy(20, y_lm + 10.5)
-    pdf.set_font("Helvetica", "B", 6.8)
+    pdf.set_font("Calibri", "B", 6.8)
     pdf.set_text_color(*pdf.ACCENT_GREEN)
     pdf.cell(170, 3.5, lim_next[:100], align="L")
 
@@ -1472,10 +1465,10 @@ repo_files = [
 y_rf = 39
 for f_name, f_desc in repo_files:
     pdf.set_xy(20, y_rf)
-    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(38, 4, f_name, align="L")
-    pdf.set_font("Helvetica", "", 7)
+    pdf.set_font("Calibri", "", 7)
     pdf.set_text_color(*pdf.LIGHT_TEXT)
     pdf.cell(130, 4, f_desc[:75], align="L")
     y_rf += 5.2
@@ -1537,17 +1530,17 @@ pdf.set_fill_color(*pdf.CRIMSON)
 pdf.rect(0, 0, 210, 6, "F")
 
 pdf.set_xy(20, 60)
-pdf.set_font("Helvetica", "B", 10)
+pdf.set_font("Calibri", "B", 10)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(170, 5, "KUKU TECHNOLOGIES  |  AI GENERALIST ASSIGNMENT", align="C")
 
 pdf.set_xy(20, 72)
-pdf.set_font("Helvetica", "B", 24)
+pdf.set_font("Calibri", "B", 24)
 pdf.set_text_color(*pdf.WHITE)
 pdf.cell(170, 10, "Project Conclusion & Sign-Off", align="C")
 
 pdf.set_xy(30, 92)
-pdf.set_font("Helvetica", "", 9.5)
+pdf.set_font("Calibri", "", 9.5)
 pdf.set_text_color(*pdf.LIGHT_TEXT)
 summary_conclusion = (
     "The Automated Microdrama Promo Discovery engine successfully solves Problem 1 by combining "
@@ -1564,33 +1557,28 @@ pdf.set_fill_color(*pdf.CRIMSON)
 pdf.rect(30, 140, 150, 2, "F")
 
 pdf.set_xy(35, 148)
-pdf.set_font("Helvetica", "B", 11)
+pdf.set_font("Calibri", "B", 11)
 pdf.set_text_color(*pdf.WHITE)
 pdf.cell(140, 6, "Verification Sign-Off Summary", align="C")
 
 pdf.set_xy(35, 158)
-pdf.set_font("Helvetica", "", 8.5)
+pdf.set_font("Calibri", "", 8.5)
 pdf.set_text_color(*pdf.LIGHT_GRAY)
 pdf.cell(140, 5, "Automated Verification: 10 / 10 Promos Passing  |  Pytest: 28 / 28 Tests Passing", align="C")
 
 pdf.set_xy(35, 166)
-pdf.set_font("Helvetica", "", 8.5)
+pdf.set_font("Calibri", "", 8.5)
 pdf.set_text_color(*pdf.ACCENT_GREEN)
 pdf.cell(140, 5, "Timestamp Hallucinations: ZERO  |  Stability Shift: 0.00  |  Cost: $0.004 / Show", align="C")
 
-# Candidate footer
-pdf.set_xy(20, 215)
-pdf.set_font("Helvetica", "B", 12)
-pdf.set_text_color(*pdf.WHITE)
-pdf.cell(170, 6, "Ashwin Yadav", align="C")
-
-pdf.set_xy(20, 223)
-pdf.set_font("Helvetica", "", 9)
+# Project footer
+pdf.set_xy(20, 224)
+pdf.set_font("Calibri", "", 9)
 pdf.set_text_color(*pdf.MED_GRAY)
-pdf.cell(170, 5, "Candidate for AI Generalist  |  Kuku Technologies", align="C")
+pdf.cell(170, 5, "Kuku Technologies  |  Problem 1: Automated Microdrama Promo Discovery", align="C")
 
-pdf.set_xy(20, 230)
-pdf.set_font("Helvetica", "", 8.5)
+pdf.set_xy(20, 231)
+pdf.set_font("Calibri", "", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(170, 5, "https://github.com/ashwinayadav6281/Kuku_AI_Generalist", align="C")
 

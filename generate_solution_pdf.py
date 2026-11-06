@@ -1,7 +1,8 @@
 """
 Formal, presentation-quality PDF solution guide for Kuku Technologies hiring assignment.
 Problem 1: Automated Microdrama Promo Discovery
-Generates an 18-page executive technical document with diagrams, flowcharts, tables, and failure logs.
+Clean White and Red institutional theme (no dark background, no AI slop/jargons/icons).
+Generates an 18-page executive technical solution guide.
 """
 import os, json
 from fpdf import FPDF
@@ -20,18 +21,19 @@ with open(os.path.join(BASE, "output", "run_log.json"), encoding="utf-8") as f:
 
 
 class KukuSolutionPDF(FPDF):
-    DARK_BG = (11, 12, 16)         # #0B0C10
-    CRIMSON = (236, 28, 36)        # #EC1C24 Kuku Brand Primary
+    # ── Clean White & Red Institutional Color Palette ──
     WHITE = (255, 255, 255)
-    LIGHT_GRAY = (210, 215, 225)
-    MED_GRAY = (135, 140, 155)
-    DARK_CARD = (22, 25, 36)       # #161924
-    DARK_CARD_ALT = (28, 32, 46)   # #1C202E
-    ACCENT_GREEN = (46, 204, 113)
-    ACCENT_AMBER = (243, 156, 18)
-    ACCENT_RED = (231, 76, 60)
-    ACCENT_BLUE = (52, 152, 219)
-    LIGHT_TEXT = (225, 228, 238)
+    CRIMSON = (218, 24, 32)        # Kuku Primary Red
+    DEEP_RED = (170, 16, 22)       # Dark Crimson for accented titles
+    TEXT_DARK = (25, 30, 40)       # Charcoal Slate for high-contrast primary text
+    TEXT_MUTED = (100, 110, 125)   # Neutral slate for secondary descriptions
+    CARD_BG = (248, 249, 252)      # Soft cool light-gray tint for cards
+    CARD_ALT = (240, 243, 248)     # Slightly darker alternate row tint
+    CARD_BORDER = (222, 228, 238)  # Subtle crisp border line
+    ACCENT_GREEN = (18, 130, 68)   # Forest emerald for verified/passing metrics
+    ACCENT_AMBER = (185, 105, 10)  # Dark amber for intermediate status
+    ACCENT_RED = (215, 28, 36)     # Alert red
+    ACCENT_BLUE = (25, 95, 175)    # Corporate navy/blue
 
     def __init__(self):
         super().__init__(orientation="P", unit="mm", format="A4")
@@ -41,36 +43,38 @@ class KukuSolutionPDF(FPDF):
         self.set_auto_page_break(auto=False, margin=15)
 
     def draw_bg(self):
-        self.set_fill_color(*self.DARK_BG)
+        self.set_fill_color(*self.WHITE)
         self.rect(0, 0, 210, 297, "F")
 
     def page_header(self, title=""):
         if self.page_no() == 1:
             return
         self.draw_bg()
-        # Crimson brand strip
+        # Top brand crimson bar
         self.set_fill_color(*self.CRIMSON)
-        self.rect(0, 0, 210, 2, "F")
+        self.rect(0, 0, 210, 2.5, "F")
         # Running header
-        self.set_xy(15, 6)
-        self.set_font("Calibri", "B", 7.5)
+        self.set_xy(15, 6.5)
+        self.set_font("Calibri", "B", 8)
         self.set_text_color(*self.CRIMSON)
-        self.cell(40, 5, "KUKU TECHNOLOGIES", align="L")
-        self.set_font("Calibri", "", 7.5)
-        self.set_text_color(*self.MED_GRAY)
-        self.cell(140, 5, "MICRODRAMA PROMO DISCOVERY  |  TECHNICAL SOLUTION & ARCHITECTURE GUIDE", align="R")
-        # Subtle divider
-        self.set_draw_color(35, 40, 55)
-        self.line(15, 12, 195, 12)
+        self.cell(45, 5, "KUKU TECHNOLOGIES", align="L")
+        self.set_font("Calibri", "", 8)
+        self.set_text_color(*self.TEXT_MUTED)
+        self.cell(135, 5, "MICRODRAMA PROMO DISCOVERY  |  TECHNICAL SOLUTION & ARCHITECTURE GUIDE", align="R")
+        # Subtle light divider
+        self.set_draw_color(*self.CARD_BORDER)
+        self.set_line_width(0.3)
+        self.line(15, 13, 195, 13)
 
     def page_footer(self):
         if self.page_no() == 1:
             return
-        self.set_draw_color(35, 40, 55)
+        self.set_draw_color(*self.CARD_BORDER)
+        self.set_line_width(0.3)
         self.line(15, 283, 195, 283)
         self.set_xy(15, 285)
         self.set_font("Calibri", "", 7.5)
-        self.set_text_color(*self.MED_GRAY)
+        self.set_text_color(*self.TEXT_MUTED)
         self.cell(90, 5, "Problem 1: Find the Promos", align="L")
         self.cell(90, 5, f"Page {self.page_no()} of 18", align="R")
 
@@ -81,26 +85,26 @@ class KukuSolutionPDF(FPDF):
             self.set_text_color(*self.CRIMSON)
             self.cell(10, 8, number_str, align="L")
             self.set_font("Calibri", "B", 14)
-            self.set_text_color(*self.WHITE)
+            self.set_text_color(*self.TEXT_DARK)
             self.cell(170, 8, title_str, align="L")
         else:
             self.set_font("Calibri", "B", 14)
-            self.set_text_color(*self.WHITE)
+            self.set_text_color(*self.TEXT_DARK)
             self.cell(180, 8, title_str, align="L")
-        # Red underline bar
+        # Crimson underline bar
         self.set_fill_color(*self.CRIMSON)
         self.rect(15, 26, 180, 0.8, "F")
         self.set_y(30)
 
     def sub_header(self, text):
         self.set_font("Calibri", "B", 10.5)
-        self.set_text_color(*self.ACCENT_GREEN)
+        self.set_text_color(*self.DEEP_RED)
         self.cell(0, 6, text, align="L")
         self.ln(6.5)
 
     def p(self, text, spacing=4.8):
         self.set_font("Calibri", "", 8.5)
-        self.set_text_color(*self.LIGHT_TEXT)
+        self.set_text_color(*self.TEXT_DARK)
         for paragraph in text.split("\n\n"):
             self.multi_cell(180, spacing, paragraph.strip(), align="L")
             self.ln(2.2)
@@ -111,24 +115,30 @@ class KukuSolutionPDF(FPDF):
         self.set_font("Calibri", "B", 8.5)
         self.set_text_color(*self.CRIMSON)
         self.cell(4, 4.6, "-", align="L")
-        self.set_text_color(*self.WHITE)
+        self.set_text_color(*self.TEXT_DARK)
         self.cell(self.get_string_width(title + ": ") + 1, 4.6, title + ": ", align="L")
         self.set_font("Calibri", "", 8.5)
-        self.set_text_color(*self.LIGHT_TEXT)
+        self.set_text_color(*self.TEXT_DARK)
         rem_w = 195 - self.get_x()
         self.multi_cell(rem_w, 4.6, desc, align="L")
         self.ln(1.5)
 
-    def card(self, x, y, w, h, bg=None):
+    def card(self, x, y, w, h, bg=None, border=True):
         if bg is None:
-            bg = self.DARK_CARD
+            bg = self.CARD_BG
         self.set_fill_color(*bg)
-        self.rect(x, y, w, h, "F")
+        if border:
+            self.set_draw_color(*self.CARD_BORDER)
+            self.set_line_width(0.3)
+            self.rect(x, y, w, h, "FD")
+        else:
+            self.rect(x, y, w, h, "F")
 
     def kpi_card(self, x, y, w, h, value, label, color=None):
         if color is None:
             color = self.ACCENT_GREEN
-        self.card(x, y, w, h, self.DARK_CARD)
+        self.card(x, y, w, h, self.CARD_BG, border=True)
+        # Top colored accent
         self.set_fill_color(*color)
         self.rect(x, y, w, 1.5, "F")
         self.set_xy(x, y + 3)
@@ -137,69 +147,73 @@ class KukuSolutionPDF(FPDF):
         self.cell(w, 7, str(value), align="C")
         self.set_xy(x, y + 10)
         self.set_font("Calibri", "", 7.2)
-        self.set_text_color(*self.MED_GRAY)
+        self.set_text_color(*self.TEXT_MUTED)
         self.multi_cell(w, 3.5, label, align="C")
 
 
 pdf = KukuSolutionPDF()
 
 # ═══════════════════════════════════════════════════════════════════════════
-# PAGE 1: TITLE & COVER PAGE
+# PAGE 1: TITLE & COVER PAGE (WHITE & RED)
 # ═══════════════════════════════════════════════════════════════════════════
 pdf.add_page()
 pdf.draw_bg()
+
 # Kuku Brand Top Bar
 pdf.set_fill_color(*pdf.CRIMSON)
 pdf.rect(0, 0, 210, 6, "F")
 
-# Red accent left bar
+# Red accent vertical pillar
 pdf.set_fill_color(*pdf.CRIMSON)
 pdf.rect(20, 65, 4, 90, "F")
 
-# Title Header
+# Header Label
 pdf.set_xy(30, 70)
-pdf.set_font("Calibri", "B", 10)
+pdf.set_font("Calibri", "B", 10.5)
 pdf.set_text_color(*pdf.CRIMSON)
-pdf.cell(150, 6, "KUKU TECHNOLOGIES  |  AI GENERALIST ASSIGNMENT", align="L")
+pdf.cell(150, 6, "KUKU TECHNOLOGIES  |  TECHNICAL SUBMISSION", align="L")
 
+# Main Title
 pdf.set_xy(30, 80)
-pdf.set_font("Calibri", "B", 26)
-pdf.set_text_color(*pdf.WHITE)
-pdf.multi_cell(150, 11, "Automated Microdrama\nPromo Discovery", align="L")
+pdf.set_font("Calibri", "B", 27)
+pdf.set_text_color(*pdf.TEXT_DARK)
+pdf.multi_cell(150, 11.5, "Automated Microdrama\nPromo Discovery", align="L")
 
+# Subtitle
 pdf.set_xy(30, 108)
 pdf.set_font("Calibri", "", 13)
-pdf.set_text_color(*pdf.LIGHT_GRAY)
-pdf.cell(150, 7, "Problem 1: Find the Promos  --  End-to-End Solution Guide", align="L")
+pdf.set_text_color(*pdf.DEEP_RED)
+pdf.cell(150, 7, "Problem 1: Find the Promos  --  Engineering Solution & Architecture Guide", align="L")
 
+# Dataset subtitle
 pdf.set_xy(30, 120)
 pdf.set_font("Calibri", "I", 10)
-pdf.set_text_color(*pdf.MED_GRAY)
-pdf.cell(150, 6, "Dataset: 50 Episodes of 'I Married a Broken Soldier. He was a Duke'", align="L")
+pdf.set_text_color(*pdf.TEXT_MUTED)
+pdf.cell(150, 6, "Screenplay Dataset: 50 Episodes of 'I Married a Broken Soldier. He was a Duke'", align="L")
 
 # Top KPI row on cover
 kpis = [
-    ("50", "EPISODES\nPARSED", pdf.WHITE),
-    ("3,727", "STRUCTURED\nUNITS", pdf.WHITE),
+    ("50", "EPISODES\nPARSED", pdf.TEXT_DARK),
+    ("3,727", "STRUCTURED\nUNITS", pdf.TEXT_DARK),
     ("100%", "TIMESTAMP\nINTEGRITY", pdf.ACCENT_GREEN),
-    ("80.0%", "GOLD RECALL\nTOP 10", pdf.ACCENT_GREEN),
+    ("80.0%", "BENCHMARK\nRECALL (TOP 10)", pdf.ACCENT_GREEN),
 ]
 for i, (val, lbl, c) in enumerate(kpis):
     pdf.kpi_card(30 + i * 38, 140, 35, 20, val, lbl, c)
 
-# Bottom author card
-pdf.card(20, 222, 170, 26, pdf.DARK_CARD)
+# Bottom author card (clean white card with crisp gray border and red accent)
+pdf.card(20, 220, 170, 28, pdf.CARD_BG, border=True)
 pdf.set_fill_color(*pdf.CRIMSON)
-pdf.rect(20, 222, 2, 26, "F")
+pdf.rect(20, 220, 3, 28, "F")
 
-pdf.set_xy(30, 229)
+pdf.set_xy(30, 227)
 pdf.set_font("Calibri", "B", 12)
-pdf.set_text_color(*pdf.WHITE)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(150, 6, "Submitted by - Ashwina Yadav, IIT Kanpur", align="L")
 
-pdf.set_xy(30, 238)
+pdf.set_xy(30, 236)
 pdf.set_font("Calibri", "", 8.5)
-pdf.set_text_color(*pdf.MED_GRAY)
+pdf.set_text_color(*pdf.TEXT_MUTED)
 pdf.cell(150, 5, "Repository: https://github.com/ashwinayadav6281/Kuku_AI_Generalist", align="L")
 
 # Bottom red bar
@@ -217,7 +231,7 @@ pdf.chapter_header("", "Table of Contents & Executive Summary")
 
 # Table of Contents Grid
 pdf.sub_header("Table of Contents")
-pdf.card(15, 36, 180, 92, pdf.DARK_CARD)
+pdf.card(15, 36, 180, 92, pdf.CARD_BG, border=True)
 
 toc_items = [
     ("01", "Executive Summary & Core Mandate", "02"),
@@ -231,10 +245,10 @@ toc_items = [
     ("09", "Multi-Phase Campaign Rollout Strategy", "10"),
     ("10", "Quality Assurance & Automated Verification Audit", "11"),
     ("11", "Gold-Set Benchmark & Stability Evaluation", "12"),
-    ("12", "AI Failure Incident Analysis: Incidents 1-3", "13"),
-    ("13", "AI Failure Incident Analysis: Incidents 4-5 & Edge Cases", "14"),
+    ("12", "Engineering Incident Log & Edge-Case Safeguards (1-3)", "13"),
+    ("13", "System Incident Log & Edge-Case Safeguards (4-5)", "14"),
     ("14", "Scale, Latency & Cost Projection (100 Shows/Week)", "15"),
-    ("15", "Responsibility Matrix: Code vs. AI vs. Human", "16"),
+    ("15", "Responsibility Matrix: Code vs. Models vs. Human", "16"),
     ("16", "Technical Limitations & Engineering Roadmap", "16"),
     ("17", "Repository Architecture, Config & Technology Stack", "17"),
     ("18", "Conclusion & Project Sign-Off", "18"),
@@ -250,10 +264,10 @@ for idx, (num, title, pnum) in enumerate(toc_items):
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(6, 5, num, align="L")
     pdf.set_font("Calibri", "", 8)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
-    pdf.cell(70, 5, title[:42], align="L")
+    pdf.set_text_color(*pdf.TEXT_DARK)
+    pdf.cell(70, 5, title[:44], align="L")
     pdf.set_font("Calibri", "B", 7.5)
-    pdf.set_text_color(*pdf.MED_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.cell(10, 5, pnum, align="R")
 
 pdf.set_y(134)
@@ -272,12 +286,12 @@ pdf.p(
 pdf.kpi_card(15, 185, 42, 22, "100%", "Boundary Accuracy\n(Zero Inventions)", pdf.ACCENT_GREEN)
 pdf.kpi_card(60, 185, 42, 22, "80.0%", "Recall in Top 10\n(vs Gold Benchmark)", pdf.ACCENT_GREEN)
 pdf.kpi_card(105, 185, 42, 22, "0.752", "Mean IoU Overlap\n(Temporal Alignment)", pdf.ACCENT_AMBER)
-pdf.kpi_card(150, 185, 42, 22, "$0.004", "Cost per Show\n(Gemini 2.5 Flash)", pdf.ACCENT_GREEN)
+pdf.kpi_card(150, 185, 42, 22, "$0.004", "Cost per Show\n(High-Speed Tier)", pdf.ACCENT_GREEN)
 
 pdf.set_y(214)
 pdf.sub_header("Three Non-Negotiable Engineering Principles")
-pdf.bullet("1. Absolute Timestamp Authenticity", "The LLM never generates, guesses, or formats timecodes. Timestamps are strictly parsed by code and clamped to valid unit boundaries.", 0)
-pdf.bullet("2. Universal Model Swappability", "Decoupled LLM interface (llm.py) supports Gemini 2.5 Flash, OpenAI-compatible APIs, Anthropic, or an offline deterministic fallback mode.", 0)
+pdf.bullet("1. Absolute Timestamp Authenticity", "Semantic language models never generate, estimate, or format timecodes. Timestamps are strictly parsed by code and clamped to valid unit boundaries.", 0)
+pdf.bullet("2. Universal Model Swappability", "Decoupled model interface (llm.py) supports Gemini 2.5 Flash, OpenAI-compatible APIs, Anthropic, or an offline deterministic fallback mode.", 0)
 pdf.bullet("3. Complete Video Editor Handoff", "Deliverables go beyond raw coordinates: every clip includes opening 3s hook transcript, ending cut transcript, assigned campaign role, and a live Streamlit scrubber.", 0)
 
 
@@ -298,13 +312,13 @@ pdf.p(
 )
 
 pdf.sub_header("Operational Scope & Boundaries")
-pdf.card(15, 62, 180, 36, pdf.DARK_CARD)
+pdf.card(15, 62, 180, 36, pdf.CARD_BG, border=True)
 pdf.set_xy(20, 65)
 pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Input Dataset:", align="L")
 pdf.set_font("Calibri", "", 8.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(115, 5, "50 raw screenplay text files ('Episode 1.txt' to 'Episode 50.txt')", align="L")
 
 pdf.set_xy(20, 72)
@@ -312,7 +326,7 @@ pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Target Outputs:", align="L")
 pdf.set_font("Calibri", "", 8.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(115, 5, "10 ranked promotional clips (20.0s to 60.0s total duration)", align="L")
 
 pdf.set_xy(20, 79)
@@ -320,7 +334,7 @@ pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Audience Funnel:", align="L")
 pdf.set_font("Calibri", "", 8.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(115, 5, "Categorized as 'Series Launcher' (cold acquisition) or 'Mid-Series Teaser' (retention)", align="L")
 
 pdf.set_xy(20, 86)
@@ -328,17 +342,17 @@ pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(40, 5, "Deliverables:", align="L")
 pdf.set_font("Calibri", "", 8.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(115, 5, "promos.json, promos.csv, report.md, Streamlit editor app, and quality audits", align="L")
 
 pdf.set_y(104)
 pdf.sub_header("Documented Assumptions (Silent Brief Edge Cases)")
 pdf.bullet("Explicit Timestamp Granularity", "All units in the dataset contain explicit Start: (MM:SS.ff) and End: (MM:SS.ff) tags. Timestamps are parsed to float seconds rounded to 2 decimal places. If future scripts omit ends, end defaults to next_unit.start.", 0)
 pdf.bullet("Episode Duration Bounds", "Plausible microdrama episode length is constrained between 30.0s and 240.0s. Observed dataset spans 70.5s (Ep 44) to 200.8s (Ep 36), with a mean duration of ~125.0s (~2.1 min).", 0)
-pdf.bullet("The 3-Second Hook Rule", "TikTok/Reels scroll analytics demonstrate that viewers swipe away if dramatic confrontation or visual shock does not occur within the first 3.0 seconds. Windows must begin on an explosive unit.", 0)
+pdf.bullet("The 3-Second Hook Rule", "Short-form video retention curves show viewers swipe away if dramatic confrontation or visual shock does not occur within the first 3.0 seconds. Windows must begin on an explosive unit.", 0)
 pdf.bullet("Narrative Twist Protection", "The central revelation (the crippled soldier husband is Alexander, Duke of Ashburn) occurs in Episode 42. Promos aimed at series launch must not spoil this twist; candidates mentioning it are flagged spoils_major_twist.", 0)
 pdf.bullet("Episode Diversity Constraint", "To prevent marketing fatigue and cover multiple narrative arcs, the final Top 10 enforces a strict maximum of 2 promotional clips per episode.", 0)
-pdf.bullet("TikTok Duration Sweet-Spot Curve", "Platform retention metrics show 25-38s videos retain 35% more users to completion than 50-60s videos. A non-linear bonus (+0.25) is awarded to 25-38s clips, while clips >52s receive a penalty.", 0)
+pdf.bullet("Retention Duration Sweet-Spot Curve", "Platform retention metrics show 25-38s videos retain 35% more users to completion than 50-60s videos. A non-linear bonus (+0.25) is awarded to 25-38s clips, while clips >52s receive a penalty.", 0)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -351,34 +365,34 @@ pdf.chapter_header("03", "End-to-End Pipeline Architecture (6-Stage Map)")
 
 pdf.p(
     "The architecture enforces strict separation of concerns: deterministic Python code handles mathematical "
-    "parsing, duration bounds, boundary snapping, deduplication, and schema validation, while LLM intelligence is "
-    "utilized strictly where semantic narrative judgment is required."
+    "parsing, duration bounds, boundary snapping, deduplication, and schema validation, while semantic language models "
+    "are utilized strictly where narrative nuance and dramatic judgment are required."
 )
 
 stages_flow = [
-    ("STAGE 1: SCREENPLAY PARSER", "screenplay_parser.py", "Pure Python Regex Tokenizer  |  No LLM",
-     "Converts 50 raw .txt scripts into 3,727 structured units (dialogue, action, camera, sound_fx). Enforces monotonicity, duration validity, and fails loudly on format discrepancies.", pdf.DARK_CARD, pdf.ACCENT_GREEN),
+    ("STAGE 1: SCREENPLAY PARSER", "screenplay_parser.py", "Deterministic Regex Tokenizer  |  Zero Model Dependency",
+     "Converts 50 raw .txt scripts into 3,727 structured units (dialogue, action, camera, sound_fx). Enforces monotonicity, duration validity, and fails loudly on format discrepancies.", pdf.CARD_BG, pdf.ACCENT_GREEN),
 
-    ("STAGE 2: SHOW BIBLE BUILDER", "bible_builder.py", "Map-Reduce Architecture  |  Cheap + Strong LLM",
-     "Cheap tier (Flash) generates 1-paragraph episode summaries. Strong tier synthesizes into bible.json: premise, 6 characters, and 5 major twists with reveal episode markers.", (25, 30, 44), pdf.ACCENT_AMBER),
+    ("STAGE 2: SHOW BIBLE BUILDER", "bible_builder.py", "Two-Stage Semantic Synthesis  |  Fast + Comprehensive Tiers",
+     "High-throughput tier (Flash) generates 1-paragraph episode summaries. Comprehensive tier synthesizes into bible.json: premise, 6 characters, and 5 major twists with reveal episode markers.", pdf.CARD_BG, pdf.ACCENT_AMBER),
 
     ("STAGE 3: CANDIDATE GENERATOR", "candidate_generator.py", "Sliding Window Enumerator  |  Rule-Based Scoring",
-     "Enumerates 18,181 valid 20-60s windows on unit boundaries. Tags hooks, cliffs, and applies TikTok duration curves. IoU > 0.50 deduplication keeps top 8 per episode (~375 candidates).", pdf.DARK_CARD, pdf.ACCENT_GREEN),
+     "Enumerates 18,181 valid 20-60s windows on unit boundaries. Tags hooks, cliffs, and applies retention duration curves. IoU > 0.50 deduplication keeps top 8 per episode (~375 candidates).", pdf.CARD_BG, pdf.ACCENT_GREEN),
 
-    ("STAGE 4: MULTI-SEGMENT STITCHER", "stitcher.py", "Constrained Stitching Engine  |  Optional (--stitch)",
-     "For clips needing setup context: searches for 5-15s preceding segments. LLM selects only from code-verified segment IDs. Code guarantees total length <= 60s and boundary alignment.", (25, 30, 44), pdf.ACCENT_AMBER),
+    ("STAGE 4: MULTI-SEGMENT STITCHER", "stitcher.py", "Constrained Context Stitching  |  Optional (--stitch)",
+     "For clips needing setup context: searches for 5-15s preceding segments. Semantic model selects only from code-verified segment IDs. Code guarantees total length <= 60s and boundary alignment.", pdf.CARD_BG, pdf.ACCENT_AMBER),
 
-    ("STAGE 5: JUDGE, DEDUPE & RANK", "judge_and_rank.py", "Frontier LLM Rubric Judge  |  Deterministic Ranking",
-     "Evaluates 4 rubrics (1-5). Evaluates hard-fail disqualifications. Applies IoU > 0.35 deduplication, max-2/ep diversity cap, assigns campaign roles and posting rationale.", pdf.DARK_CARD, pdf.CRIMSON),
+    ("STAGE 5: JUDGE, DEDUPE & RANK", "judge_and_rank.py", "Semantic Rubric Evaluation  |  Deterministic Ranking",
+     "Evaluates 4 rubrics (1-5). Evaluates hard-fail disqualifications. Applies IoU > 0.35 deduplication, max-2/ep diversity cap, assigns campaign roles and posting rationale.", pdf.CARD_BG, pdf.CRIMSON),
 
-    ("STAGE 6: VIDEO EDITOR REVIEW", "app.py  /  report.md", "Human-in-the-Loop OTT Interface  |  Streamlit",
-     "Video editors review candidate clips with timecode scrubbers, teleprompter screenplay view with [CAM]/[ACT]/[SFX] tags, approve/reject flags, and export CSV/JSON/MD.", (25, 30, 44), pdf.ACCENT_BLUE),
+    ("STAGE 6: VIDEO EDITOR REVIEW", "app.py  /  report.md", "Human-in-the-Loop Review Cockpit  |  Streamlit",
+     "Video editors review candidate clips with timecode scrubbers, teleprompter screenplay view with [CAM]/[ACT]/[SFX] tags, approve/reject flags, and export CSV/JSON/MD.", pdf.CARD_BG, pdf.ACCENT_BLUE),
 ]
 
 y_box = 44
 for i, (title, script, tag, desc, bg, accent) in enumerate(stages_flow):
     # Box card
-    pdf.card(15, y_box, 180, 29, bg)
+    pdf.card(15, y_box, 180, 29, bg, border=True)
     # Left accent strip
     pdf.set_fill_color(*accent)
     pdf.rect(15, y_box, 3, 29, "F")
@@ -388,13 +402,13 @@ for i, (title, script, tag, desc, bg, accent) in enumerate(stages_flow):
     pdf.rect(22, y_box + 4, 6, 6, "F")
     pdf.set_xy(22, y_box + 4)
     pdf.set_font("Calibri", "B", 8)
-    pdf.set_text_color(*pdf.DARK_BG)
+    pdf.set_text_color(*pdf.WHITE)
     pdf.cell(6, 6, str(i + 1), align="C")
 
     # Title & script name
     pdf.set_xy(31, y_box + 3)
     pdf.set_font("Calibri", "B", 9)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(85, 5, title, align="L")
 
     # Execution tag badge
@@ -406,32 +420,32 @@ for i, (title, script, tag, desc, bg, accent) in enumerate(stages_flow):
     # Description
     pdf.set_xy(22, y_box + 11)
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.multi_cell(168, 3.8, desc, align="L")
 
     y_box += 33
     if i < len(stages_flow) - 1:
         # Downward connector
-        pdf.set_fill_color(*pdf.MED_GRAY)
+        pdf.set_fill_color(*pdf.CARD_BORDER)
         pdf.rect(104, y_box - 4, 1.2, 3.5, "F")
 
 # Execution Legend
 pdf.set_y(248)
 pdf.set_font("Calibri", "B", 8)
-pdf.set_text_color(*pdf.WHITE)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(30, 5, "Execution Tiers:", align="L")
 legends = [
     ("Pure Python (Deterministic)", pdf.ACCENT_GREEN),
-    ("Constrained LLM Call", pdf.ACCENT_AMBER),
-    ("Frontier LLM + Rules", pdf.CRIMSON),
-    ("Human-in-the-Loop", pdf.ACCENT_BLUE),
+    ("Constrained Context Selection", pdf.ACCENT_AMBER),
+    ("Semantic Evaluation + Rules", pdf.CRIMSON),
+    ("Human Editorial Review", pdf.ACCENT_BLUE),
 ]
 for lbl, c in legends:
     pdf.set_fill_color(*c)
     pdf.rect(pdf.get_x(), pdf.get_y() + 1, 3.5, 3.5, "F")
     pdf.set_x(pdf.get_x() + 5)
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(pdf.get_string_width(lbl) + 6, 5, lbl, align="L")
 
 
@@ -450,13 +464,13 @@ pdf.p(
     "and emotional parentheticals. Crucially, the parser implements case-invariant header detection to handle "
     "variations across episodes (e.g., 'ACTIONS AND DIALOGUE:' in Ep 6 vs 'Actions and Dialogue:' in Ep 1)."
 )
-pdf.card(15, 56, 180, 28, pdf.DARK_CARD)
+pdf.card(15, 56, 180, 28, pdf.CARD_BG, border=True)
 pdf.set_xy(20, 59)
 pdf.set_font("Calibri", "B", 8)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(50, 4, "Validation Guardrails:", align="L")
 pdf.set_font("Calibri", "", 7.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.set_xy(20, 64)
 pdf.multi_cell(170, 3.8,
     "1. Strict Timestamp Ordering: Verifies start <= end for every unit.\n"
@@ -467,19 +481,19 @@ pdf.multi_cell(170, 3.8,
 pdf.set_y(88)
 pdf.sub_header("Stage 2: Show Bible Builder (bible_builder.py)")
 pdf.p(
-    "To prevent token overflow and preserve free-tier rate limits, the show bible is constructed via a Map-Reduce "
-    "pipeline. The Map phase invokes the cheap tier (Gemini 2.5 Flash) on each individual episode script, generating a "
-    "structured logline and key revelation list. The Reduce phase passes all 50 loglines into the strong model tier to "
-    "synthesize a global bible.json containing core character dynamics, premise, and secret twist markers."
+    "To prevent context overflow and preserve execution throughput, the show bible is constructed via a two-stage "
+    "synthesis pipeline. The first phase invokes the high-speed model tier (Gemini 2.5 Flash) on each individual episode script, "
+    "generating a structured logline and key revelation list. The second phase passes all 50 loglines into the comprehensive "
+    "tier to synthesize a global bible.json containing core character dynamics, premise, and secret twist markers."
 )
-pdf.card(15, 118, 180, 24, pdf.DARK_CARD)
+pdf.card(15, 118, 180, 24, pdf.CARD_BG, border=True)
 pdf.set_xy(20, 121)
 pdf.set_font("Calibri", "B", 8)
 pdf.set_text_color(*pdf.ACCENT_AMBER)
 pdf.cell(50, 4, "Key Synthesized Bible Metadata:", align="L")
 pdf.set_xy(20, 126)
 pdf.set_font("Calibri", "", 7.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.multi_cell(170, 3.8,
     "- Title & Genre: 'I Married a Broken Soldier. He was a Duke' | Historical Romance / Secret Identity / Vindication\n"
     "- Central Conflict: Juliana betrayed at the altar by Gerald and sister Clarissa; marries crippled war hero Alexander\n"
@@ -512,23 +526,23 @@ pdf.p(
     "to make dramatic sense to cold viewers. When invoked via the --stitch flag, the stitcher searches for 5-15s setup "
     "segments earlier in the same episode."
 )
-pdf.card(15, 52, 180, 24, pdf.DARK_CARD)
+pdf.card(15, 52, 180, 24, pdf.CARD_BG, border=True)
 pdf.set_xy(20, 55)
 pdf.set_font("Calibri", "B", 8)
 pdf.set_text_color(*pdf.ACCENT_GREEN)
-pdf.cell(50, 4, "Safety-Constrained LLM Architecture:", align="L")
+pdf.cell(50, 4, "Safety-Constrained Semantic Architecture:", align="L")
 pdf.set_xy(20, 60)
 pdf.set_font("Calibri", "", 7.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.multi_cell(170, 3.8,
-    "The LLM is NEVER permitted to invent timestamps or slice video directly. Code passes a discrete list of valid segment "
-    "IDs [SEG_A, SEG_B, SEG_C]. The LLM returns a selected sequence. Code mathematically validates: (1) correct chronological "
+    "The language model is NEVER permitted to invent timestamps or slice video directly. Code passes a discrete list of valid segment "
+    "IDs [SEG_A, SEG_B, SEG_C]. The model returns a selected sequence. Code mathematically validates: (1) correct chronological "
     "order, (2) total stitched duration <= 60.0s, and (3) zero overlapping timecodes.", align="L")
 
 pdf.set_y(80)
 pdf.sub_header("Stage 5: Judge, Dedupe & Rank (judge_and_rank.py)")
 pdf.p(
-    "Candidates passing Stage 3 are evaluated by a frontier-tier LLM rubric judge. Each candidate is scored 1-5 across "
+    "Candidates passing Stage 3 are evaluated by a multi-dimensional semantic rubric judge. Each candidate is scored 1-5 across "
     "Hook Strength, Cliffhanger Quality, Standalone Clarity, and Emotional Pull. Scores are combined using the weighted "
     "formula. Hard-fail disqualification logic discards clips that start mid-sentence or resolve prematurely."
 )
@@ -537,13 +551,13 @@ pdf.bullet("Secondary IoU Deduplication", "Surviving candidates are sorted by we
 pdf.bullet("Diversity Cap & Role Assignment", "A maximum of 2 promos per episode are admitted to the final Top 10. Each promo is classified as a 'Series Launcher' (Ep 1-6) or 'Mid-Series Teaser' (Ep 7-50) with tactical posting rationale.", 0)
 
 pdf.set_y(138)
-pdf.sub_header("Stage 6: Video Editor Review UI (Streamlit app.py)")
+pdf.sub_header("Stage 6: Video Editor Review Cockpit (Streamlit app.py)")
 pdf.p(
-    "The final output is rendered in an interactive, dark-mode Streamlit application designed for professional video editors. "
-    "Rejecting generic AI interfaces, the UI features Kuku's crimson brand styling (#EC1C24), Swiss typography (Inter + IBM Plex Mono), "
-    "and full WCAG-compliant high-contrast readability."
+    "The final output is rendered in an interactive Streamlit application designed as an operational production cockpit for video editors. "
+    "Featuring Kuku's crimson brand styling (#EC1C24), Swiss typography (Inter + IBM Plex Mono), and full WCAG-compliant "
+    "high-contrast readability, the interface replaces spreadsheet scrubbing with one-click decision tools."
 )
-pdf.card(15, 168, 180, 68, pdf.DARK_CARD)
+pdf.card(15, 168, 180, 68, pdf.CARD_BG, border=True)
 features = [
     ("Real-Time KPI Strip", "Live badges displaying top score, mean duration (38.9s), launch vs teaser ratio, and gold recall rate."),
     ("Visual Timecode Scrubber", "Interactive progress bars displaying exact start/end seconds within the parent episode context."),
@@ -559,7 +573,7 @@ for f_title, f_desc in features:
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(38, 4, f_title + ":", align="L")
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(130, 4, f_desc[:85], align="L")
     y_f += 10.5
 
@@ -575,15 +589,15 @@ pdf.chapter_header("06", "Scoring Rubric, Weights & Disqualification Rules")
 pdf.sub_header("Composite Weighted Scoring Formula")
 pdf.p(
     "To determine commercial viability on algorithmic short-form feeds, candidates are evaluated across four "
-    "weighted dimensions. The weights reflect TikTok engagement realities: first-frame hook and final unresolved cut "
+    "weighted dimensions. The weights reflect short-form video retention dynamics: first-frame hook and final unresolved cut "
     "drive 65% of promotional success."
 )
 
 # Formula Bar Card
-pdf.card(15, 48, 180, 26, pdf.DARK_CARD)
+pdf.card(15, 48, 180, 26, pdf.CARD_BG, border=True)
 pdf.set_xy(20, 52)
 pdf.set_font("Calibri", "B", 10)
-pdf.set_text_color(*pdf.WHITE)
+pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(170, 5, "SCORE  =  0.35 * Hook  +  0.30 * Cliffhanger  +  0.20 * Clarity  +  0.15 * Emotion", align="C")
 
 # Visual weight distribution
@@ -617,7 +631,7 @@ rubric_cards = [
 
 y_rc = 88
 for r_title, r_desc, r_col in rubric_cards:
-    pdf.card(15, y_rc, 180, 20, pdf.DARK_CARD)
+    pdf.card(15, y_rc, 180, 20, pdf.CARD_BG, border=True)
     pdf.set_fill_color(*r_col)
     pdf.rect(15, y_rc, 2.5, 20, "F")
     pdf.set_xy(20, y_rc + 2)
@@ -626,7 +640,7 @@ for r_title, r_desc, r_col in rubric_cards:
     pdf.cell(80, 4, r_title, align="L")
     pdf.set_xy(20, y_rc + 7)
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(170, 3.8, r_desc, align="L")
     y_rc += 23
 
@@ -654,7 +668,7 @@ pdf.chapter_header("07", "Top 10 Ranked Promotional Clips (Results Table)")
 
 pdf.p(
     "All timestamps are mathematically derived and snapped to parsed screenplay units. "
-    "Composite scores reflect genuine content differentiation (5.00 to 4.45) following heuristic and LLM judging."
+    "Composite scores reflect genuine content differentiation (5.00 to 4.45) following heuristic and semantic judging."
 )
 
 # Table Header
@@ -669,7 +683,7 @@ cols = [
 ]
 
 y_tbl = 44
-pdf.card(15, y_tbl, 180, 8, pdf.CRIMSON)
+pdf.card(15, y_tbl, 180, 8, pdf.CRIMSON, border=False)
 pdf.set_xy(15, y_tbl + 1.5)
 pdf.set_font("Calibri", "B", 7.5)
 pdf.set_text_color(*pdf.WHITE)
@@ -679,8 +693,8 @@ for c_title, c_w in cols:
 y_row = y_tbl + 8
 for i, p in enumerate(promos):
     seg = p["segments"][0]
-    bg = pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT
-    pdf.card(15, y_row, 180, 15, bg)
+    bg = pdf.CARD_BG if i % 2 == 0 else pdf.CARD_ALT
+    pdf.card(15, y_row, 180, 15, bg, border=True)
 
     pdf.set_xy(15, y_row + 2)
     # Rank
@@ -690,17 +704,17 @@ for i, p in enumerate(promos):
 
     # Ep
     pdf.set_font("Calibri", "B", 8)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(10, 5, f"Ep {p['primary_episode_id']}", align="C")
 
     # Duration
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.cell(14, 5, f"{p['total_duration']:.1f}s", align="C")
 
     # Timecodes
     pdf.set_font("Calibri", "B", 7.5)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(38, 5, f"{seg['start_ts']} - {seg['end_ts']}", align="C")
 
     # Role
@@ -711,18 +725,18 @@ for i, p in enumerate(promos):
 
     # Score
     pdf.set_font("Calibri", "B", 8.5)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(16, 5, f"{p['weighted_score']:.2f}", align="C")
 
     # Rationale summary
     pdf.set_font("Calibri", "I", 6.8)
-    pdf.set_text_color(*pdf.MED_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.cell(60, 5, p['posting_rationale'][:48], align="L")
 
     # Second row inside card: Hook snippet
     pdf.set_xy(27, y_row + 7.5)
     pdf.set_font("Calibri", "", 6.8)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     hook_snip = p.get("hook_text", "").replace("\n", " ")[:110]
     pdf.cell(165, 5, f"Hook: \"{hook_snip}\"", align="L")
 
@@ -731,7 +745,7 @@ for i, p in enumerate(promos):
 # Summary metrics beneath table
 pdf.set_y(y_row + 6)
 pdf.sub_header("Top 10 Portfolio Distribution")
-pdf.kpi_card(15, pdf.get_y(), 42, 20, "38.9s", "Mean Duration\n(Optimal 25-50s)", pdf.WHITE)
+pdf.kpi_card(15, pdf.get_y(), 42, 20, "38.9s", "Mean Duration\n(Optimal 25-50s)", pdf.TEXT_DARK)
 pdf.kpi_card(60, pdf.get_y(), 42, 20, "7 / 3", "Launchers vs Teasers\n(Cold vs Retention)", pdf.ACCENT_GREEN)
 pdf.kpi_card(105, pdf.get_y(), 42, 20, "8 / 50", "Episodes Covered\n(High Diversity)", pdf.ACCENT_AMBER)
 pdf.kpi_card(150, pdf.get_y(), 42, 20, "100%", "Checks Passing\n(Zero Hard Fails)", pdf.ACCENT_GREEN)
@@ -752,16 +766,16 @@ pdf.p(
 
 y_hc = 44
 for i, p in enumerate(promos[:5]):
-    pdf.card(15, y_hc, 180, 26, pdf.DARK_CARD)
+    pdf.card(15, y_hc, 180, 26, pdf.CARD_BG, border=True)
     # Rank & Ep header
     pdf.set_xy(18, y_hc + 2)
     pdf.set_font("Calibri", "B", 8)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(20, 4, f"Rank #{p['rank']}", align="L")
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(25, 4, f"Episode {p['primary_episode_id']}", align="L")
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.MED_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     seg = p["segments"][0]
     pdf.cell(45, 4, f"{seg['start_ts']} - {seg['end_ts']} ({p['total_duration']:.1f}s)", align="L")
     pdf.set_font("Calibri", "B", 7.5)
@@ -771,10 +785,10 @@ for i, p in enumerate(promos[:5]):
     # Hook text box
     pdf.set_xy(18, y_hc + 7)
     pdf.set_font("Calibri", "B", 7)
-    pdf.set_text_color(*pdf.ACCENT_AMBER)
+    pdf.set_text_color(*pdf.DEEP_RED)
     pdf.cell(28, 4, "FIRST 3s HOOK:", align="L")
     pdf.set_font("Calibri", "", 7)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     hook_str = p.get("hook_text", "")[:120].replace("\n", " ")
     pdf.multi_cell(145, 3.8, f"\"{hook_str}\"", align="L")
 
@@ -784,7 +798,7 @@ for i, p in enumerate(promos[:5]):
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(28, 4, "CLIFFHANGER CUT:", align="L")
     pdf.set_font("Calibri", "", 7)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     cliff_str = p.get("cliffhanger_text", "")[:120].replace("\n", " ")
     pdf.multi_cell(145, 3.8, f"\"{cliff_str}\"", align="L")
 
@@ -795,24 +809,24 @@ pdf.p("Ranks #6 to #10 Hook / Cliffhanger Summary:")
 
 y_hc2 = 200
 for i, p in enumerate(promos[5:]):
-    pdf.card(15, y_hc2, 180, 13, pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT)
+    pdf.card(15, y_hc2, 180, 13, pdf.CARD_BG if i % 2 == 0 else pdf.CARD_ALT, border=True)
     pdf.set_xy(18, y_hc2 + 1.5)
     pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(16, 4, f"#{p['rank']} (Ep {p['primary_episode_id']})", align="L")
 
     pdf.set_font("Calibri", "B", 6.8)
-    pdf.set_text_color(*pdf.ACCENT_AMBER)
+    pdf.set_text_color(*pdf.DEEP_RED)
     pdf.cell(10, 4, "Hook:", align="L")
     pdf.set_font("Calibri", "", 6.8)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(70, 4, p.get("hook_text", "")[:50].replace("\n", " "), align="L")
 
     pdf.set_font("Calibri", "B", 6.8)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(10, 4, "Cut:", align="L")
     pdf.set_font("Calibri", "", 6.8)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(70, 4, p.get("cliffhanger_text", "")[:50].replace("\n", " "), align="L")
 
     y_hc2 += 14.5
@@ -827,9 +841,9 @@ pdf.page_footer()
 pdf.chapter_header("09", "Multi-Phase Campaign Rollout Strategy")
 
 pdf.p(
-    "To maximize TikTok/Reels user acquisition efficiency, promotional clips should not be posted randomly. "
+    "To maximize short-form audience acquisition efficiency, promotional clips should not be posted randomly. "
     "They are sequenced across five distinct campaign phases designed to guide audiences through a structured "
-    "psychological conversion funnel: Cold Outrage -> Curiosity Gap -> Emotional Loyalty -> Retention Binging."
+    "conversion funnel: Cold Outrage -> Curiosity Gap -> Emotional Loyalty -> Retention Binging."
 )
 
 campaign_phases = [
@@ -856,12 +870,12 @@ campaign_phases = [
     ("PHASE 5: WEEK 3+ (GENRE-SHIFT ACTION HOOK)", "Promo: Rank #10 (Ep 16)",
      "Alexander physically slams an assassin against a stone wall and interrogates him by the throat. "
      "Reveals secret martial prowess, transforming the romance into an action-thriller.",
-     (155, 89, 182), "Conversion: Viral Sharing & Reshares"),
+     (140, 70, 160), "Conversion: Viral Sharing & Reshares"),
 ]
 
 y_cp = 50
 for p_title, p_clips, p_desc, p_col, p_funnel in campaign_phases:
-    pdf.card(15, y_cp, 180, 37, pdf.DARK_CARD)
+    pdf.card(15, y_cp, 180, 37, pdf.CARD_BG, border=True)
     pdf.set_fill_color(*p_col)
     pdf.rect(15, y_cp, 3, 37, "F")
 
@@ -874,19 +888,19 @@ for p_title, p_clips, p_desc, p_col, p_funnel in campaign_phases:
     # Funnel badge
     pdf.set_xy(115, y_cp + 2.5)
     pdf.set_font("Calibri", "B", 7)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(75, 5, p_funnel, align="R")
 
     # Clips
     pdf.set_xy(22, y_cp + 8)
     pdf.set_font("Calibri", "B", 8)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.DEEP_RED)
     pdf.cell(168, 4.5, p_clips, align="L")
 
     # Description
     pdf.set_xy(22, y_cp + 13.5)
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(168, 3.8, p_desc, align="L")
 
     y_cp += 42
@@ -926,7 +940,7 @@ chk_cols = [
 ]
 
 y_chk = 82
-pdf.card(15, y_chk, 180, 8, pdf.CRIMSON)
+pdf.card(15, y_chk, 180, 8, pdf.CRIMSON, border=False)
 pdf.set_xy(15, y_chk + 1.5)
 pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
@@ -935,12 +949,12 @@ for col_lbl, col_w in chk_cols:
 
 y_c_row = y_chk + 8
 for i, c in enumerate(checks["check_details"]):
-    bg = pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT
-    pdf.card(15, y_c_row, 180, 11, bg)
+    bg = pdf.CARD_BG if i % 2 == 0 else pdf.CARD_ALT
+    pdf.card(15, y_c_row, 180, 11, bg, border=True)
     pdf.set_xy(15, y_c_row + 2.5)
 
     pdf.set_font("Calibri", "B", 7.5)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(34, 5, c["promo_id"], align="C")
 
     pdf.set_text_color(*pdf.CRIMSON)
@@ -975,7 +989,7 @@ pdf.sub_header("Unit Test Suite (tests/)")
 pdf.p(
     "In addition to runtime validation, the repository includes 28 automated unit tests executed via pytest. "
     "Tests cover screenplay regex parsing, duration math, boundary validation, candidate window enumeration, "
-    "IoU deduplication, LLM fallback behavior, and ranking stability. All 28 tests pass in < 1.0 second."
+    "IoU deduplication, model fallback behavior, and ranking stability. All 28 tests pass in < 1.0 second."
 )
 
 
@@ -1013,7 +1027,7 @@ gold_tbl_cols = [
 ]
 
 y_gt = 82
-pdf.card(15, y_gt, 180, 8, pdf.CRIMSON)
+pdf.card(15, y_gt, 180, 8, pdf.CRIMSON, border=False)
 pdf.set_xy(15, y_gt + 1.5)
 pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
@@ -1022,22 +1036,22 @@ for col_lbl, col_w in gold_tbl_cols:
 
 y_g_row = y_gt + 8
 for i, m in enumerate(gold["match_details"]):
-    bg = pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT
-    pdf.card(15, y_g_row, 180, 16, bg)
+    bg = pdf.CARD_BG if i % 2 == 0 else pdf.CARD_ALT
+    pdf.card(15, y_g_row, 180, 16, bg, border=True)
     pdf.set_xy(15, y_g_row + 2)
 
     pdf.set_font("Calibri", "B", 8)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(18, 5, m["gold_id"], align="C")
 
     pdf.cell(12, 5, f"Ep {m['episode']}", align="C")
 
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.cell(42, 5, m["gold_interval"], align="C")
 
     pdf.set_font("Calibri", "B", 7.5)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(36, 5, m.get("tool_promo_id", "NONE"), align="C")
 
     pdf.set_text_color(*pdf.CRIMSON)
@@ -1055,7 +1069,7 @@ for i, m in enumerate(gold["match_details"]):
     # Second row inside card: editorial note
     pdf.set_xy(25, y_g_row + 8)
     pdf.set_font("Calibri", "I", 6.8)
-    pdf.set_text_color(*pdf.MED_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     if m["status"] == "MATCH":
         pdf.cell(165, 5, f"Exact alignment with human editor choice. Overlap duration: {m.get('overlap_seconds', 0):.1f}s.", align="L")
     else:
@@ -1066,30 +1080,30 @@ for i, m in enumerate(gold["match_details"]):
 pdf.set_y(y_g_row + 6)
 pdf.sub_header("Stability & Determinism Test (stability_test.py)")
 pdf.p(
-    "To ensure reliable CI/CD deployment, stability_test.py executes two independent pipeline runs from scratch. "
+    "To ensure reliable deployment, stability_test.py executes two independent pipeline runs from scratch. "
     "Using SHA-256 hashed prompt caching, the tool achieves 100.0% Top-10 agreement and 0.00 mean rank shift across runs. "
     "Output is completely deterministic, eliminating flaky production behavior."
 )
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# PAGE 13: AI FAILURE INCIDENT ANALYSIS: INCIDENTS 1-3
+# PAGE 13: ENGINEERING INCIDENT LOG & SAFEGUARDS (1-3)
 # ═══════════════════════════════════════════════════════════════════════════
 pdf.add_page()
 pdf.page_header()
 pdf.page_footer()
-pdf.chapter_header("12", "AI Failure Incident Analysis: Incidents 1-3")
+pdf.chapter_header("12", "Engineering Incident Log & Edge-Case Safeguards (1-3)")
 
 pdf.p(
-    "High-reliability AI engineering requires tracking and mitigating edge-case failures. "
-    "This section logs 3 concrete incidents encountered during development, detailing the observed flaw, "
+    "High-reliability software engineering requires systematically tracking edge-case anomalies and defects. "
+    "This section logs 3 concrete engineering incidents encountered during development, detailing the observed defect, "
     "root-cause analysis, and the defensive code safeguards applied."
 )
 
 incidents_1_3 = [
     {
         "id": "INCIDENT 1",
-        "title": "Regex Case Sensitivity in Parser",
+        "title": "Regex Case Sensitivity in Screenplay Tokenizer",
         "stage": "Phase 1 (Screenplay Parsing)",
         "flaw": "In Episode 6, screenplay section headers used all-caps 'ACTIONS AND DIALOGUE:' and 'SCENE HEADING:' whereas Episode 1 used Title Case. The parser emitted unrecognized line warnings and dropped narrative cues.",
         "cause": "Upstream human screenwriters format scripts inconsistently across production blocks. Hardcoded regex patterns matched exact capitalization.",
@@ -1097,9 +1111,9 @@ incidents_1_3 = [
     },
     {
         "id": "INCIDENT 2",
-        "title": "Substring Collision in LLM Dispatcher",
-        "stage": "Phase 5 (Judge Rubric Evaluation)",
-        "flaw": "LLM calls failed schema validation with 'Missing required fields: [reasoning, hook_strength, cliffhanger_quality]'. The pipeline entered an infinite retry loop.",
+        "title": "Substring Collision in Prompt Context Dispatcher",
+        "stage": "Phase 5 (Rubric Evaluation)",
+        "flaw": "Model calls failed schema validation with 'Missing required fields: [reasoning, hook_strength, cliffhanger_quality]'. The pipeline entered an unnecessary retry loop.",
         "cause": "The judge prompt included show context: 'Show Context: Premise: {premise}'. The dispatcher checked 'premise' in prompt.lower() before 'hook_strength', erroneously returning bible JSON instead of judge scores.",
         "fix": "Reordered dispatch priority in llm.py: inspects explicit schema['required'] keys first before falling back to prompt substring inspection.",
     },
@@ -1115,7 +1129,7 @@ incidents_1_3 = [
 
 y_inc = 50
 for inc in incidents_1_3:
-    pdf.card(15, y_inc, 180, 68, pdf.DARK_CARD)
+    pdf.card(15, y_inc, 180, 68, pdf.CARD_BG, border=True)
     pdf.set_fill_color(*pdf.CRIMSON)
     pdf.rect(15, y_inc, 3, 68, "F")
 
@@ -1124,19 +1138,19 @@ for inc in incidents_1_3:
     pdf.set_font("Calibri", "B", 8.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(26, 5, inc["id"] + ":", align="L")
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(90, 5, inc["title"], align="L")
     pdf.set_font("Calibri", "I", 7.5)
-    pdf.set_text_color(*pdf.MED_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.cell(60, 5, inc["stage"], align="R")
 
     # Flaw
     pdf.set_xy(22, y_inc + 10)
     pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_RED)
-    pdf.cell(32, 4, "[OBSERVED FLAW]:", align="L")
+    pdf.cell(32, 4, "[OBSERVED DEFECT]:", align="L")
     pdf.set_font("Calibri", "", 7.2)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(140, 3.8, inc["flaw"], align="L")
 
     # Cause
@@ -1145,7 +1159,7 @@ for inc in incidents_1_3:
     pdf.set_text_color(*pdf.ACCENT_AMBER)
     pdf.cell(32, 4, "[ROOT CAUSE]:", align="L")
     pdf.set_font("Calibri", "", 7.2)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(140, 3.8, inc["cause"], align="L")
 
     # Fix
@@ -1154,33 +1168,33 @@ for inc in incidents_1_3:
     pdf.set_text_color(*pdf.ACCENT_GREEN)
     pdf.cell(32, 4, "[CODE SAFEGUARD]:", align="L")
     pdf.set_font("Calibri", "", 7.2)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(140, 3.8, inc["fix"], align="L")
 
     y_inc += 73
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# PAGE 14: AI FAILURE INCIDENTS 4-5 & EDITORIAL EDGE CASES
+# PAGE 14: SYSTEM INCIDENT LOG: INCIDENTS 4-5 & EDGE CASES
 # ═══════════════════════════════════════════════════════════════════════════
 pdf.add_page()
 pdf.page_header()
 pdf.page_footer()
-pdf.chapter_header("13", "AI Failure Incident Analysis: Incidents 4-5 & Edge Cases")
+pdf.chapter_header("13", "System Incident Log: Incidents 4-5 & Edge Cases")
 
 incidents_4_5 = [
     {
         "id": "INCIDENT 4",
-        "title": "Duration Sweet-Spot Blindness",
+        "title": "Duration Sweet-Spot Blindness in Candidate Ranking",
         "stage": "Phase 3 & 5 (Candidate Scoring & Ranking)",
-        "flaw": "Early versions ranked 48s-55s clips equally with 28s clips because both satisfied the <= 60s hard limit. On TikTok, 50s+ promos suffer 35% higher mid-roll drop-off.",
+        "flaw": "Early versions ranked 48s-55s clips equally with 28s clips because both satisfied the <= 60s hard limit. In short-form video, 50s+ promos suffer 35% higher mid-roll drop-off.",
         "cause": "Linear scoring treated the entire 20-60s range uniformly, ignoring platform-specific audience retention curves.",
-        "fix": "Implemented a non-linear TikTok duration curve: +0.25 bonus for the 25-38s optimal window; progressive penalties (-0.15) for clips exceeding 52 seconds.",
+        "fix": "Implemented a non-linear duration curve: +0.25 bonus for the 25-38s optimal window; progressive penalties (-0.15) for clips exceeding 52 seconds.",
     },
     {
         "id": "INCIDENT 5",
         "title": "Semantic Closure vs Punctuation in Cliffhanger Cuts",
-        "stage": "Phase 5 (Judge Rubric Evaluation)",
+        "stage": "Phase 5 (Rubric Evaluation)",
         "flaw": "In Episode 8, Juliana nods gently and says 'Very well!'. The heuristic tagged this as an unresolved cliffhanger (5/5) because the line ended with an exclamation point.",
         "cause": "Punctuation-based heuristics treated exclamation marks as universal signals of tension rather than checking semantic conversational closure.",
         "fix": "Added resolution dictionary: phrases like 'very well', 'goodbye', 'understood', and 'as you wish' force ends_resolved = True and cap cliffhanger_quality at <= 2.",
@@ -1189,7 +1203,7 @@ incidents_4_5 = [
 
 y_inc2 = 42
 for inc in incidents_4_5:
-    pdf.card(15, y_inc2, 180, 56, pdf.DARK_CARD)
+    pdf.card(15, y_inc2, 180, 56, pdf.CARD_BG, border=True)
     pdf.set_fill_color(*pdf.CRIMSON)
     pdf.rect(15, y_inc2, 3, 56, "F")
 
@@ -1197,18 +1211,18 @@ for inc in incidents_4_5:
     pdf.set_font("Calibri", "B", 8.5)
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(26, 5, inc["id"] + ":", align="L")
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(90, 5, inc["title"], align="L")
     pdf.set_font("Calibri", "I", 7.5)
-    pdf.set_text_color(*pdf.MED_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.cell(60, 5, inc["stage"], align="R")
 
     pdf.set_xy(22, y_inc2 + 10)
     pdf.set_font("Calibri", "B", 7.5)
     pdf.set_text_color(*pdf.ACCENT_RED)
-    pdf.cell(32, 4, "[OBSERVED FLAW]:", align="L")
+    pdf.cell(32, 4, "[OBSERVED DEFECT]:", align="L")
     pdf.set_font("Calibri", "", 7.2)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(140, 3.8, inc["flaw"], align="L")
 
     pdf.set_xy(22, y_inc2 + 25)
@@ -1216,7 +1230,7 @@ for inc in incidents_4_5:
     pdf.set_text_color(*pdf.ACCENT_AMBER)
     pdf.cell(32, 4, "[ROOT CAUSE]:", align="L")
     pdf.set_font("Calibri", "", 7.2)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(140, 3.8, inc["cause"], align="L")
 
     pdf.set_xy(22, y_inc2 + 40)
@@ -1224,7 +1238,7 @@ for inc in incidents_4_5:
     pdf.set_text_color(*pdf.ACCENT_GREEN)
     pdf.cell(32, 4, "[CODE SAFEGUARD]:", align="L")
     pdf.set_font("Calibri", "", 7.2)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(140, 3.8, inc["fix"], align="L")
 
     y_inc2 += 61
@@ -1259,10 +1273,10 @@ pdf.p(
 )
 
 pdf.sub_header("Current Run Performance (50 Episodes)")
-pdf.card(15, 48, 180, 34, pdf.DARK_CARD)
+pdf.card(15, 48, 180, 34, pdf.CARD_BG, border=True)
 cur_stats = [
     ("Episodes Processed:", "50 episodes (~125s mean duration, 3,727 parsed units)"),
-    ("Total LLM Calls:", "31 calls (all cached deterministically via SHA-256)"),
+    ("Total Model API Calls:", "31 calls (all cached deterministically via SHA-256)"),
     ("Token Spend (Uncached):", "37,900 tokens total (~34,500 prompt + 3,400 completion)"),
     ("Estimated Pipeline Cost:", "$0.004 USD on Gemini 2.5 Flash ($0.00008 / episode)"),
     ("Execution Latency:", "< 1.0 second (cached) | ~45 seconds (uncached live API calls)"),
@@ -1274,7 +1288,7 @@ for lbl, val in cur_stats:
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(48, 4.5, lbl, align="L")
     pdf.set_font("Calibri", "", 7.5)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(125, 4.5, val, align="L")
     y_cs += 6
 
@@ -1290,7 +1304,7 @@ scale_cols = [
 ]
 
 y_sc = 96
-pdf.card(15, y_sc, 180, 8, pdf.CRIMSON)
+pdf.card(15, y_sc, 180, 8, pdf.CRIMSON, border=False)
 pdf.set_xy(15, y_sc + 1.5)
 pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
@@ -1299,34 +1313,34 @@ for col_lbl, col_w in scale_cols:
 
 scale_data = [
     ("Stage 2: Bible Synthesis", "51", "~12,000", "$0.04", "$4.00"),
-    ("Stage 3: Scene Tagging (Cheap Tier)", "50", "~25,000", "$0.08", "$8.00"),
-    ("Stage 5: Rubric Judging (Strong Tier)", "30", "~18,000", "$0.06", "$6.00"),
+    ("Stage 3: Scene Tagging (Fast Tier)", "50", "~25,000", "$0.08", "$8.00"),
+    ("Stage 5: Rubric Judging (Comprehensive Tier)", "30", "~18,000", "$0.06", "$6.00"),
     ("TOTAL PIPELINE (PER SHOW / WEEK)", "131", "~55,000", "$0.18", "$18.00"),
 ]
 
 y_sc_row = y_sc + 8
 for i, row in enumerate(scale_data):
     is_tot = i == len(scale_data) - 1
-    bg = (35, 40, 58) if is_tot else (pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT)
-    pdf.card(15, y_sc_row, 180, 10, bg)
+    bg = (235, 240, 248) if is_tot else (pdf.CARD_BG if i % 2 == 0 else pdf.CARD_ALT)
+    pdf.card(15, y_sc_row, 180, 10, bg, border=True)
     pdf.set_xy(15, y_sc_row + 2)
     pdf.set_font("Calibri", "B" if is_tot else "", 7.5)
-    pdf.set_text_color(*pdf.WHITE if not is_tot else pdf.ACCENT_GREEN)
+    pdf.set_text_color(*pdf.TEXT_DARK if not is_tot else pdf.ACCENT_GREEN)
     pdf.cell(45, 5, row[0], align="L")
     pdf.cell(28, 5, row[1], align="C")
     pdf.cell(32, 5, row[2], align="C")
     pdf.cell(35, 5, row[3], align="C")
     pdf.set_font("Calibri", "B", 7.5)
-    pdf.set_text_color(*pdf.CRIMSON if is_tot else pdf.WHITE)
+    pdf.set_text_color(*pdf.CRIMSON if is_tot else pdf.TEXT_DARK)
     pdf.cell(40, 5, row[4], align="C")
     y_sc_row += 10.5
 
 pdf.set_y(y_sc_row + 6)
 pdf.sub_header("Architectural Cost Optimizations at Scale")
 pdf.bullet("Dominant Cost Driver", "Stage 5 judging accounts for 55% of token spend due to prompt context (bible + candidate transcript).", 0)
-pdf.bullet("Two-Tier Model Routing", "Use cheap models (Flash) for 95% of preliminary ranking; invoke frontier models (Pro) strictly for the final Top 15 judging pass.", 0)
+pdf.bullet("Two-Tier Model Routing", "Use high-speed models (Flash) for 95% of preliminary ranking; invoke comprehensive models strictly for the final Top 15 judging pass.", 0)
 pdf.bullet("Async Batch Concurrency", "Batch independent episode calls using asyncio / aiohttp to reduce end-to-end processing time from 45s to 12s per show.", 0)
-pdf.bullet("Total Weekly Operational Budget", "At $18.00/week for 100 shows, LLM inference represents less than 0.01% of a marketing production budget.", 0)
+pdf.bullet("Total Weekly Operational Budget", "At $18.00/week for 100 shows, model inference represents less than 0.01% of a marketing production budget.", 0)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1337,10 +1351,10 @@ pdf.page_header()
 pdf.page_footer()
 pdf.chapter_header("15", "Responsibility Matrix & Limitations Roadmap")
 
-pdf.sub_header("Code vs. AI vs. Human Responsibility Matrix")
+pdf.sub_header("Deterministic Code vs. Semantic Models vs. Human Responsibility Matrix")
 pdf.p(
-    "A foundational failure mode in modern AI applications is asking LLMs to perform tasks suited for deterministic code. "
-    "Below is the exact division of labor implemented across the system:"
+    "A foundational failure mode in modern software architectures is assigning tasks to probabilistic language models "
+    "that are strictly suited for deterministic code. Below is the exact division of labor implemented across the system:"
 )
 
 matrix_cols = [
@@ -1350,7 +1364,7 @@ matrix_cols = [
 ]
 
 y_mx = 48
-pdf.card(15, y_mx, 180, 8, pdf.CRIMSON)
+pdf.card(15, y_mx, 180, 8, pdf.CRIMSON, border=False)
 pdf.set_xy(15, y_mx + 1.5)
 pdf.set_font("Calibri", "B", 7)
 pdf.set_text_color(*pdf.WHITE)
@@ -1362,18 +1376,18 @@ matrix_rows = [
      "Regex screenplay tokenization, timestamp parsing, 20-60s window sliding, IoU deduplication, boundary clamping, schema verification, diversity caps.",
      "Mathematical consistency: code never hallucinates timecodes. Snaps cut points to exact millisecond unit boundaries."),
 
-    ("ARTIFICIAL INTELLIGENCE\n(Gemini 2.5 Flash)",
+    ("SEMANTIC LANGUAGE MODEL\n(Gemini 2.5 Flash)",
      "Show bible synthesis, episode loglines, subjective hook impact evaluation, unresolved cliffhanger judgment, narrative posting rationale.",
      "Semantic understanding: language models excel at evaluating narrative tension, emotional betrayal, and commercial curiosity."),
 
-    ("HUMAN IN THE LOOP\n(Video Editors)",
+    ("HUMAN EDITORIAL TEAM\n(Video Editors)",
      "Benchmark gold-set annotation, final creative approval, sound design sting placement, captioning overlays, and platform publishing.",
      "Artistic nuance: human editors make the final creative judgment call. The tool accelerates their workflow from hours to seconds."),
 ]
 
 y_mx_r = y_mx + 8
 for i, (layer, resp, why) in enumerate(matrix_rows):
-    pdf.card(15, y_mx_r, 180, 24, pdf.DARK_CARD if i % 2 == 0 else pdf.DARK_CARD_ALT)
+    pdf.card(15, y_mx_r, 180, 24, pdf.CARD_BG if i % 2 == 0 else pdf.CARD_ALT, border=True)
     pdf.set_xy(18, y_mx_r + 2)
     pdf.set_font("Calibri", "B", 7)
     pdf.set_text_color(*pdf.CRIMSON)
@@ -1381,12 +1395,12 @@ for i, (layer, resp, why) in enumerate(matrix_rows):
 
     pdf.set_xy(48, y_mx_r + 2)
     pdf.set_font("Calibri", "", 6.8)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.multi_cell(63, 3.5, resp, align="L")
 
     pdf.set_xy(113, y_mx_r + 2)
     pdf.set_font("Calibri", "I", 6.8)
-    pdf.set_text_color(*pdf.LIGHT_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.multi_cell(78, 3.5, why, align="L")
 
     y_mx_r += 25
@@ -1400,8 +1414,8 @@ limits_data = [
      "Roadmap: Integrate multimodal models (Gemini Pro Vision / Whisper) to analyze rendered MP4 video and audio tracks directly."),
 
     ("Static Heuristic Differentiation",
-     "In offline fallback mode, rubric scores use deterministic heuristics. Real LLM inference produces nuanced reasoning text.",
-     "Roadmap: Deploy fine-tuned LoRA models specialized in microdrama viral hook prediction."),
+     "In offline fallback mode, rubric scores use deterministic heuristics. Real model inference produces nuanced reasoning text.",
+     "Roadmap: Deploy fine-tuned model adapters specialized in microdrama viral hook prediction."),
 
     ("Single-Episode Windowing",
      "Current candidate generation operates within single episodes. Cross-episode stitching requires complex narrative logic.",
@@ -1414,18 +1428,18 @@ limits_data = [
 
 y_lm = 144
 for lim_title, lim_curr, lim_next in limits_data:
-    pdf.card(15, y_lm, 180, 23, pdf.DARK_CARD)
+    pdf.card(15, y_lm, 180, 23, pdf.CARD_BG, border=True)
     pdf.set_fill_color(*pdf.ACCENT_AMBER)
     pdf.rect(15, y_lm, 2.5, 23, "F")
 
     pdf.set_xy(20, y_lm + 2)
     pdf.set_font("Calibri", "B", 7.5)
-    pdf.set_text_color(*pdf.WHITE)
+    pdf.set_text_color(*pdf.DEEP_RED)
     pdf.cell(50, 4, lim_title, align="L")
 
     pdf.set_xy(20, y_lm + 6.5)
     pdf.set_font("Calibri", "", 6.8)
-    pdf.set_text_color(*pdf.MED_GRAY)
+    pdf.set_text_color(*pdf.TEXT_MUTED)
     pdf.cell(170, 3.5, "Current: " + lim_curr[:95], align="L")
 
     pdf.set_xy(20, y_lm + 10.5)
@@ -1445,15 +1459,15 @@ pdf.page_footer()
 pdf.chapter_header("16", "Repository Architecture, Config & Technology Stack")
 
 pdf.sub_header("Repository File Layout")
-pdf.card(15, 36, 180, 68, pdf.DARK_CARD)
+pdf.card(15, 36, 180, 68, pdf.CARD_BG, border=True)
 
 repo_files = [
     ("run.py", "Unified CLI runner orchestrating all 6 pipeline stages in 1 command"),
     ("screenplay_parser.py", "Core regex tokenizer converting .txt scripts into ScreenplayUnit objects"),
-    ("bible_builder.py", "Map-Reduce show bible generator (episode loglines + global synthesis)"),
+    ("bible_builder.py", "Two-stage show bible generator (episode loglines + global synthesis)"),
     ("candidate_generator.py", "Sliding window candidate generator (20-60s) with rule-based scoring"),
     ("stitcher.py", "Constrained multi-segment stitching engine with boundary snapping"),
-    ("judge_and_rank.py", "Frontier LLM rubric judge, deduplication, diversity caps, and ranking"),
+    ("judge_and_rank.py", "Semantic rubric judge, deduplication, diversity caps, and ranking"),
     ("checks.py", "Automated quality assurance audit (verifies duration, boundaries, timestamps)"),
     ("evaluate.py", "Gold-set benchmark comparator (recall, precision, IoU temporal overlap)"),
     ("stability_test.py", "Dual-run stability verification test (SHA-256 prompt cache determinism)"),
@@ -1469,7 +1483,7 @@ for f_name, f_desc in repo_files:
     pdf.set_text_color(*pdf.CRIMSON)
     pdf.cell(38, 4, f_name, align="L")
     pdf.set_font("Calibri", "", 7)
-    pdf.set_text_color(*pdf.LIGHT_TEXT)
+    pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(130, 4, f_desc[:75], align="L")
     y_rf += 5.2
 
@@ -1477,7 +1491,7 @@ pdf.set_y(108)
 pdf.sub_header("Centralized Configuration (config.yaml)")
 pdf.p("All model parameters, rubric weights, and operational thresholds are cleanly separated into config.yaml:")
 
-pdf.card(15, 122, 180, 62, (18, 20, 30))
+pdf.card(15, 122, 180, 62, (244, 246, 250), border=True)
 yaml_lines = [
     "llm:",
     "  provider: 'gemini'            # Choices: 'gemini' | 'openai' | 'anthropic' | 'mock'",
@@ -1501,9 +1515,9 @@ for yl in yaml_lines:
     if yl.endswith(":"):
         pdf.set_text_color(*pdf.CRIMSON)
     elif "#" in yl:
-        pdf.set_text_color(*pdf.MED_GRAY)
+        pdf.set_text_color(*pdf.TEXT_MUTED)
     else:
-        pdf.set_text_color(*pdf.WHITE)
+        pdf.set_text_color(*pdf.TEXT_DARK)
     pdf.cell(170, 3.8, yl, align="L")
     y_ym += 4.2
 
@@ -1511,74 +1525,75 @@ pdf.set_y(188)
 pdf.sub_header("Core Technology Stack")
 tech_stack = [
     ("Python 3.9+", "Core language for parsing, sliding window math, and verification"),
-    ("Google Gemini 2.5 Flash", "Default LLM tier via free-tier API (with offline fallback)"),
-    ("Streamlit", "Dark-mode interactive OTT review dashboard for video editors"),
+    ("Language Model API (Gemini 2.5 Flash)", "Default semantic evaluation tier (with offline fallback mode)"),
+    ("Streamlit", "Interactive OTT review dashboard for video editors"),
     ("Pytest", "Automated test suite (28 passing unit tests in < 1.0 second)"),
-    ("FPDF2", "Programmatic PDF document generation engine"),
+    ("FPDF2", "Programmatic document generation engine"),
 ]
 for t_name, t_desc in tech_stack:
     pdf.bullet(t_name, t_desc, 0)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# PAGE 18: CONCLUSION & PROJECT SIGN-OFF
+# PAGE 18: CONCLUSION & PROJECT SIGN-OFF (WHITE & RED)
 # ═══════════════════════════════════════════════════════════════════════════
 pdf.add_page()
 pdf.draw_bg()
+
 # Top red bar
 pdf.set_fill_color(*pdf.CRIMSON)
 pdf.rect(0, 0, 210, 6, "F")
 
 pdf.set_xy(20, 60)
-pdf.set_font("Calibri", "B", 10)
+pdf.set_font("Calibri", "B", 10.5)
 pdf.set_text_color(*pdf.CRIMSON)
-pdf.cell(170, 5, "KUKU TECHNOLOGIES  |  AI GENERALIST ASSIGNMENT", align="C")
+pdf.cell(170, 5, "KUKU TECHNOLOGIES  |  TECHNICAL SUBMISSION", align="C")
 
 pdf.set_xy(20, 72)
-pdf.set_font("Calibri", "B", 24)
-pdf.set_text_color(*pdf.WHITE)
+pdf.set_font("Calibri", "B", 25)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(170, 10, "Project Conclusion & Sign-Off", align="C")
 
 pdf.set_xy(30, 92)
 pdf.set_font("Calibri", "", 9.5)
-pdf.set_text_color(*pdf.LIGHT_TEXT)
+pdf.set_text_color(*pdf.TEXT_DARK)
 summary_conclusion = (
     "The Automated Microdrama Promo Discovery engine successfully solves Problem 1 by combining "
-    "mathematically rigorous code parsing with state-of-the-art narrative intelligence.\n\n"
+    "mathematically rigorous code parsing with structured semantic intelligence.\n\n"
     "By guaranteeing 100% timestamp authenticity, delivering 80% recall against human benchmarks, "
     "and packaging the output in an accessible, production-ready Streamlit interface, this pipeline "
     "enables Kuku to compress days of manual video scrubbing into seconds of deterministic computation."
 )
 pdf.multi_cell(150, 5.5, summary_conclusion, align="C")
 
-# Final verification stats card
-pdf.card(30, 140, 150, 40, pdf.DARK_CARD)
+# Final verification stats card (White card with red top strip)
+pdf.card(30, 140, 150, 40, pdf.CARD_BG, border=True)
 pdf.set_fill_color(*pdf.CRIMSON)
 pdf.rect(30, 140, 150, 2, "F")
 
 pdf.set_xy(35, 148)
 pdf.set_font("Calibri", "B", 11)
-pdf.set_text_color(*pdf.WHITE)
+pdf.set_text_color(*pdf.TEXT_DARK)
 pdf.cell(140, 6, "Verification Sign-Off Summary", align="C")
 
 pdf.set_xy(35, 158)
 pdf.set_font("Calibri", "", 8.5)
-pdf.set_text_color(*pdf.LIGHT_GRAY)
+pdf.set_text_color(*pdf.TEXT_MUTED)
 pdf.cell(140, 5, "Automated Verification: 10 / 10 Promos Passing  |  Pytest: 28 / 28 Tests Passing", align="C")
 
 pdf.set_xy(35, 166)
-pdf.set_font("Calibri", "", 8.5)
+pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.ACCENT_GREEN)
 pdf.cell(140, 5, "Timestamp Hallucinations: ZERO  |  Stability Shift: 0.00  |  Cost: $0.004 / Show", align="C")
 
 # Project footer
 pdf.set_xy(20, 224)
 pdf.set_font("Calibri", "", 9)
-pdf.set_text_color(*pdf.MED_GRAY)
+pdf.set_text_color(*pdf.TEXT_MUTED)
 pdf.cell(170, 5, "Kuku Technologies  |  Problem 1: Automated Microdrama Promo Discovery", align="C")
 
 pdf.set_xy(20, 231)
-pdf.set_font("Calibri", "", 8.5)
+pdf.set_font("Calibri", "B", 8.5)
 pdf.set_text_color(*pdf.CRIMSON)
 pdf.cell(170, 5, "https://github.com/ashwinayadav6281/Kuku_AI_Generalist", align="C")
 
@@ -1590,4 +1605,4 @@ pdf.rect(0, 291, 210, 6, "F")
 # OUTPUT
 # ═══════════════════════════════════════════════════════════════════════════
 pdf.output(OUT_PDF)
-print(f"SUCCESS: Generated {pdf.page_no()} page PDF at: {OUT_PDF}")
+print(f"SUCCESS: Generated {pdf.page_no()} page White & Red PDF at: {OUT_PDF}")
